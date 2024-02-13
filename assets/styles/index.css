@@ -24,6 +24,7 @@ button {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
 }
 
 header {
@@ -102,42 +103,39 @@ header nav ul li a:hover {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  margin-left: 10%;
+  margin-left: 12%;
   padding: 100px 0px 10px 0px;
 }
 .hero_main_text {
-  font-family: Open Sans;
   font-size: 56px;
   font-weight: 700;
   line-height: 64px;
   letter-spacing: 0em;
   text-align: left;
   color: #232323;
-  width: 70%;
+  width: 60%;
   margin-bottom: 30px;
 }
 
 .hero_sub_text {
-  font-family: Open Sans;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
   color: #03796e;
-  width: 60%;
+  width: 50%;
   margin-bottom: 20px;
 }
 
 .hero_search {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   width: 90%;
-  background: #f5f5f550;
+  background: #f5f5f560;
   margin-bottom: 20px;
   padding: 20px;
-  gap: 25px;
+  gap: 40px;
 }
 
 .hero_search form {
@@ -146,7 +144,9 @@ header nav ul li a:hover {
 }
 
 .hero_search span {
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
   border-radius: 8px;
   border: 1px solid #bcbcbc;
   gap: 10px;
@@ -155,19 +155,37 @@ header nav ul li a:hover {
 
 .hero_search span input {
   border: none;
+  padding: 10px;
+  outline: #bcbcbc;
+}
+
+.middle_line {
+  width: 2px;
+  height: 30px;
+  border: 1px solid #016d71;
+  margin-top: 10px;
 }
 
 .search_btn {
-  padding: 16px;
+  padding: 20px;
   border-radius: 2px;
   background-color: #016d71;
   color: #cce6e7;
   border-radius: 12px;
+  width: 150px;
 }
 .filter_btn {
-  background-color: #fff;
+  background-color: #f5f5f5;
   padding: 10px;
   border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filter_btn p {
+  display: none;
 }
 .hero_left a {
   color: #016d71;
@@ -177,6 +195,10 @@ header nav ul li a:hover {
   line-height: 26px;
   letter-spacing: 0em;
   text-align: left;
+}
+
+.signin_btn {
+  display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -223,5 +245,85 @@ header nav ul li a:hover {
   .nav_toggle_btn {
     display: grid;
     gap: 4px;
+  }
+  .hero_section {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .hero_search {
+    width: 100%;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .hero_search form {
+    flex-direction: column;
+  }
+  .hero_img img {
+    width: 100%;
+    height: 400px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+  }
+  .hero_main_text {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .hero_left {
+    padding: 60px 10px 10px 10px;
+    margin-left: 0px;
+  }
+  .middle_line {
+    display: none;
+  }
+  .hero_sub_text {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #575757;
+  }
+  .search_btn {
+    width: 100%;
+  }
+  .hero_search span {
+    padding: 5px 10px;
+    width: 100%;
+  }
+
+  .filter_btn {
+    padding: 13px;
+  }
+  .filter_btn p {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #016d71;
+  }
+  .search_calendar {
+    display: flex;
+    justify-content: space-between;
+  }
+  .hero_left a {
+    display: none;
+  }
+  .signin_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 16px 24px 16px 24px;
+    border-radius: 12px;
+    background: #1c2b40;
+    color: #d7d7d7;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
   }
 }
