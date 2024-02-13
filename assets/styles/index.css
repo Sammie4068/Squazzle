@@ -97,6 +97,7 @@ header nav ul li a:hover {
 .hero_section {
   display: flex;
   width: 100%;
+  margin-bottom: 100px;
 }
 
 .hero_left {
@@ -201,6 +202,79 @@ header nav ul li a:hover {
   display: none;
 }
 
+.after_hero {
+  background: #016d71;
+  display: flex;
+}
+
+.color_lines img {
+  width: 120%;
+}
+.color_lines .orange {
+  position: relative;
+  top: 130px;
+}
+.color_lines .green {
+  position: relative;
+  bottom: 55px;
+}
+.after_hero_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 150px;
+  padding: 60px 0px;
+}
+
+.after_hero_wrapper img {
+  z-index: 1;
+}
+
+.aside {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  color: #f5f5f5;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.aside_heading {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+}
+.aside_writeup {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats span {
+  width: 90%;
+}
+
+.stats span h4 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 45px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.stats p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  width: 80%;
+}
+
+/* Media Queries */
 @media screen and (max-width: 768px) {
   header {
     padding: 10px 20px;
@@ -249,6 +323,7 @@ header nav ul li a:hover {
   .hero_section {
     flex-direction: column;
     padding: 10px;
+    margin-bottom: 0;
   }
   .hero_search {
     width: 100%;
@@ -325,5 +400,54 @@ header nav ul li a:hover {
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
+  }
+
+  .after_hero_wrapper {
+    padding: 60px 30px;
+  }
+  .after_hero img {
+    display: none;
+  }
+
+  .aside {
+    width: 100%;
+  }
+
+  .aside_heading {
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+  }
+  .aside_writeup {
+    font-size: 18px;
+    line-height: 35px;
+    text-align: center;
+    font-weight: lighter;
+  }
+  .stats {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+  .stats span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stats span h4 {
+    font-size: 32px;
+    line-height: 44px;
+    text-align: left;
+  }
+
+  .stats p {
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    width: 30%;
+    font-weight: 200;
   }
 }

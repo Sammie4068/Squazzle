@@ -5,14 +5,13 @@ const navLinks = document.querySelectorAll("#nav_link");
 const menuToggleBtn = document.getElementById("nav_toggle_btn");
 const overlay = document.querySelector(".overlay");
 
-menuToggleBtn.addEventListener("click", () => {
+function hamMenu() {
   navbar.classList.toggle("active");
   menuToggleBtn.classList.toggle("active");
-});
+}
+
+menuToggleBtn.addEventListener("click", hamMenu);
 
 navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    navbar.classList.toggle("active");
-    menuToggleBtn.classList.toggle("active");
-  });
+  link.addEventListener("click", hamMenu);
 });
