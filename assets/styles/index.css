@@ -27,6 +27,8 @@ body {
   overflow-x: hidden;
 }
 
+/* Nav */
+
 header {
   display: flex;
   justify-content: space-between;
@@ -93,6 +95,8 @@ header nav ul li a:hover {
   transform: translate(-1px, -3px) rotate(45deg);
   display: none;
 }
+
+/* Hero */
 
 .hero_section {
   display: flex;
@@ -202,25 +206,25 @@ header nav ul li a:hover {
   display: none;
 }
 
+/* After Hero */
 .after_hero {
   background: #016d71;
-  display: flex;
+  width: 100dvw;
 }
 
-.color_lines img {
-  width: 120%;
-}
 .color_lines .orange {
-  position: relative;
-  top: 130px;
+  position: absolute;
+  top: 1040px;
+  width: 220px;
 }
 .color_lines .green {
-  position: relative;
-  bottom: 55px;
+  position: absolute;
+  top: 1150px;
 }
 .after_hero_wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 150px;
   padding: 60px 0px;
 }
@@ -230,7 +234,7 @@ header nav ul li a:hover {
 }
 
 .aside {
-  width: 40%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -272,6 +276,62 @@ header nav ul li a:hover {
   font-weight: 400;
   line-height: 24px;
   width: 80%;
+}
+
+/* Properties */
+.properties_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 20px;
+}
+
+.properties_heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.properties_heading h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 45px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.properties_heading p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #787878;
+  margin-bottom: 53px;
+}
+
+.properties_heading ul {
+  display: flex;
+  gap: 82px;
+}
+
+.properties_heading li {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #bcbcbc;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.properties_heading li.active {
+  color: #018388;
+  border-bottom: 2px solid #018388;
 }
 
 /* Media Queries */
@@ -400,6 +460,10 @@ header nav ul li a:hover {
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
+  }
+
+  .after_hero {
+    width: 100%;
   }
 
   .after_hero_wrapper {

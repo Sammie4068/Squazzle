@@ -15,3 +15,17 @@ menuToggleBtn.addEventListener("click", hamMenu);
 navLinks.forEach((link) => {
   link.addEventListener("click", hamMenu);
 });
+
+const propertiesDisplayLinks = document.querySelectorAll(
+  ".properties_links li"
+);
+propertiesDisplayLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    removeActive(propertiesDisplayLinks, link)
+  });
+});
+
+function removeActive(ele, activeEle) {
+  ele.forEach(el => el.classList.remove("active"))
+  activeEle.classList.add("active")
+}
