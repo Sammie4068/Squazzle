@@ -731,7 +731,6 @@ footer {
   gap: 8px;
 }
 
-
 /* Media Queries */
 @media screen and (max-width: 768px) {
   header {
@@ -911,5 +910,50 @@ footer {
     text-align: center;
     width: 30%;
     font-weight: 200;
+  }
+
+  .properties {
+    padding: 0px 10px;
+  }
+  .properties_wrapper {
+    margin: 50px 0px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .properties_heading {
+    width: 100%;
+  }
+
+  .properties_heading h1 {
+    font-size: 28px;
+    line-height: 40px;
+    color: #000000;
+  }
+
+  .properties_heading p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #575757;
+  }
+
+  .properties_heading ul {
+    margin: 25px 0px;
+    gap: 50px;
+  }
+
+  .properties_heading li {
+    font-weight: 600;
+    line-height: 22px;
+    text-wrap: nowrap;
+  }
+  .properties_heading li.active {
+    border: none;
+  }
+  .main-carousel {
+    flex-direction: column;
+  }
+  .cell {
+    width: 100%;
   }
 }
