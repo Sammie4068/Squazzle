@@ -29,3 +29,10 @@ function removeActive(ele, activeEle) {
   ele.forEach(el => el.classList.remove("active"))
   activeEle.classList.add("active")
 }
+
+// var elem = document.querySelector(".main-carousel");
+// var flkty = new Flickity(elem, {
+//   // options
+//   cellAlign: "left",
+//   contain: true,
+// });
