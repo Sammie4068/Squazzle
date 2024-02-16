@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://unpkg.com/flickity@2/dist/flickity.min.css"
     /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -65,11 +66,11 @@
             <form>
               <span class="search_input">
                 <img src="./assets/images/search.png" alt="search icon" />
-                <input type="text" placeholder="Search by state or town" />
+                <input type="text" placeholder="Search by state or town"/>
               </span>
               <p class="middle_line"></p>
               <span class="search_calendar">
-                <input type="text" placeholder="Check in - Check-out" />
+                <input type="text" placeholder="Check in - Check-out" id="dateRange"/>
                 <img src="./assets/images/calendar.png" alt="calendar icon" />
               </span>
               <button type="submit" class="search_btn">Search</button>
@@ -348,6 +349,7 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script> -->
     <script src="./assets/js/index.js"></script>
   </body>

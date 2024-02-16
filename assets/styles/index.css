@@ -831,6 +831,9 @@ footer {
     padding: 5px 10px;
     width: 100%;
   }
+  .hero_search span input {
+    width: 100%;
+  }
 
   .filter_btn {
     padding: 13px;

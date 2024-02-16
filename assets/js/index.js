@@ -21,13 +21,13 @@ const propertiesDisplayLinks = document.querySelectorAll(
 );
 propertiesDisplayLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    removeActive(propertiesDisplayLinks, link)
+    removeActive(propertiesDisplayLinks, link);
   });
 });
 
 function removeActive(ele, activeEle) {
-  ele.forEach(el => el.classList.remove("active"))
-  activeEle.classList.add("active")
+  ele.forEach((el) => el.classList.remove("active"));
+  activeEle.classList.add("active");
 }
 
 // var elem = document.querySelector(".main-carousel");
@@ -36,3 +36,11 @@ function removeActive(ele, activeEle) {
 //   cellAlign: "left",
 //   contain: true,
 // });
+
+document.addEventListener("DOMContentLoaded", function () {
+  flatpickr("#dateRange", {
+    mode: "range",
+    dateFormat: "Y-m-d",
+    minDate: "today",
+  });
+});
