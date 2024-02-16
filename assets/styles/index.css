@@ -421,6 +421,11 @@ header nav ul li a:hover {
   color: #232323;
 }
 
+.trusted_wrapper .left span,
+.exploreBtn {
+  display: none;
+}
+
 .trusted_wrapper .left p {
   font-size: 18px;
   font-weight: 400;
@@ -645,6 +650,7 @@ header nav ul li a:hover {
 
 .questions_wrapper span i {
   font-weight: 900;
+  font-size: 25px;
 }
 
 /* Footer */
@@ -693,7 +699,7 @@ footer {
 
 .footer_top span input {
   width: 310px;
-  padding: 10px 16px 10px 16px;
+  padding: 10px 16px;
   border-radius: 8px;
   border: 1px solid #bcbcbc;
 }
@@ -955,5 +961,204 @@ footer {
   }
   .cell {
     width: 100%;
+  }
+  .cell img {
+    width: 340px;
+  }
+
+  .trusted_wrapper {
+    flex-direction: column;
+    margin: auto;
+    background: #d7d7d710;
+    padding: 50px 0px;
+  }
+
+  .trusted_wrapper .left {
+    width: 85%;
+    gap: 20px;
+  }
+
+  .trusted_wrapper .left h2 {
+    font-size: 32px;
+    color: #000000;
+  }
+  .trusted_wrapper .left span {
+    display: block;
+    font-size: 16px;
+    color: #575757;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .trusted_wrapper .left p {
+    display: none;
+  }
+  .trusted_wrapper .left button {
+    display: none;
+  }
+  .exploreBtn {
+    margin: auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px 16px 24px;
+    border-radius: 12px;
+    background: #016d71;
+    color: #cce6e7;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .trusted_wrapper .images {
+    flex-direction: column;
+  }
+  .trusted_wrapper .images img:nth-child(1) {
+    display: none;
+  }
+  .list_property {
+    margin: auto;
+  }
+  .list_property_wrapper {
+    flex-direction: column;
+    padding: 50px 15px;
+    width: 100%;
+  }
+  .list_property_wrapper img {
+    border-radius: 20px 20px 0 0px;
+  }
+  .list_property_wrapper .right {
+    padding: 20px 0px;
+    border-radius: 0 0px 20px 20px;
+  }
+
+  .list_property_wrapper .right span {
+    width: 80%;
+  }
+
+  .list_property_wrapper .right h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 42px;
+    color: #fff;
+  }
+  .list_property .right p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #fff;
+  }
+  .list_property .right button {
+    margin: auto;
+  }
+
+  .customers {
+    background: #fbfbfb;
+    padding: 50px 15px;
+    margin-bottom: 0px;
+  }
+
+  .customers_wrapper {
+    width: 100%;
+  }
+
+  .customers_heading h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 40px;
+    color: #000000;
+  }
+  .customers_heading p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #575757;
+    text-align: center;
+  }
+  .customers_cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .customers_cards .card {
+    width: 100%;
+    background: #ffffff;
+  }
+  .customers_cards .card .comment {
+    line-height: 25px;
+    color: #353535;
+  }
+  .questions {
+    border: none;
+    padding: 50px 15px;
+  }
+  .questions_wrapper {
+    margin: 0px;
+  }
+  .questions_heading h1 {
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+    color: #000000;
+  }
+  .questions_heading p {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #575757;
+  }
+
+  .questions_wrapper span {
+    border: none;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    box-shadow: 0px 2px 2px 0px #00000040;
+    border-radius: 20px;
+    padding: 20px 10px;
+    background: #fbfbfb;
+  }
+
+  .questions_wrapper span p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #232323;
+  }
+
+  footer {
+    padding: 40px 20px 32px 20px;
+    border-top: 1px solid #d7d7d7;
+    background: #d7d7d710;
+    gap: 8px;
+    margin: auto;
+  }
+  .footer_top {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer_top span:nth-child(4) {
+    order: -1;
+  }
+  .footer_top span button {
+    padding: 12px 24px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .footer_bottom {
+    flex-direction: column;
+    align-items: baseline;
+    margin: 30px 0px 20px 0px;
+    gap: 24px;
+  }
+  .footer_bottom .terms {
+    flex-direction: column;
+    gap: 24px;
+    color: #232323;
   }
 }
