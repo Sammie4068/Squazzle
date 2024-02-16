@@ -73,6 +73,7 @@ header nav ul li a:hover {
 
 .nav_toggle_btn {
   display: none;
+  background: transparent;
 }
 
 .line {
