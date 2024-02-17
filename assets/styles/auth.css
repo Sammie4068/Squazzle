@@ -46,20 +46,34 @@ section {
   background-repeat: no-repeat;
 }
 
-.image_section div {
+.signup_image_section {
+  width: 50%;
+  height: 100dvh;
+  background-image: url(../images/authero.png);
+  background: linear-gradient(180deg, #016d71 0%, rgba(217, 217, 217, 0) 100%),
+    url(../images/authero.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image_section div,
+.signup_image_section div {
   margin: 30px 50px;
   letter-spacing: 0em;
   text-align: left;
   color: #fff;
 }
 
-.image_section h1 {
+.image_section h1,
+.signup_image_section h1 {
   font-size: 36px;
   font-weight: 600;
   line-height: 45px;
 }
 
-.image_section p {
+.image_section p,
+.signup_image_section p {
   font-size: 24px;
   font-weight: 400;
   line-height: 30px;
@@ -103,7 +117,7 @@ section {
   color: #353535;
 }
 
-.form_wrapper form .mb-3 {
+.form_wrapper form .input {
   margin-bottom: 20px;
 }
 
@@ -116,6 +130,7 @@ section {
   letter-spacing: 0em;
   text-align: left;
   color: #353535;
+  margin-bottom: 10px;
 }
 
 .form_wrapper form .form-label i {
@@ -123,28 +138,65 @@ section {
   color: #91332d;
 }
 
-.form_wrapper form input {
+.form_wrapper form .form-control {
   padding: 10px 16px;
   border-radius: 8px;
   border: 1px solid #bcbcbc;
   background: #ffffff;
   height: auto;
+  width: 100%;
+  outline-color: #016d71;
+  font-size: 20px;
+}
+
+#eyeIcon,
+#confirmEyeIcon {
+  position: relative;
+  float: right;
+  left: -1rem;
+  top: -1.8rem;
+  color: #bcbcbc;
+  cursor: pointer;
 }
 
 .form_wrapper form .form_check {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-wrap: nowrap;
+  margin-bottom: 10px;
+}
+.form-check-input {
+  background-color: #016d71;
+  border-color: #016d71;
+}
+
+.terms-check {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.terms-check label {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #575757;
+}
+
+.terms-check label a {
+  color: #016d71;
+  margin: 0px 5px;
 }
 
 .form_wrapper form .form_check div {
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-.form-check-label {
-  margin: 4px 0 0;
 }
 
 .btn {
@@ -162,7 +214,8 @@ section {
   border: none;
 }
 
-.form_wrapper form button {
+.btn-primary {
+  border: 2px solid #016d71;
   background: #016d71;
   color: #cce6e7;
 }
@@ -174,13 +227,27 @@ section {
 }
 
 .btn-secondary {
-  background: #fff;
+  background: transparent;
   color: #016d71;
   border: 2px solid #016d71;
 }
 
+.password_form .btn {
+  margin: 20px 0px;
+}
+
 .to_signup {
   margin: auto;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.to_signin {
+  display: flex;
+  justify-content: center;
   font-size: 18px;
   font-weight: 600;
   line-height: 26px;
@@ -198,7 +265,8 @@ section {
     padding: 10px;
     box-shadow: 1px 2px 4px 0px #0000000f;
   }
-  .image_section {
+  .image_section,
+  .signup_image_section {
     display: none;
   }
   .form_section {
@@ -207,6 +275,10 @@ section {
   }
   .form_wrapper {
     width: 90%;
+    margin-top: 20px;
+  }
+  .form_wrapper span {
+    margin-bottom: 20px;
   }
   .form_wrapper span h1 {
     font-size: 16px;
@@ -216,8 +288,8 @@ section {
     font-size: 14px;
     line-height: 22px;
   }
-  .form_check {
-    margin-bottom: 20px;
+  .form_wrapper form .form_check {
+    margin-bottom: 35px;
   }
   .to_signup {
     font-size: 14px;
