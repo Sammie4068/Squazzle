@@ -182,6 +182,10 @@ section {
   padding: 0 20px;
 }
 
+.iti__search-input {
+  outline-color: #016d71;
+}
+
 .form-text {
   font-size: 12px;
   font-weight: 600;
@@ -197,15 +201,15 @@ section {
   line-height: 16px;
   letter-spacing: 0em;
   text-align: left;
+  color: #91332d;
 }
 
-
 .success {
-  color: #3D7D50;
+  color: #3d7d50 !important;
 }
 
 .error {
-  color: #A20111;
+  color: #a20111 !important;
 }
 
 #eyeIcon,

@@ -124,10 +124,12 @@
                 />
                 <span id="eyeIcon"><i class="fas fa-eye"></i></span>
                 <div class="password_msg hidden">
-                  <span>*Must include one uppercase and one lowercase</span>
-                  <span>*Password strength:weak</span>
-                  <span>*Contain least 8 characters</span>
-                  <span>*Contain a number or symbol</span>
+                  <span class="letter"
+                    >*Include an uppercase and a lowercase</span
+                  >
+                  <span class="number">*Contain a number</span>
+                  <span class="char">*Contain least 8 characters</span>
+                  <span class="symbol">*Contain a symbol</span>
                 </div>
               </div>
               <div class="mb-3 input">
@@ -141,6 +143,9 @@
                   placeholder="Confirm password"
                 />
                 <span id="confirmEyeIcon"><i class="fas fa-eye"></i></span>
+                <div id="confirmPassMsg" class="form-text hidden">
+                  Passwords do not match
+                </div>
               </div>
 
               <div class="mb-3 terms-check">

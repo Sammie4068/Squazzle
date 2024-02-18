@@ -129,3 +129,82 @@ eyeIcon.addEventListener("click", () => showpass(passwordInput, eyeIcon));
 confirmEyeIcon.addEventListener("click", () =>
   showpass(confirmPasswordInput, confirmEyeIcon)
 );
+
+const passwordMsg = document.querySelector(".password_msg");
+const letterMsg = document.querySelector(".password_msg .letter");
+const numberMsg = document.querySelector(".password_msg .number");
+const charMsg = document.querySelector(".password_msg .char");
+const symbolMsg = document.querySelector(".password_msg .symbol");
+
+function passwordValidation() {
+  passwordMsg.classList.remove("hidden");
+
+  let lowerCaseLetters = /[a-z]/g;
+  let upperCaseLetters = /[A-Z]/g;
+  if (
+    passwordInput.value.match(lowerCaseLetters) &&
+    passwordInput.value.match(upperCaseLetters)
+  ) {
+    letterMsg.classList.remove("error");
+    letterMsg.classList.add("success");
+  } else {
+    letterMsg.classList.remove("success");
+    letterMsg.classList.add("error");
+  }
+
+  let numbers = /[0-9]/g;
+  if (passwordInput.value.match(numbers)) {
+    numberMsg.classList.remove("error");
+    numberMsg.classList.add("success");
+  } else {
+    numberMsg.classList.remove("success");
+    numberMsg.classList.add("error");
+  }
+
+  if (passwordInput.value.length >= 8) {
+    charMsg.classList.remove("error");
+    charMsg.classList.add("success");
+  } else {
+    charMsg.classList.remove("success");
+    charMsg.classList.add("error");
+  }
+
+  let SpecialCharacters =
+    /[\!\@\#\$\%\^\&\*\)\(\+\=\.\<\>\{\}\[\]\:\;\'\"\|\~\`\_\-]/g;
+  if (passwordInput.value.match(SpecialCharacters)) {
+    symbolMsg.classList.remove("error");
+    symbolMsg.classList.add("success");
+  } else {
+    symbolMsg.classList.remove("success");
+    symbolMsg.classList.add("error");
+  }
+
+  let passRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+  if (passRegex.test(passwordInput.value)) {
+    passwordMsg.classList.add("hidden");
+    return true;
+  }
+}
+
+passwordInput.addEventListener("input", passwordValidation);
+
+const confirmPassInput = document.getElementById("confirmPasswordInput");
+const confirmPassMsg = document.getElementById("confirmPassMsg");
+
+function confirmPass() {
+  if (confirmPassInput.value != passwordInput.value) {
+    confirmPassMsg.classList.remove("hidden");
+  } else {
+    confirmPassMsg.classList.add("hidden");
+    return true;
+  }
+}
+
+// Form Submission
+signUpForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (passwordValidation() && confirmPass()) {
+    alert("Thank God");
+  }
+});
