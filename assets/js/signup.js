@@ -23,10 +23,8 @@ const phoneMsg = document.getElementById("phoneMsg");
 
 const continueBtn = document.getElementById("continue_btn");
 
-continueBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  window.location.hash = `#password`;
-});
+const emailPattern =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function updateDisplay() {
   const state = window.location.hash.slice(1);
@@ -50,3 +48,84 @@ function updateDisplay() {
 
 window.addEventListener("hashchange", updateDisplay);
 window.addEventListener("load", updateDisplay);
+
+// function checkIfEmpty() {
+//   allInputs.forEach((input) => {
+//     if (input.value === "") {
+//       errorMsg.forEach((msg) => msg.classList.remove("hidden"));
+//       input.classList.add("input_error");
+//     }
+//   });
+//   return true;
+// }
+
+function nameValidation(ele, eleMsg) {
+  if (ele.value === "") {
+    eleMsg.classList.remove("hidden");
+    ele.classList.add("input_error");
+  } else {
+    eleMsg.classList.add("hidden");
+    ele.classList.remove("input_error");
+    return true;
+  }
+}
+
+firstNameInput.addEventListener("input", () =>
+  nameValidation(firstNameInput, fnMsg)
+);
+lastNameInput.addEventListener("input", () =>
+  nameValidation(lastNameInput, lnMsg)
+);
+
+phoneInput.addEventListener("input", () => {
+  nameValidation(phoneInput, phoneMsg);
+});
+
+function emailValidation() {
+  if (emailInput.value === "") {
+    emailMsg.classList.remove("hidden");
+    emailInput.classList.add("input_error");
+  } else if (!emailInput.value.match(emailPattern)) {
+    emailMsg.classList.remove("hidden");
+    emailInput.classList.add("input_error");
+  } else {
+    emailMsg.classList.add("hidden");
+    emailInput.classList.remove("input_error");
+    return true;
+  }
+}
+emailInput.addEventListener("input", emailValidation);
+
+continueBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (
+    nameValidation(firstNameInput, fnMsg) &&
+    nameValidation(lastNameInput, lnMsg) &&
+    emailValidation() &&
+    nameValidation(phoneInput, phoneMsg)
+  )
+    window.location.hash = `#password`;
+});
+
+// Confirm Password
+const passwordInput = document.getElementById("passwordInput");
+const confirmPasswordInput = document.getElementById("confirmPasswordInput");
+
+const eyeIcon = document.getElementById("eyeIcon");
+const confirmEyeIcon = document.getElementById("confirmEyeIcon");
+
+function showpass(input, icon) {
+  if (input.value == "") return;
+  if (input.type == "password") {
+    input.type = "text";
+    icon.innerHTML = `<i class="fas fa-eye-slash"></i>`;
+  } else {
+    input.type = "password";
+    icon.innerHTML = `<i class="fas fa-eye"></i>`;
+  }
+}
+
+eyeIcon.addEventListener("click", () => showpass(passwordInput, eyeIcon));
+confirmEyeIcon.addEventListener("click", () =>
+  showpass(confirmPasswordInput, confirmEyeIcon)
+);

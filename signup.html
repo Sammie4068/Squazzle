@@ -93,15 +93,17 @@
                 <label for="phone" class="form-label"
                   >Phone Number<i class="fa-solid fa-asterisk"></i
                 ></label>
-                <input
-                  type="tel"
-                  class="form-control info_input"
-                  id="phone"
-                  aria-describedby="phoneMsg"
-                />
-                <div id="phoneMsg" class="form-text hidden">
-                  Please enter a phone number
-                </div>
+                <span class="phone-input">
+                  <input
+                    type="tel"
+                    class="info_input"
+                    id="phone"
+                    aria-describedby="phoneMsg"
+                  />
+                  <div id="phoneMsg" class="form-text hidden">
+                    Please enter a phone number
+                  </div>
+                </span>
               </div>
 
               <button class="btn btn-primary" id="continue_btn">
@@ -118,9 +120,15 @@
                   type="password"
                   class="form-control"
                   id="passwordInput"
-                  placeholder="********"
+                  placeholder="Password"
                 />
                 <span id="eyeIcon"><i class="fas fa-eye"></i></span>
+                <div class="password_msg hidden">
+                  <span>*Must include one uppercase and one lowercase</span>
+                  <span>*Password strength:weak</span>
+                  <span>*Contain least 8 characters</span>
+                  <span>*Contain a number or symbol</span>
+                </div>
               </div>
               <div class="mb-3 input">
                 <label for="confirmPasswordInput" class="form-label"
@@ -130,7 +138,7 @@
                   type="password"
                   class="form-control"
                   id="confirmPasswordInput"
-                  placeholder="********"
+                  placeholder="Confirm password"
                 />
                 <span id="confirmEyeIcon"><i class="fas fa-eye"></i></span>
               </div>

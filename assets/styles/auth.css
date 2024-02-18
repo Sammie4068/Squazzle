@@ -22,6 +22,11 @@ button {
   display: none !important;
 }
 
+.input_error {
+  outline-color: #91332d !important;
+  border-color: #91332d !important;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -143,11 +148,38 @@ section {
   border-radius: 8px;
   border: 1px solid #bcbcbc;
   background: #ffffff;
-  height: auto;
   width: 100%;
   outline-color: #016d71;
   font-size: 20px;
   margin-bottom: 7px;
+}
+
+.phone-input {
+  background: transparent;
+}
+
+.iti--allow-dropdown input.iti__tel-input,
+.iti--allow-dropdown input.iti__tel-input[type="text"],
+.iti--allow-dropdown input.iti__tel-input[type="tel"],
+.iti--show-selected-dial-code input.iti__tel-input,
+.iti--show-selected-dial-code input.iti__tel-input[type="text"],
+.iti--show-selected-dial-code input.iti__tel-input[type="tel"] {
+  padding-left: 80px;
+  margin-left: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #bcbcbc;
+  background: #ffffff;
+  outline-color: #016d71;
+  border-radius: 8px;
+  font-size: 20px;
+  margin-bottom: 7px !important;
+}
+
+.iti__selected-flag {
+  height: 90%;
+  padding: 0 20px;
 }
 
 .form-text {
@@ -157,6 +189,23 @@ section {
   letter-spacing: 0em;
   text-align: left;
   color: #91332d;
+}
+
+.password_msg {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+
+.success {
+  color: #3D7D50;
+}
+
+.error {
+  color: #A20111;
 }
 
 #eyeIcon,
@@ -179,6 +228,7 @@ section {
 .form-check-input {
   background-color: #016d71;
   border-color: #016d71;
+  cursor: pointer;
 }
 
 .terms-check {
