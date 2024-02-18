@@ -37,7 +37,7 @@ section {
 
 .image_section {
   width: 50%;
-  height: 100dvh;
+  height: 100vh;
   background-image: url(../images/loginhero.png);
   background: linear-gradient(180deg, #016d71 0%, rgba(217, 217, 217, 0) 100%),
     url(../images/loginhero.png);
@@ -48,7 +48,7 @@ section {
 
 .signup_image_section {
   width: 50%;
-  height: 100dvh;
+  height: 100vh;
   background-image: url(../images/authero.png);
   background: linear-gradient(180deg, #016d71 0%, rgba(217, 217, 217, 0) 100%),
     url(../images/authero.png);
@@ -147,6 +147,16 @@ section {
   width: 100%;
   outline-color: #016d71;
   font-size: 20px;
+  margin-bottom: 7px;
+}
+
+.form-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #91332d;
 }
 
 #eyeIcon,
@@ -154,7 +164,7 @@ section {
   position: relative;
   float: right;
   left: -1rem;
-  top: -1.8rem;
+  top: -2.3rem;
   color: #bcbcbc;
   cursor: pointer;
 }
