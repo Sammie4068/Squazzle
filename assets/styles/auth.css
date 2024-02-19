@@ -57,24 +57,44 @@ main {
   margin-top: 0px;
 }
 
-.fp_heading {
+.forgot_password_card, .password_reset {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fp_heading,
+.pr_heading {
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 10px;
   margin-bottom: 20px;
+  gap: 24px;
 }
 
-.fp_heading h1 {
+.pr_heading {
+  gap: 0px;
+}
+
+.fp_heading h1,
+.pr_heading h1 {
   font-size: 36px;
   font-weight: 400;
   line-height: 45px;
   letter-spacing: 0em;
   text-align: center;
   color: #232323;
+  margin-bottom: 24px;
 }
 
-.fp_heading p {
+.pr_heading h1 {
+  font-weight: 600;
+}
+
+.fp_heading p,
+.pr_heading p {
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
@@ -83,11 +103,15 @@ main {
   color: #353535;
 }
 
-.forgot_password_card {
+.pr_heading p {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  flex-direction: column;
-  gap: 10px;
+  font-weight: 400;
+}
+
+.pr_heading span {
+  color: #016d71;
 }
 
 .cancel_btn {
@@ -388,6 +412,46 @@ section {
   text-align: left;
 }
 
+.verify_code_form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.verify_code_form .input_box_field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+}
+
+.verify_code_form .input_box_field input {
+  padding: 16px;
+  border: 1px solid #bcbcbc;
+  background: transparent;
+  height: 60px;
+  width: 60px;
+  border-radius: 6px;
+  outline: none;
+  font-size: 1.125rem;
+  text-align: center;
+  font-size: 18px;
+  color: #353535;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.verify_code_form .input_box_field input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.verify_code_form .input_box_field input::-webkit-inner-spin-button,
+.verify_code_form .input_box_field input::-webkit-outer-spin-button {
+  display: none;
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
   section {
@@ -447,6 +511,7 @@ section {
   }
   .fp_heading {
     margin-bottom: 10px;
+    gap: 16px;
   }
   .fp_heading h1 {
     font-size: 24px;

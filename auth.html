@@ -26,7 +26,8 @@
     </header>
     <main>
       <div class="card">
-        <div class="forgot_password_card">
+        <!-- Forgot Password -->
+        <div class="content forgot_password_card hidden">
           <img src="./assets/images/envelope.png" alt="envelope" />
           <div id="input_email_section">
             <span class="fp_heading">
@@ -66,11 +67,41 @@
                 password
               </p>
             </span>
-            <button class="btn btn-primary" id="continue_btn">Continue</button>
+            <a href="#password-reset">
+              <button class="btn btn-primary" id="continue_btn">
+                Continue
+              </button></a
+            >
             <button class="btn btn-secondary cancel_btn" id="fp_resendBtn">
               Reset code
             </button>
           </div>
+        </div>
+        <!-- Password Reset -->
+        <div class="content password_reset">
+          <span class="pr_heading">
+            <h1>Password reset</h1>
+            <p>Please enter the 6-digit code sent to</p>
+            <span>zhara@gmail.com</span>
+          </span>
+
+          <form class="verify_code_form">
+            <div class="input_box_field">
+              <input class="input_box" type="number" />
+              <input class="input_box" type="number" disabled />
+              <input class="input_box" type="number" disabled />
+              <input class="input_box" type="number" disabled />
+              <input class="input_box" type="number" disabled />
+              <input class="input_box" type="number" disabled />
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="pr_cont_btn">
+              Continue
+            </button>
+          </form>
+          <button class="btn btn-secondary cancel_btn" id="pr_resendBtn">
+            Resend code
+          </button>
         </div>
       </div>
     </main>
