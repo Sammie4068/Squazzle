@@ -1,3 +1,5 @@
+"use strict";
+
 const phoneInput = document.getElementById("phone");
 window.intlTelInput(phoneInput, {
   initialCountry: "auto",
@@ -5,7 +7,7 @@ window.intlTelInput(phoneInput, {
     fetch("https://ipapi.co/json")
       .then((res) => res.json())
       .then((data) => callback(data.country_code))
-      .catch(() => callback("us"));
+      .catch(() => callback("ng"));
   },
   utilsScript:
     "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.19/build/js/utils.js",
@@ -55,16 +57,6 @@ function updateDisplay() {
 
 window.addEventListener("hashchange", updateDisplay);
 window.addEventListener("load", updateDisplay);
-
-// function checkIfEmpty() {
-//   allInputs.forEach((input) => {
-//     if (input.value === "") {
-//       errorMsg.forEach((msg) => msg.classList.remove("hidden"));
-//       input.classList.add("input_error");
-//     }
-//   });
-//   return true;
-// }
 
 function nameValidation(ele, eleMsg) {
   if (ele.value === "") {
@@ -214,4 +206,12 @@ signUpForm.addEventListener("submit", (e) => {
   if (passwordValidation() && confirmPass()) {
     alert("Thank God");
   }
+});
+
+// Cancel Button
+const cancelBtn = document.getElementById("cancelBtn");
+cancelBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.hash = `#`;
+  location.reload();
 });

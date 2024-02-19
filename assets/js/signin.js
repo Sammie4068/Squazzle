@@ -1,3 +1,5 @@
+"use strict";
+
 // Password show and hide
 const eyeIcon = document.getElementById("eyeIcon");
 const passwordInput = document.getElementById("passwordInput");
