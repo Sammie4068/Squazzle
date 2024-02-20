@@ -58,13 +58,9 @@ main {
 }
 
 .forgot_password_card,
-.password_reset {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-}
-
+.password_reset,
+.prr_wrapper,
+.forgot_password_success,
 .pass_reset_success {
   display: flex;
   align-items: center;

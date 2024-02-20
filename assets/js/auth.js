@@ -2,7 +2,11 @@
 
 const contentDisplay = document.querySelectorAll(".content");
 const forgotPassSection = document.querySelector(".forgot_password_card");
+const forgotPassSent = document.querySelector(".forgot_password_success");
 const passwordReset = document.querySelector(".password_reset");
+const passwordResetReq = document.querySelector(".prr_wrapper");
+const passwordResetSuccess = document.querySelector(".pass_reset_success");
+
 const emailSection = document.getElementById("input_email_section");
 const emailConfirm = document.getElementById("email_confirm_section");
 
@@ -19,8 +23,17 @@ function updateDisplay() {
     case "verify-email":
       displayContent(forgotPassSection);
       break;
+    case "verify-email-sent":
+      displayContent(forgotPassSent);
+      break;
     case "password-reset":
       displayContent(passwordReset);
+      break;
+    case "password-reset-request":
+      displayContent(passwordResetReq);
+      break;
+    case "password-reset-success":
+      displayContent(passwordResetSuccess);
       break;
 
     default:
@@ -56,8 +69,7 @@ inputEmail.addEventListener("input", emailValidation);
 inputEmailForm.addEventListener("submit", (e) => {
   e.preventDefault();
   if (emailValidation()) {
-    emailSection.classList.add("hidden");
-    emailConfirm.classList.remove("hidden");
+    window.location.hash = "#verify-email-sent";
   }
 });
 
@@ -99,13 +111,11 @@ inputBoxes.forEach((input, index1) => {
 window.addEventListener("load", () => inputBoxes[0].focus());
 
 const verifyPassForm = document.querySelector(".verify_code_form");
-const verifyFormWrapper = document.querySelector(".pr_wrapper");
 const passResetReq = document.querySelector(".pass_reset_req");
 
 verifyPassForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  verifyFormWrapper.classList.add("hidden");
-  passResetReq.classList.remove("hidden");
+  window.location.hash = "#password-reset-request";
 });
 
 // New password
@@ -201,3 +211,12 @@ function confirmPass() {
     return true;
   }
 }
+
+const prrForm = document.querySelector(".prr_form");
+
+prrForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (passwordValidation() && confirmPass()) {
+    window.location.hash = "#password-reset-success";
+  }
+});

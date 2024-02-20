@@ -27,9 +27,8 @@
     <main>
       <div class="card">
         <!-- Forgot Password -->
-        <div class="content forgot_password_card">
+        <div class="content forgot_password_card hidden">
           <img src="./assets/images/envelope.png" alt="envelope" />
-          <!-- Input Email Address -->
           <div id="input_email_section">
             <span class="fp_heading">
               <h1>Forgot password?</h1>
@@ -60,8 +59,11 @@
               Cancel
             </button>
           </div>
-          <!-- Email Verification Sent -->
-          <div class="hidden" id="email_confirm_section">
+        </div>
+        <!-- Email Verification Sent -->
+        <div class="content forgot_password_success hidden">
+          <img src="./assets/images/envelope.png" alt="envelope" />
+          <div id="email_confirm_section">
             <span class="fp_heading">
               <h1>Email has been sent!</h1>
               <p>
@@ -79,6 +81,7 @@
             </button>
           </div>
         </div>
+
         <!-- Password Reset -->
         <div class="content password_reset hidden">
           <!-- Enter Code -->
@@ -92,11 +95,11 @@
             <form class="verify_code_form">
               <div class="input_box_field">
                 <input class="input_box" type="number" required />
-                <input class="input_box" type="number" disabled required/>
-                <input class="input_box" type="number" disabled required/>
-                <input class="input_box" type="number" disabled required/>
-                <input class="input_box" type="number" disabled required/>
-                <input class="input_box" type="number" disabled required/>
+                <input class="input_box" type="number" disabled required />
+                <input class="input_box" type="number" disabled required />
+                <input class="input_box" type="number" disabled required />
+                <input class="input_box" type="number" disabled required />
+                <input class="input_box" type="number" disabled required />
               </div>
 
               <button type="submit" class="btn btn-primary" id="pr_cont_btn">
@@ -107,9 +110,11 @@
               Resend code
             </button>
           </div>
+        </div>
 
-          <!-- Password Reset Request -->
-          <div class="pass_reset_req hidden">
+        <!-- Password Reset Request -->
+        <div class="content prr_wrapper hidden">
+          <div class="pass_reset_req">
             <span class="prr_heading">
               <h1>Password reset request</h1>
               <p>
@@ -163,21 +168,23 @@
               Cancel
             </button>
           </div>
+        </div>
 
-          <!-- Successful -->
-          <div class="pass_reset_success hidden">
-            <img src="./assets/images/successful.png" alt="successful" />
-            <span class="prs_heading">
-              <h1>Password reset successful!</h1>
-              <p>
-                Your password has been changed. You can now sign in using your
-                new password.
-              </p>
-            </span>
-            <button type="submit" class="btn btn-primary" id="prs_btn">
+        <!-- Successful -->
+        <div class="content pass_reset_success hidden">
+          <img src="./assets/images/successful.png" alt="successful" />
+          <span class="prs_heading">
+            <h1>Password reset successful!</h1>
+            <p>
+              Your password has been changed. You can now sign in using your new
+              password.
+            </p>
+          </span>
+          <a href="signin.html" id="prs_btn">
+            <button type="submit" class="btn btn-primary">
               Proceed to sign in
-            </button>
-          </div>
+            </button></a
+          >
         </div>
       </div>
     </main>
