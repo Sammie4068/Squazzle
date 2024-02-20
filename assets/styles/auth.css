@@ -42,10 +42,10 @@ header {
 
 main {
   background: #f5f5f5;
-  height: 89vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 89vh;
 }
 
 .card {
@@ -57,7 +57,15 @@ main {
   margin-top: 0px;
 }
 
-.forgot_password_card, .password_reset {
+.forgot_password_card,
+.password_reset {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pass_reset_success {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -65,7 +73,9 @@ main {
 }
 
 .fp_heading,
-.pr_heading {
+.pr_heading,
+.prr_heading,
+.prs_heading {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -79,22 +89,32 @@ main {
 }
 
 .fp_heading h1,
-.pr_heading h1 {
+.pr_heading h1,
+.prr_heading h1,
+.prs_heading h1 {
   font-size: 36px;
   font-weight: 400;
   line-height: 45px;
   letter-spacing: 0em;
   text-align: center;
   color: #232323;
-  margin-bottom: 24px;
 }
 
 .pr_heading h1 {
+  margin-bottom: 24px;
   font-weight: 600;
 }
 
+.prs_heading h1 {
+  font-weight: 600;
+  text-align: left;
+  text-wrap: nowrap;
+}
+
 .fp_heading p,
-.pr_heading p {
+.pr_heading p,
+.prr_heading p,
+.prs_heading p {
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
@@ -116,6 +136,10 @@ main {
 
 .cancel_btn {
   margin-top: 15px;
+}
+
+#prs_btn {
+  width: 80%;
 }
 
 section {
@@ -213,12 +237,14 @@ section {
 }
 
 .form_wrapper form .input,
-.fp_form .input {
+.fp_form .input,
+.prr_form .input {
   margin-bottom: 20px;
 }
 
 .form_wrapper form .form-label,
-.fp_form .form-label {
+.fp_form .form-label,
+.prr_form .form-label {
   display: flex;
   gap: 5px;
   font-size: 14px;
@@ -230,13 +256,15 @@ section {
   margin-bottom: 10px;
 }
 
-.form_wrapper form .form-label i {
+.form_wrapper form .form-label i,
+.prr_form .form-label i {
   font-size: 9px;
   color: #91332d;
 }
 
 .form_wrapper form .form-control,
-.fp_form .form-control {
+.fp_form .form-control,
+.prr_form .form-control {
   padding: 10px 16px;
   border-radius: 8px;
   border: 1px solid #bcbcbc;
@@ -295,6 +323,11 @@ section {
   letter-spacing: 0em;
   text-align: left;
   color: #91332d;
+}
+
+.prr_form .password_msg {
+  display: flex;
+  flex-direction: column;
 }
 
 .success {
@@ -434,7 +467,6 @@ section {
   width: 60px;
   border-radius: 6px;
   outline: none;
-  font-size: 1.125rem;
   text-align: center;
   font-size: 18px;
   color: #353535;
@@ -508,18 +540,83 @@ section {
   }
   .card {
     padding: 20px;
+    border-radius: 0px;
   }
   .fp_heading {
     margin-bottom: 10px;
     gap: 16px;
   }
-  .fp_heading h1 {
+
+  .pr_heading {
+    margin-bottom: 25px;
+  }
+  .prr_heading {
+    margin-bottom: 30px;
+    padding: 0px;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .fp_heading h1,
+  .pr_heading h1 {
     font-size: 24px;
     line-height: 30px;
   }
 
-  .fp_heading p {
+  .prr_heading h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: left;
+  }
+
+  .fp_heading p,
+  .pr_heading p {
     font-size: 14px;
     line-height: 22px;
+  }
+
+  .prr_heading p {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .verify_code_form .input_box_field input {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 0px;
+  }
+
+  #pr_cont_btn {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  #pr_resendBtn {
+    font-size: 14px;
+    line-height: 18px;
+    border: none;
+  }
+
+  .pass_reset_success {
+    padding-top: 30px;
+  }
+  .prs_heading h1 {
+    text-wrap: balance;
+    font-size: 24px;
+  }
+  .prs_heading p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  #prs_btn {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
   }
 }

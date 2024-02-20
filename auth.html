@@ -27,8 +27,9 @@
     <main>
       <div class="card">
         <!-- Forgot Password -->
-        <div class="content forgot_password_card hidden">
+        <div class="content forgot_password_card">
           <img src="./assets/images/envelope.png" alt="envelope" />
+          <!-- Input Email Address -->
           <div id="input_email_section">
             <span class="fp_heading">
               <h1>Forgot password?</h1>
@@ -59,6 +60,7 @@
               Cancel
             </button>
           </div>
+          <!-- Email Verification Sent -->
           <div class="hidden" id="email_confirm_section">
             <span class="fp_heading">
               <h1>Email has been sent!</h1>
@@ -78,30 +80,104 @@
           </div>
         </div>
         <!-- Password Reset -->
-        <div class="content password_reset">
-          <span class="pr_heading">
-            <h1>Password reset</h1>
-            <p>Please enter the 6-digit code sent to</p>
-            <span>zhara@gmail.com</span>
-          </span>
+        <div class="content password_reset hidden">
+          <!-- Enter Code -->
+          <div class="pr_wrapper">
+            <span class="pr_heading">
+              <h1>Password reset</h1>
+              <p>Please enter the 6-digit code sent to</p>
+              <span>zhara@gmail.com</span>
+            </span>
 
-          <form class="verify_code_form">
-            <div class="input_box_field">
-              <input class="input_box" type="number" />
-              <input class="input_box" type="number" disabled />
-              <input class="input_box" type="number" disabled />
-              <input class="input_box" type="number" disabled />
-              <input class="input_box" type="number" disabled />
-              <input class="input_box" type="number" disabled />
-            </div>
+            <form class="verify_code_form">
+              <div class="input_box_field">
+                <input class="input_box" type="number" required />
+                <input class="input_box" type="number" disabled required/>
+                <input class="input_box" type="number" disabled required/>
+                <input class="input_box" type="number" disabled required/>
+                <input class="input_box" type="number" disabled required/>
+                <input class="input_box" type="number" disabled required/>
+              </div>
 
-            <button type="submit" class="btn btn-primary" id="pr_cont_btn">
-              Continue
+              <button type="submit" class="btn btn-primary" id="pr_cont_btn">
+                Continue
+              </button>
+            </form>
+            <button class="btn btn-secondary cancel_btn" id="pr_resendBtn">
+              Resend code
             </button>
-          </form>
-          <button class="btn btn-secondary cancel_btn" id="pr_resendBtn">
-            Resend code
-          </button>
+          </div>
+
+          <!-- Password Reset Request -->
+          <div class="pass_reset_req hidden">
+            <span class="prr_heading">
+              <h1>Password reset request</h1>
+              <p>
+                Please use a minimum of 8 characters, including uppercase
+                letters, lowercase letters and a number
+              </p>
+            </span>
+
+            <form class="prr_form">
+              <div class="mb-3 input">
+                <label for="passwordInput" class="form-label"
+                  >Password <i class="fa-solid fa-asterisk"></i
+                ></label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="passwordInput"
+                  placeholder="Password"
+                />
+                <span id="eyeIcon"><i class="fas fa-eye"></i></span>
+                <div class="password_msg hidden">
+                  <span class="letter"
+                    >*Include an uppercase and a lowercase</span
+                  >
+                  <span class="number">*Contain a number</span>
+                  <span class="char">*Contain least 8 characters</span>
+                  <span class="symbol">*Contain a symbol</span>
+                </div>
+              </div>
+              <div class="mb-3 input">
+                <label for="confirmPasswordInput" class="form-label"
+                  >Confirm Password <i class="fa-solid fa-asterisk"></i
+                ></label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPasswordInput"
+                  placeholder="Confirm password"
+                />
+                <span id="confirmEyeIcon"><i class="fas fa-eye"></i></span>
+                <div id="confirmPassMsg" class="form-text hidden">
+                  Passwords do not match
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="prr_reset_btn">
+                Reset password
+              </button>
+            </form>
+            <button class="btn btn-secondary cancel_btn" id="prr_cancelBtn">
+              Cancel
+            </button>
+          </div>
+
+          <!-- Successful -->
+          <div class="pass_reset_success hidden">
+            <img src="./assets/images/successful.png" alt="successful" />
+            <span class="prs_heading">
+              <h1>Password reset successful!</h1>
+              <p>
+                Your password has been changed. You can now sign in using your
+                new password.
+              </p>
+            </span>
+            <button type="submit" class="btn btn-primary" id="prs_btn">
+              Proceed to sign in
+            </button>
+          </div>
         </div>
       </div>
     </main>
