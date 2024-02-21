@@ -60,7 +60,7 @@
             </button>
           </div>
         </div>
-        <!-- Email Verification Sent -->
+        <!-- Forgot Password Email Verification Sent -->
         <div class="content forgot_password_success hidden">
           <img src="./assets/images/envelope.png" alt="envelope" />
           <div id="email_confirm_section">
@@ -84,7 +84,6 @@
 
         <!-- Password Reset -->
         <div class="content password_reset hidden">
-          <!-- Enter Code -->
           <div class="pr_wrapper">
             <span class="pr_heading">
               <h1>Password reset</h1>
@@ -170,7 +169,7 @@
           </div>
         </div>
 
-        <!-- Successful -->
+        <!--Password Reset Successful -->
         <div class="content pass_reset_success hidden">
           <img src="./assets/images/successful.png" alt="successful" />
           <span class="prs_heading">
@@ -183,6 +182,90 @@
           <a href="signin.html" id="prs_btn">
             <button type="submit" class="btn btn-primary">
               Proceed to sign in
+            </button></a
+          >
+        </div>
+
+        <!-- Email Verification Sent -->
+        <div class="content email_sent hidden">
+          <img src="./assets/images/emailEnvelope.png" alt="envelope" />
+          <div id="email_verify_section">
+            <span class="es_heading">
+              <h1>Email has been sent!</h1>
+              <p class="first_p">
+                We have sent a 6 digit PIN to <span>zhara@gmail.com.</span>Click
+                on the button to confirm the validity of your email address.
+              </p>
+              <p class="second_p">
+                We have sent a 6 digit PIN to <span>zhara@gmail.com.</span> <p class="pp">Check
+                your email to get code.</p>
+              </p>
+            </span>
+            <a href="#email-code">
+              <button class="btn btn-primary" id="email_cont_btn">
+                Continue
+              </button></a
+            >
+          </div>
+        </div>
+
+        <!-- Email Verification Code -->
+        <div class="content email-code hidden">
+          <div class="pr_wrapper">
+            <span class="pr_heading">
+              <h1>Email Verification</h1>
+              <p>Please enter the 6-digit code sent to</p>
+              <span>zhara@gmail.com</span>
+            </span>
+
+            <form class="verify_code_form">
+              <div class="input_box_field">
+                <input class="input_box" type="number" required />
+                <input class="input_box" type="number" disabled required />
+                <input class="input_box" type="number" disabled required />
+                <input class="input_box" type="number" disabled required />
+                <input class="input_box" type="number" disabled required />
+                <input class="input_box" type="number" disabled required />
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="ev_confirm_btn">
+                Confirm
+              </button>
+            </form>
+            <button class="btn btn-secondary cancel_btn" id="ev_resendBtn">
+              Resend code
+            </button>
+          </div>
+        </div>
+
+         <!--Verification Successful -->
+        <div class="content verify_success hidden">
+          <img src="./assets/images/successful.png" alt="successful" />
+          <span class="prs_heading">
+            <h1>Verification Success!</h1>
+            <p>
+              Your email address has been verified. You can start enjoying all the amazing features of Squazzle.
+            </p>
+          </span>
+          <a href="signin.html" id="vs_btn">
+            <button class="btn btn-primary">
+              Proceed to sign in
+            </button></a
+          >
+        </div>
+
+        <!-- Verification fail -->
+       <div class="content verify_failure hidden">
+          <img src="./assets/images/cancel.png" alt="successful" />
+          <span class="prs_heading">
+            <h1>Let's try that again!</h1>
+            <p style="color: #91332D;">
+              Your email address cannot be verified. It seems you entered the wrong PIN.
+            </p>
+          </span>
+          <a href="#" id="vf_btn">
+            <button class="btn btn-primary">
+              Resend Code
             </button></a
           >
         </div>

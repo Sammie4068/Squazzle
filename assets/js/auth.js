@@ -6,9 +6,10 @@ const forgotPassSent = document.querySelector(".forgot_password_success");
 const passwordReset = document.querySelector(".password_reset");
 const passwordResetReq = document.querySelector(".prr_wrapper");
 const passwordResetSuccess = document.querySelector(".pass_reset_success");
-
-const emailSection = document.getElementById("input_email_section");
-const emailConfirm = document.getElementById("email_confirm_section");
+const emailSent = document.querySelector(".email_sent")
+const emailCode = document.querySelector(".email-code");
+const emailVerifySuccess = document.querySelector(".verify_success");
+const emailVerifyFailure = document.querySelector(".verify_failure");
 
 function displayContent(ele) {
   contentDisplay.forEach((content) => {
@@ -34,6 +35,18 @@ function updateDisplay() {
       break;
     case "password-reset-success":
       displayContent(passwordResetSuccess);
+      break;
+    case "email-sent":
+      displayContent(emailSent);
+      break;
+    case "email-code":
+      displayContent(emailCode);
+      break;
+    case "verify-success":
+      displayContent(emailVerifySuccess);
+      break;
+    case "verify-failure":
+      displayContent(emailVerifyFailure);
       break;
 
     default:

@@ -61,7 +61,8 @@ main {
 .password_reset,
 .prr_wrapper,
 .forgot_password_success,
-.pass_reset_success {
+.pass_reset_success,
+.email_sent, .verify_success, .verify_failure {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -71,7 +72,8 @@ main {
 .fp_heading,
 .pr_heading,
 .prr_heading,
-.prs_heading {
+.prs_heading,
+.es_heading {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -87,7 +89,8 @@ main {
 .fp_heading h1,
 .pr_heading h1,
 .prr_heading h1,
-.prs_heading h1 {
+.prs_heading h1,
+.es_heading h1 {
   font-size: 36px;
   font-weight: 400;
   line-height: 45px;
@@ -110,13 +113,20 @@ main {
 .fp_heading p,
 .pr_heading p,
 .prr_heading p,
-.prs_heading p {
+.prs_heading p,
+.es_heading p {
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
   letter-spacing: 0em;
   text-align: center;
   color: #353535;
+}
+
+.es_heading p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .pr_heading p {
@@ -126,15 +136,23 @@ main {
   font-weight: 400;
 }
 
-.pr_heading span {
+.pr_heading span,
+.es_heading p span {
   color: #016d71;
+}
+
+.es_heading .second_p {
+  display: none;
+}
+.pp {
+  display: none !important;
 }
 
 .cancel_btn {
   margin-top: 15px;
 }
 
-#prs_btn {
+#prs_btn, #vs_btn, #vf_btn {
   width: 80%;
 }
 
@@ -553,7 +571,8 @@ section {
     gap: 16px;
   }
   .fp_heading h1,
-  .pr_heading h1 {
+  .pr_heading h1,
+  .es_heading h1 {
     font-size: 24px;
     line-height: 30px;
   }
@@ -566,9 +585,23 @@ section {
   }
 
   .fp_heading p,
-  .pr_heading p {
+  .pr_heading p,
+  .es_heading p {
     font-size: 14px;
     line-height: 22px;
+  }
+
+  .es_heading .first_p {
+    display: none;
+  }
+
+  .es_heading .second_p {
+    display: flex;
+  }
+
+  .pp {
+    display: flex !important;
+    margin-top: -20px;
   }
 
   .prr_heading p {
@@ -589,7 +622,7 @@ section {
     line-height: 18px;
   }
 
-  #pr_resendBtn {
+  #pr_resendBtn, #ev_resendBtn {
     font-size: 14px;
     line-height: 18px;
     border: none;
@@ -607,7 +640,7 @@ section {
     line-height: 18px;
   }
 
-  #prs_btn {
+  #prs_btn, #vs_btn, #vf_btn {
     width: 100%;
     font-size: 14px;
     font-weight: 700;
