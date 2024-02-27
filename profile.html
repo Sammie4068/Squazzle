@@ -27,28 +27,38 @@
       <div class="logo">
         <img src="./assets/images/logo.png" alt="logo" />
       </div>
-      <nav id="navbar">
+      <nav id="navbar" class="profile_nav">
         <ul>
+          <li>
+            <a href="#" id="nav_link" class="active">Manage Account</a>
+          </li>
           <li>
             <a href="#" id="nav_link">Accomodations</a>
           </li>
-
           <li>
             <a href="#" id="nav_link">List your property</a>
           </li>
-
           <li>
-            <a href="#" id="nav_link">About</a>
+            <a href="#" id="nav_link">About us</a>
           </li>
-
           <li>
             <a href="#" id="nav_link">FAQ</a>
+          </li>
+          <li>
+            <a href="#" id="nav_link">Settings</a>
+          </li>
+          <li>
+            <a href="#" id="nav_link">Wishlist</a>
+          </li>
+          <hr />
+          <li>
+            <a href="#" id="nav_link" style="color: #8d173a">Logout</a>
           </li>
         </ul>
       </nav>
       <span class="nav_right">
         <img src="./assets/images/Frame 34979.png" alt="notification" />
-        <spa class="profile_img">
+        <span class="profile_img">
           <img src="./assets/images/toProfileIcon.png" alt="icon" />
           <div class="dropdown__wrapper hidden">
             <div class="dropdown">
@@ -65,7 +75,7 @@
                 <li>
                   <a href="#">Help</a>
                 </li>
-                <hr>
+                <hr />
                 <li class="logout_link">
                   <a href="#">Logout</a>
                 </li>
@@ -80,7 +90,7 @@
         <span class="line bottom"></span>
       </button>
     </header>
-    <div class="user_profile_container">
+    <div class="user_profile_container hidden">
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
@@ -123,6 +133,47 @@
             </span>
           </div>
         </div>
+
+        <div class="sub_right">
+          <h1>Manage Account</h1>
+
+          <div class="links">
+            <span>
+              <img src="./assets/images/greenUser.png" alt="icon" />
+              <p>Personal Information</p>
+            </span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="links">
+            <span>
+              <img src="./assets/images/greeList.png" alt="icon" />
+              <p>My Listing</p>
+            </span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="links">
+            <span>
+              <img src="./assets/images/greenShield.png" alt="icon" />
+              <p>Privacy settings</p>
+            </span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="links">
+            <span>
+              <img src="./assets/images/greenNotice.png" alt="icon" />
+              <p>Notifications</p>
+            </span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="links">
+            <span>
+              <img src="./assets/images/greenPayment.png" alt="icon" />
+              <p>Payments and payouts</p>
+            </span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
         <div class="right">
           <div class="cards top_cards">
             <span>
@@ -155,7 +206,7 @@
         </div>
       </div>
     </div>
-    <div class="user_profile_container hidden">
+    <div class="user_profile_container">
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
@@ -173,15 +224,20 @@
       <div class="main_content">
         <div class="left">
           <div class="welcome">
+            <div class="edit_profile toHide">
+              <p>Edit profile</p>
+              <i class="fa-solid fa-pen"></i>
+            </div>
             <span>
               <h1>Welcome back Zhara Doe</h1>
+              <h2>Zhara Doe</h2>
               <p>zhara@gmail.com</p>
             </span>
 
             <div class="img_wrap">
               <img src="./assets/images/account_circle.png" alt="user image" />
 
-              <div class="edit_profile">
+              <div class="edit_profile toShow">
                 <p>Edit profile</p>
                 <i class="fa-solid fa-pen"></i>
               </div>
@@ -256,7 +312,7 @@
               </p>
             </span>
           </div>
-          <div class="delete_account">
+          <div class="delete_account" style="cursor: pointer;">
             <h2>Delete Account</h2>
             <p>Permanently delete your account and all your content</p>
           </div>
@@ -292,15 +348,20 @@
       <div class="main_content">
         <div class="left">
           <div class="welcome">
+            <div class="edit_profile toHide">
+              <p>Edit profile</p>
+              <i class="fa-solid fa-pen"></i>
+            </div>
             <span>
               <h1>Welcome back Zhara Doe</h1>
+              <h2>Zhara Doe</h2>
               <p>zhara@gmail.com</p>
             </span>
 
             <div class="img_wrap">
               <img src="./assets/images/account_circle.png" alt="user image" />
 
-              <div class="edit_profile">
+              <div class="edit_profile toShow">
                 <p>Edit profile</p>
                 <i class="fa-solid fa-pen"></i>
               </div>
@@ -416,6 +477,39 @@
         </div>
       </div>
     </footer>
+
+    <div class="overlay hidden" onclick="closeModal()"></div>
+    <div class="delete_modal hidden" id="modal">
+      <div class="delete_wrapper">
+        <div class="delete_heading">
+          <h1>Delete your squazzle account</h1>
+          <i class="fa-solid fa-x" onclick="closeModal()"></i>
+        </div>
+        <div class="delete_writeup">
+          <p>
+            We’re sorry to see you go. Once your account is deleted, the profile
+            and listings associated with this account will disappear. You won’t
+            be able to access your account information.
+          </p>
+
+          <p>To confirm,enter your password below:</p>
+        </div>
+        <form class="delete_form">
+          <input type="password" placeholder="Please confirm your password" class="delete_input"/>
+          <span class="delete_checkbox">
+            <input type="checkbox" />
+            <p>
+              I understand that deleting my account is permanent and cannot be
+              undone
+            </p>
+          </span>
+          <span class="delete_btn_wrapper">
+            <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+            <button class="btn btn-primary">Delete</button>
+          </span>
+        </form>
+      </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.19/build/js/intlTelInput.min.js"></script>
     <script src="./assets/js/profile.js"></script>

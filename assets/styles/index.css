@@ -107,10 +107,6 @@ header nav ul li a:hover {
   color: #8d173a;
 }
 
-/* .list-items li:hover {
-  background-color: #f3f3f3;
-} */
-
 .nav_right button {
   padding: 7px 20px;
   background: #002c2d;
@@ -927,7 +923,8 @@ footer {
   gap: 16px;
 }
 
-.user_profile_container .left .welcome span h1 {
+.user_profile_container .left .welcome span h1,
+.user_profile_container .left .welcome span h2 {
   font-size: 28px;
   font-weight: 600;
   line-height: 35px;
@@ -943,6 +940,14 @@ footer {
   letter-spacing: 0.01em;
   text-align: left;
   color: #353535;
+}
+
+.toHide {
+  display: none !important;
+}
+
+.user_profile_container .sub_right {
+  display: none;
 }
 
 .user_profile_container .right {
@@ -1190,6 +1195,144 @@ footer {
   border: 2px solid #016d71;
 }
 
+.profile_nav {
+  display: none;
+}
+
+.overlay {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.delete_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  transition: all 1s ease-out;
+  font-family: "Poppins", sans-serif;
+  overflow: scroll;
+}
+
+.delete_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.delete_wrapper .delete_heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0px;
+}
+
+.delete_wrapper .delete_heading h1 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 45px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.delete_wrapper .delete_heading i {
+  color: #575757;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.delete_wrapper .delete_writeup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.delete_wrapper .delete_writeup p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #353535;
+}
+
+.delete_wrapper .delete_form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.delete_wrapper .delete_form .delete_input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  outline-color: #03796e;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.delete_wrapper .delete_form .delete_checkbox {
+  display: flex;
+  gap: 20px;
+}
+
+.delete_wrapper .delete_form .delete_checkbox input {
+  width: 18px;
+  height: 18px;
+  border-color: #353535;
+}
+
+.delete_wrapper .delete_form .delete_checkbox p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #353535;
+}
+
+.delete_wrapper .delete_form .delete_btn_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete_wrapper .delete_form .delete_btn_wrapper .btn-secondary {
+  border-color: #8d173a;
+  color: #8d173a;
+}
+
+.delete_wrapper .delete_form .delete_btn_wrapper .btn-primary {
+  border: none;
+  background-color: #8d173a;
+  color: #f6d3dd;
+}
+
+.delete_wrapper .delete_form .delete_btn_wrapper .btn:hover {
+  background-color: #f6d3dd;
+  color: #8d173a;
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
   header {
@@ -1204,30 +1347,46 @@ footer {
   }
   header nav {
     position: absolute;
-    top: 15%;
+    top: 14%;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% - 30px);
+    /* width: calc(100% - 30px); */
+    width: 100%;
     background-color: #fff;
-    padding-inline: 20px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); */
     height: 0;
     overflow: hidden;
     visibility: hidden;
     transition: 0.25s ease;
   }
+
+  .profile_nav {
+    display: block;
+  }
   header nav.active {
-    height: 220px;
+    height: 100vh;
     visibility: visible;
   }
   header nav ul {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
     padding: 30px 0px 0px 0px;
   }
-  header nav ul li {
-    margin-bottom: 10px;
+
+  header nav ul hr {
+    color: #bcbcbc;
+  }
+  header nav ul li a {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  header nav ul li a.active {
+    color: #03796e;
   }
   .nav_right {
     display: none;
@@ -1617,5 +1776,142 @@ footer {
     flex-direction: column;
     gap: 24px;
     color: #232323;
+  }
+
+  /* Profile.html */
+  .user_profile_container {
+    padding: 20px;
+    background: #fff;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .user_profile_container .left .welcome {
+    box-shadow: none;
+    align-items: baseline;
+    width: 100%;
+    padding: 0px;
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+
+  .user_profile_container .left .welcome img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .user_profile_container .left .welcome span {
+    width: 50%;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .user_profile_container .left .welcome span h1 {
+    font-size: 24px;
+    line-height: 30px;
+    text-align: left;
+  }
+
+  .user_profile_container .left .welcome span p {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0em;
+  }
+
+  .user_profile_container .main_content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .user_profile_container .right {
+    display: none;
+  }
+  .user_profile_container .sub_right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: #03796e;
+    margin-bottom: 50px;
+  }
+
+  .user_profile_container .sub_right h1 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .user_profile_container .sub_right .links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .user_profile_container .sub_right .links p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .user_profile_container .sub_right .links span {
+    display: flex;
+    gap: 12px;
+  }
+
+  .user_profile_container .left .nav_links {
+    display: none;
+  }
+  .user_profile_container .display_right {
+    padding: 0px;
+    border-radius: 0px;
+    width: 100%;
+    border: none;
+  }
+
+  .user_profile_container .left .welcome span h1 {
+    display: none;
+  }
+  .toShow {
+    display: none !important;
+  }
+
+  .toHide {
+    display: flex !important;
+  }
+
+  .user_profile_container .left .welcome .edit_profile p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  .user_profile_container .left .welcome .edit_profile i {
+    font-size: 14px;
+  }
+
+  .user_profile_container .display_right .heading {
+    display: none;
+  }
+
+  .user_profile_container .display_right .user_details p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+  }
+
+  .user_profile_container .display_right form .combo_inputs {
+    flex-direction: column-reverse;
+  }
+
+  .user_profile_container .display_right form .btn_wrapper {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  .btn {
+    padding: 12px 24px;
   }
 }
