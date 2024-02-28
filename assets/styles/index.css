@@ -1214,7 +1214,8 @@ footer {
   cursor: pointer;
 }
 
-.delete_modal {
+.delete_modal,
+.change_pass_modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1230,20 +1231,23 @@ footer {
   overflow: scroll;
 }
 
-.delete_wrapper {
+.delete_wrapper,
+.change_pass_wrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.delete_wrapper .delete_heading {
+.delete_wrapper .delete_heading,
+.change_pass_wrapper .change_pass_heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 4px 0px;
 }
 
-.delete_wrapper .delete_heading h1 {
+.delete_wrapper .delete_heading h1,
+.change_pass_wrapper .change_pass_heading h1 {
   font-size: 36px;
   font-weight: 600;
   line-height: 45px;
@@ -1252,19 +1256,22 @@ footer {
   color: #232323;
 }
 
-.delete_wrapper .delete_heading i {
+.delete_wrapper .delete_heading i,
+.change_pass_wrapper .change_pass_heading i {
   color: #575757;
   font-size: 15px;
   cursor: pointer;
 }
 
-.delete_wrapper .delete_writeup {
+.delete_wrapper .delete_writeup,
+.change_pass_wrapper .change_pass_writeup {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.delete_wrapper .delete_writeup p {
+.delete_wrapper .delete_writeup p,
+.change_pass_wrapper .change_pass_writeup p {
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
@@ -1273,7 +1280,8 @@ footer {
   color: #353535;
 }
 
-.delete_wrapper .delete_form {
+.delete_wrapper .delete_form,
+.change_pass_wrapper .change_pass_form {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -1312,7 +1320,8 @@ footer {
   color: #353535;
 }
 
-.delete_wrapper .delete_form .delete_btn_wrapper {
+.delete_wrapper .delete_form .delete_btn_wrapper,
+.cpf_btn_wrapper {
   display: flex;
   justify-content: space-between;
 }
@@ -1331,6 +1340,33 @@ footer {
 .delete_wrapper .delete_form .delete_btn_wrapper .btn:hover {
   background-color: #f6d3dd;
   color: #8d173a;
+}
+
+.change_pass_wrapper .change_pass_form .cpf_input_field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.change_pass_wrapper .change_pass_form .cpf_input_field .cpf_input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #bcbcbc;
+  background: #ffffff;
+  width: 100%;
+  outline-color: #016d71;
+  font-size: 20px;
+}
+
+.oldPass_msg,
+.newPass_msg,
+.confirm_newPass_msg {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #a20111;
 }
 
 /* Media Queries */
@@ -1916,21 +1952,21 @@ footer {
   }
 
   /* Delete Acoount */
-  .delete_modal {
+  .delete_modal, .change_pass_modal {
     width: 100%;
     height: 100vh;
     padding: 20px;
   }
-  .delete_wrapper .delete_heading h1 {
+  .delete_wrapper .delete_heading h1, .change_pass_wrapper .change_pass_heading h1 {
     font-size: 18px;
     line-height: 26px;
   }
-  .delete_wrapper .delete_writeup p {
+  .delete_wrapper .delete_writeup p, .change_pass_wrapper .change_pass_writeup p {
     font-size: 14px;
     line-height: 22px;
   }
 
-  .delete_wrapper .delete_form .delete_input {
+  .delete_wrapper .delete_form .delete_input, .change_pass_wrapper .change_pass_form .cpf_input_field .cpf_input {
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0em;
@@ -1945,8 +1981,8 @@ footer {
     font-size: 14px;
     line-height: 22px;
   }
-  .delete_wrapper .delete_form .delete_btn_wrapper {
-flex-direction: column-reverse;
-gap: 16px;
+  .delete_wrapper .delete_form .delete_btn_wrapper, .cpf_btn_wrapper {
+    flex-direction: column-reverse;
+    gap: 16px;
   }
 }

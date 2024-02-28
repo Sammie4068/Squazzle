@@ -34,10 +34,11 @@ navLinks.forEach((link) => {
   link.addEventListener("click", hamMenu);
 });
 
-// Modal
+// Modals
 const modals = document.querySelectorAll("#modal");
 const overlay = document.querySelector(".overlay");
 const deleteModal = document.querySelector(".delete_modal");
+const changePassModal = document.querySelector(".change_pass_modal");
 
 function openModal(modal) {
   overlay.classList.remove("hidden");
@@ -49,7 +50,15 @@ function closeModal() {
   modals.forEach((modal) => modal.classList.add("hidden"));
 }
 
-const deleteAcccountBtn = document.querySelector(".delete_account");
-deleteAcccountBtn.addEventListener("click", () => {
-  openModal(deleteModal);
-});
+const deleteAcccountBtn = document.querySelectorAll(".delete_account");
+
+deleteAcccountBtn.forEach((btn) =>
+  btn.addEventListener("click", () => {
+    openModal(deleteModal);
+  })
+);
+
+const changePassBtn = document.querySelectorAll(".change_pass");
+changePassBtn.forEach((btn) =>
+  btn.addEventListener("click", () => openModal(changePassModal))
+);

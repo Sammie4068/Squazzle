@@ -90,7 +90,7 @@
         <span class="line bottom"></span>
       </button>
     </header>
-    <div class="user_profile_container hidden">
+    <div class="user_profile_container">
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
@@ -119,7 +119,7 @@
               <img src="./assets/images/location_city.png" alt="icon" />
               <p>My listing</p>
             </span>
-            <span>
+            <span class="change_pass">
               <img src="./assets/images/privacy_tip.png" alt="icon" />
               <p>Password setting</p>
             </span>
@@ -190,7 +190,7 @@
             </span>
           </div>
           <div class="cards bottom_cards">
-            <span>
+            <span class="change_pass">
               <img src="./assets/images/privacy_tip.png" alt="icon" />
               <p>Password setting</p>
             </span>
@@ -198,7 +198,7 @@
               <img src="./assets/images/payments.png" alt="icon" />
               <p>Payments and Payout</p>
             </span>
-            <span>
+            <span class="delete_account">
               <img src="./assets/images/delete_forever.png" alt="icon" />
               <p>Delete Account</p>
             </span>
@@ -206,7 +206,7 @@
         </div>
       </div>
     </div>
-    <div class="user_profile_container">
+    <div class="user_profile_container hidden">
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
@@ -312,7 +312,7 @@
               </p>
             </span>
           </div>
-          <div class="delete_account" style="cursor: pointer;">
+          <div class="delete_account" style="cursor: pointer">
             <h2>Delete Account</h2>
             <p>Permanently delete your account and all your content</p>
           </div>
@@ -479,7 +479,7 @@
     </footer>
 
     <div class="overlay hidden" onclick="closeModal()"></div>
-    <div class="delete_modal hidden" id="modal">
+    <div class="delete_pass_modal hidden" id="modal">
       <div class="delete_wrapper">
         <div class="delete_heading">
           <h1>Delete your squazzle account</h1>
@@ -495,7 +495,11 @@
           <p>To confirm,enter your password below:</p>
         </div>
         <form class="delete_form">
-          <input type="password" placeholder="Please confirm your password" class="delete_input"/>
+          <input
+            type="password"
+            placeholder="Please confirm your password"
+            class="delete_input"
+          />
           <span class="delete_checkbox">
             <input type="checkbox" />
             <p>
@@ -504,8 +508,60 @@
             </p>
           </span>
           <span class="delete_btn_wrapper">
-            <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+            <button class="btn btn-secondary" onclick="closeModal()">
+              Cancel
+            </button>
             <button class="btn btn-primary">Delete</button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <div class="change_pass_modal hidden" id="modal">
+      <div class="change_pass_wrapper">
+        <div class="change_pass_heading">
+          <h1>Change Password</h1>
+          <i class="fa-solid fa-x" onclick="closeModal()"></i>
+        </div>
+        <div class="change_pass_writeup">
+          <p>
+            To Change your password, enter your old password followed by your
+            preferred password
+          </p>
+        </div>
+        <form class="change_pass_form">
+          <div class="cpf_input_field">
+            <label class="cpf_label">Password</label>
+            <input
+              type="password"
+              class="cpf_input"
+              placeholder="Enter your old password"
+            />
+            <span class="oldPass_msg hidden"></span>
+          </div>
+          <div class="cpf_input_field">
+            <label class="cpf_label">New password</label>
+            <input
+              type="password"
+              class="cpf_input"
+              placeholder="Enter your new password"
+            />
+            <span class="newPass_msg hidden"></span>
+          </div>
+          <div class="cpf_input_field">
+            <label class="cpf_label">Re-enter password</label>
+            <input
+              type="password"
+              class="cpf_input"
+              placeholder="Re-enter your new password"
+            />
+            <span class="confirm_newPass_msg hidden">Password does not match</span>
+          </div>
+
+           <span class="cpf_btn_wrapper">
+            <button class="btn btn-secondary" onclick="closeModal()">
+              Cancel
+            </button>
+            <button class="btn btn-primary">Done</button>
           </span>
         </form>
       </div>
