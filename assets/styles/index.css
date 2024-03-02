@@ -237,6 +237,11 @@ header nav ul li a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   height: 442px;
+}
+
+.accomodation_hero_wrapper {
+  display: flex;
+  align-items: center;
   gap: 24px;
 }
 
@@ -1644,7 +1649,16 @@ footer {
   border-radius: 8px;
   background: #ffffff;
   border: 1px solid #bcbcbc;
+  outline-color: #03796e;
+  color: #353535;
   font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+.filter_content .filter_item .filter_price span input::placeholder {
+  color: #9a9a9a;
 }
 
 .filter_content .filter_item .filter_field span p {
@@ -1737,9 +1751,38 @@ footer {
     justify-content: space-between;
     gap: 20px;
   }
+  .accomodation_hero {
+    width: 100%;
+    flex-direction: column;
+  }
+  .accomodation_hero_wrapper {
+    flex-direction: column;
+    background: #f5f5f599;
+    padding: 20px;
+    width: 90%;
+    gap: 24px;
+  }
+
   .hero_search form {
     flex-direction: column;
   }
+
+  .accomodation_hero form {
+    flex-direction: column;
+    background: none;
+    width: 100%;
+    padding: 0px;
+  }
+
+  .accomodation_hero .search_btn {
+    width: 100%;
+    padding: 12px 24px;
+  }
+  .accomodation_hero .filter_btn {
+    width: 100%;
+    padding: 12px 24px;
+  }
+
   .hero_img img {
     width: 100%;
     height: 400px;
@@ -1759,14 +1802,14 @@ footer {
   .middle_line {
     display: none;
   }
-  .hero_sub_text {
+  .hero_search .hero_sub_text {
     width: 100%;
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
     color: #575757;
   }
-  .search_btn {
+  .hero_search .search_btn {
     width: 100%;
   }
   .hero_search span {
@@ -1776,11 +1819,10 @@ footer {
   .hero_search span input {
     width: 100%;
   }
-
-  .filter_btn {
+  .hero_search .filter_btn {
     padding: 13px;
   }
-  .filter_btn p {
+  .hero_search .filter_btn p {
     display: block;
     font-size: 14px;
     font-weight: 700;
@@ -1912,6 +1954,12 @@ footer {
     width: 340px;
   }
 
+  .accomodation_card {
+    width: 90%;
+  }
+  .accomodation_card img {
+    width: 100%;
+  }
   .trusted_wrapper {
     flex-direction: column;
     margin: auto;
@@ -2283,5 +2331,19 @@ footer {
   .cpf_btn_wrapper {
     flex-direction: column-reverse;
     gap: 16px;
+  }
+  .filter_modal {
+    width: 100%;
+    height: 100vh;
+  }
+  .filter_content .filter_item .filter_price {
+    gap: 22px;
+  }
+  .filter_content .filter_item .filter_price span input {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
   }
 }

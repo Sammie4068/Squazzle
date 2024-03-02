@@ -82,6 +82,7 @@
     </header>
     <main>
       <div class="accomodation_hero">
+        <div class="accomodation_hero_wrapper">
         <form>
           <span class="search_input">
             <img src="./assets/images/search.png" alt="search icon" />
@@ -97,12 +98,14 @@
             <img src="./assets/images/calendar.png" alt="calendar icon" />
           </span>
           <button type="submit" class="search_btn">Search</button>
+
         </form>
 
         <button class="filter_btn">
           <img src="./assets/images/filter_list.png" alt="filter icon" />
           <p>Filter</p>
         </button>
+      </div>
       </div>
 
       <div class="accomodation_container">
@@ -391,11 +394,11 @@
             <div class="filter_price">
               <span>
                 <p>Minimum</p>
-                <input type="text" placeholder="NGN 0">
+                <input type="number" name="money" step="0.01" min="0" placeholder="NGN 0" >
               </span>
               <span>
                 <p>Minimum</p>
-                <input type="text" placeholder="NGN 250,000+">
+                <input type="number" name="money" step="0.01" min="0" placeholder="NGN 250,000+">
               </span>
             </div>
           </div>
