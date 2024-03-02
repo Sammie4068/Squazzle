@@ -1278,6 +1278,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-top: 50px;
 }
 
 .user_profile_container .accom_right .host_info h1 {
