@@ -90,7 +90,10 @@
         <span class="line bottom"></span>
       </button>
     </header>
-    <div class="user_profile_container">
+    <div
+      class="user_profile_container hidden"
+      style="background-color: #f5f5f5"
+    >
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
@@ -432,6 +435,151 @@
       </div>
     </div>
 
+    <div class="user_profile_container">
+      <div class="navigation">
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Manage Account</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-chevron-right"></i>
+          </li>
+          <li>
+            <a href="#">My Listing</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="main_content">
+        <div class="listing_left">
+          <div class="accom_details">
+            <h1>Location</h1>
+            <hr />
+            <p>
+              Federal Housing Estate, Number 49 East-End, Jos, Plateau State,
+              Nigeria.
+            </p>
+          </div>
+          <div class="accom_details">
+            <h1>Reason for listing this accommodation</h1>
+            <hr />
+            <p>
+              To offer guests an interesting and enriching experience that makes
+              a holiday memorable for all the right reasons.
+            </p>
+          </div>
+          <div class="accom_details">
+            <h1>Hosting duration</h1>
+            <hr />
+            <span>
+              <img src="./assets/images/date_range.png" alt="icon" />
+              <p class="acccom_date_range">Fri 18 Nov - Fri 16 Dec</p>
+            </span>
+          </div>
+          <div class="accom_details">
+            <h1>Accommodation type</h1>
+            <hr />
+            <span>
+              <img src="./assets/images/gree_house.png" alt="icon" />
+              <p class="accom_type">Apartment</p>
+            </span>
+          </div>
+        </div>
+
+        <div class="accom_right">
+          <div class="accom_info_tab">
+            <span>
+              <img src="./assets/images/green_radio.png" alt="icon" />
+              <p>Available</p>
+            </span>
+            <span>
+              <img src="./assets/images/money.png" alt="icon" />
+              <p>NGN 65,000 per night</p>
+            </span>
+            <span>
+              <img src="./assets/images/green_location_pin.png" alt="icon" />
+              <p>Location</p>
+            </span>
+            <span>
+              <img src="./assets/images/green_rule.png" alt="icon" />
+              <p>Accommodartion rules</p>
+            </span>
+          </div>
+
+          <div class="accom_photos">
+            <span class="main_photo">
+              <img src="./assets/images/accom_1.png" alt="apt" />
+            </span>
+            <span class="sub_photo">
+              <img src="./assets/images/accom_2.png" alt="apt" />
+              <img src="./assets/images/accom_3.png" alt="apt" />
+            </span>
+          </div>
+
+          <div class="accom_info">
+            <div class="accom_info_heading">
+              <h1>Primrose View</h1>
+              <img src="./assets/images/accom_user.png" alt="person" />
+            </div>
+
+            <div class="accom_writeup">
+              <h2>About this apartment</h2>
+              <p>
+                From the outside this house looks nice and traditional. It has
+                windows that let in plenty of light. The house is equipped with
+                a small kitchen and two bathrooms, it also has a cozy living
+                room, two bedrooms, a roomy dining area, a playroom and a cozy
+                garage.The building is fairly rounded in shape.The roof is low
+                and v-shaped and is covered with grey ceramic tiles. The house
+                itself is surrounded by a tranquil garden, with beautiful
+                primrose flowers and various rock formations...
+              </p>
+              <a href="#">Read more</a>
+            </div>
+
+            <hr />
+
+            <div class="accom_rules">
+              <h1>Accommodation rules</h1>
+              <div class="rules">
+                <span>
+                  <h2>Damage to property</h2>
+                  <p>
+                    Guests will be held responsible for any loss or damage to
+                    the property caused by negligence either by themselves,
+                    their guests or any person for whom they are responsible
+                    for.
+                  </p>
+                </span>
+                <span>
+                  <h2>Check-in</h2>
+                  <p>Check-in time is from 12:00 - 22:00</p>
+                </span>
+                <span>
+                  <h2>Departure</h2>
+                  <p>Check-out time is from 12:00 - 13:00</p>
+                </span>
+                <span>
+                  <h2>Pets</h2>
+                  <p>
+                    Pets are not allowed here. Special arrangements could be
+                    made upon request.
+                  </p>
+                </span>
+                <span>
+                  <h2>Settlement of bills</h2>
+                  <p>
+                    Bills can be paid through bank transfers or cash. Checks are
+                    not allowed.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer>
       <div class="footer_wrapper">
         <div class="footer_top">
@@ -554,10 +702,12 @@
               class="cpf_input"
               placeholder="Re-enter your new password"
             />
-            <span class="confirm_newPass_msg hidden">Password does not match</span>
+            <span class="confirm_newPass_msg hidden"
+              >Password does not match</span
+            >
           </div>
 
-           <span class="cpf_btn_wrapper">
+          <span class="cpf_btn_wrapper">
             <button class="btn btn-secondary" onclick="closeModal()">
               Cancel
             </button>

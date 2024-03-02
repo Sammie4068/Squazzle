@@ -899,7 +899,7 @@ footer {
 
 /* Profile.html */
 .user_profile_container {
-  background: #f5f5f5;
+  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -952,6 +952,57 @@ footer {
 .user_profile_container .main_content {
   display: flex;
   gap: 64px;
+}
+
+.user_profile_container .listing_left {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  padding: 20px;
+  gap: 12px;
+  background: #ffffff;
+  box-shadow: 0px 2px 10px 0px #001a1b1a;
+  height: fit-content;
+}
+
+.user_profile_container .listing_left .accom_details {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 16px;
+}
+
+.user_profile_container .listing_left .accom_details h1 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container .listing_left .accom_details hr {
+  border-color: #d7d7d7;
+}
+
+.user_profile_container .listing_left .accom_details p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container .listing_left .accom_details .acccom_date_range,
+.user_profile_container .listing_left .accom_details .acccom_type {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.user_profile_container .listing_left .accom_details span {
+  display: flex;
+  gap: 8px;
 }
 
 .user_profile_container .left {
@@ -1055,6 +1106,162 @@ footer {
 
 .toHide {
   display: none !important;
+}
+
+.user_profile_container .accom_right {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  gap: 20px;
+}
+
+.user_profile_container .accom_right .accom_info_tab {
+  display: flex;
+  gap: 10px;
+}
+
+.user_profile_container .accom_right .accom_info_tab span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 28px;
+  background: #f5f5f5;
+}
+
+.user_profile_container .accom_right .accom_info_tab span p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #001a1b;
+}
+
+.user_profile_container .accom_right .accom_photos {
+  display: flex;
+  gap: 20px;
+}
+
+.user_profile_container .accom_right .accom_photos .sub_photo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user_profile_container .accom_right .accom_info {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0px;
+  width: 85%;
+}
+
+.user_profile_container .accom_right .accom_info .accom_info_heading {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.user_profile_container .accom_right .accom_info .accom_info_heading h1 {
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 68px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container .accom_right .accom_info .accom_info_heading img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50px;
+}
+
+.user_profile_container .accom_right .accom_info .accom_writeup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user_profile_container .accom_right .accom_info .accom_writeup h2 {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container .accom_right .accom_info .accom_writeup p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container .accom_right .accom_info .accom_writeup a {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #8d173a;
+}
+
+.user_profile_container .accom_right hr {
+  border-color: #d7d7d7;
+  margin: 50px 0px;
+}
+
+.user_profile_container .accom_right .accom_rules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user_profile_container .accom_right .accom_rules h1 {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container .accom_right .accom_rules .rules {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  background: #f5f5f5;
+}
+
+.user_profile_container .accom_right .accom_rules .rules span {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  gap: 16px;
+  padding: 12px 24px;
+}
+
+.user_profile_container .accom_right .accom_rules .rules span h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container .accom_right .accom_rules .rules span p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
 }
 
 .user_profile_container .sub_right {
