@@ -27,6 +27,43 @@ body {
   overflow-x: hidden;
 }
 
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #9a9a9a;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked::before {
+  content: "\2713";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #575757;
+}
+
+input[type="checkbox"]:checked {
+  color: #575757;
+  border: 1px solid #575757;
+}
+
+input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked {
+  background-color: #575757;
+  outline: #575757;
+}
+
 /* Nav */
 
 header {
@@ -191,12 +228,41 @@ header nav ul li a:hover {
   gap: 40px;
 }
 
+.accomodation_hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #35353520;
+  background-image: url(../images/accom_hero.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 442px;
+  gap: 24px;
+}
+
 .hero_search form {
   display: flex;
   gap: 24px;
 }
 
+.accomodation_hero form {
+  display: flex;
+  padding: 32px;
+  gap: 24px;
+  background: #f5f5f599;
+}
+
 .hero_search span {
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 8px;
+  border: 1px solid #bcbcbc;
+  gap: 10px;
+  background-color: #fff;
+}
+
+.accomodation_hero span {
   display: flex;
   align-items: center;
   padding: 5px 15px;
@@ -212,6 +278,12 @@ header nav ul li a:hover {
   outline: #bcbcbc;
 }
 
+.accomodation_hero span input {
+  border: none;
+  padding: 10px 16px;
+  outline: #bcbcbc;
+}
+
 .middle_line {
   width: 2px;
   height: 30px;
@@ -219,7 +291,7 @@ header nav ul li a:hover {
   margin-top: 10px;
 }
 
-.search_btn {
+.hero_search .search_btn {
   padding: 20px;
   border-radius: 2px;
   background-color: #016d71;
@@ -227,7 +299,21 @@ header nav ul li a:hover {
   border-radius: 12px;
   width: 150px;
 }
-.filter_btn {
+
+.accomodation_hero .search_btn {
+  width: 180px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background-color: #016d71;
+  color: #cce6e7;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.hero_search .filter_btn {
   background-color: #f5f5f5;
   padding: 10px;
   border-radius: 12px;
@@ -237,8 +323,28 @@ header nav ul li a:hover {
   gap: 8px;
 }
 
-.filter_btn p {
+.hero_search .filter_btn p {
   display: none;
+}
+
+.accomodation_hero .filter_btn {
+  background-color: #f5f5f5;
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 200px;
+}
+
+.accomodation_hero .filter_btn p {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #016d71;
 }
 .hero_left a {
   color: #016d71;
@@ -1369,6 +1475,194 @@ footer {
   color: #a20111;
 }
 
+/* Accomodation */
+.accomodation_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0px;
+}
+
+.accomodation_card {
+  width: 290px;
+  cursor: pointer;
+}
+
+.accomodation_card img {
+  width: 255px;
+  height: 201px;
+}
+
+.accomodation_card .available {
+  display: flex;
+  gap: 24px;
+}
+
+.accomodation_card .available span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accomodation_card .available span i {
+  color: #d7d7d7;
+  font-size: 12px;
+  border: none;
+}
+
+.accomodation_card .available span p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.accomodation_card .available span:first-child p {
+  color: #8d173a;
+}
+
+.accomodation_card .available span:last-child p {
+  color: #03796e;
+}
+
+.accomodation_card .duration {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.filter_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  transition: all 1s ease-out;
+  font-family: "Poppins", sans-serif;
+  height: 500px;
+  overflow: scroll;
+}
+
+.filter_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter_wrapper .filter_heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 24px 32px;
+}
+
+.filter_wrapper .filter_heading p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.filter_wrapper .filter_heading i {
+  font-size: 14px;
+  color: #03796e;
+}
+
+.filter_wrapper .filter_content {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.filter_content .filter_item .title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.filter_content hr {
+  color: #bcbcbc;
+  margin: 20px 0px;
+}
+
+.filter_content .filter_item .title p {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.filter_content .filter_item .filter_field {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter_content .filter_item .filter_price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter_content .filter_item .filter_field span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter_content .filter_item .filter_price span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter_content .filter_item .filter_price span p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #353535;
+}
+
+.filter_content .filter_item .filter_price span input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  font-size: 18px;
+}
+
+.filter_content .filter_item .filter_field span p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #03796e;
+}
+
+.apply_filter_btn {
+  padding: 16px 32px;
+  border-top: 1px solid #f5f5f5;
+  display: flex;
+  justify-content: end;
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
   header {
@@ -1952,21 +2246,25 @@ footer {
   }
 
   /* Delete Acoount */
-  .delete_modal, .change_pass_modal {
+  .delete_modal,
+  .change_pass_modal {
     width: 100%;
     height: 100vh;
     padding: 20px;
   }
-  .delete_wrapper .delete_heading h1, .change_pass_wrapper .change_pass_heading h1 {
+  .delete_wrapper .delete_heading h1,
+  .change_pass_wrapper .change_pass_heading h1 {
     font-size: 18px;
     line-height: 26px;
   }
-  .delete_wrapper .delete_writeup p, .change_pass_wrapper .change_pass_writeup p {
+  .delete_wrapper .delete_writeup p,
+  .change_pass_wrapper .change_pass_writeup p {
     font-size: 14px;
     line-height: 22px;
   }
 
-  .delete_wrapper .delete_form .delete_input, .change_pass_wrapper .change_pass_form .cpf_input_field .cpf_input {
+  .delete_wrapper .delete_form .delete_input,
+  .change_pass_wrapper .change_pass_form .cpf_input_field .cpf_input {
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0em;
@@ -1981,7 +2279,8 @@ footer {
     font-size: 14px;
     line-height: 22px;
   }
-  .delete_wrapper .delete_form .delete_btn_wrapper, .cpf_btn_wrapper {
+  .delete_wrapper .delete_form .delete_btn_wrapper,
+  .cpf_btn_wrapper {
     flex-direction: column-reverse;
     gap: 16px;
   }

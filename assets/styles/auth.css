@@ -32,6 +32,31 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #9a9a9a;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked::before {
+  content: '\2713'; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #575757;
+}
+
+input[type="checkbox"]:checked {
+  color: #575757;
+  border: 1px solid #575757;
+}
+
 header {
   display: flex;
   align-items: center;
