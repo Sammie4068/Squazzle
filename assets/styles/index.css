@@ -818,6 +818,8 @@ footer {
   align-items: center;
   justify-content: center;
   margin: 100px 0px 0px 0px;
+  padding: 80px 0px 40px 0px;
+  border-top: 1px solid #d7d7d7;
 }
 
 .footer_wrapper {
@@ -905,6 +907,10 @@ footer {
   justify-content: center;
   gap: 35px;
   padding: 70px;
+}
+
+.accom_profile_cont {
+  padding: 40px;
 }
 
 .navigation {
@@ -1148,6 +1154,10 @@ footer {
   gap: 20px;
 }
 
+.user_profile_container .accom_right .accom_photos .res_photo {
+  display: none;
+}
+
 .user_profile_container .accom_right .accom_info {
   display: flex;
   flex-direction: column;
@@ -1264,6 +1274,99 @@ footer {
   color: #232323;
 }
 
+.user_profile_container .accom_right .host_info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user_profile_container .accom_right .host_info h1 {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container .accom_right .host_info .host_info_wrapper {
+  padding: 32px;
+  background: #f5f5f5;
+}
+
+.user_profile_container .accom_right .host_info .host_info_card {
+  display: flex;
+  padding: 16px 24px;
+  gap: 22px;
+  background: #ffffff;
+}
+
+.user_profile_container
+  .accom_right
+  .host_info
+  .host_info_card
+  .host_photo
+  img {
+  width: 60px;
+  height: 60px;
+  border-radius: 69.64px;
+}
+
+.user_profile_container .accom_right .host_info .host_info_details {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 12px;
+  gap: 16px;
+}
+
+.user_profile_container .accom_right .host_info .host_info_details .host_name {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container
+  .accom_right
+  .host_info
+  .host_info_details
+  .host_joined {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #8d173a;
+}
+
+.user_profile_container
+  .accom_right
+  .host_info
+  .host_info_details
+  .contact_info {
+  display: flex;
+  padding: 4px 0px 0px 0px;
+  gap: 24px;
+}
+
+.user_profile_container
+  .accom_right
+  .host_info
+  .host_info_details
+  .contact_info
+  span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #03796e;
+}
+
+.user_profile_container .accom_right .host_info .host_info_details .btn {
+  margin: 20px 0px 0px 0px;
+  width: 50%;
+}
 .user_profile_container .sub_right {
   display: none;
 }
@@ -2332,7 +2435,6 @@ footer {
 
   footer {
     padding: 40px 20px 32px 20px;
-    border-top: 1px solid #d7d7d7;
     background: #d7d7d710;
     gap: 8px;
     margin: auto;
@@ -2380,6 +2482,7 @@ footer {
     padding: 0px;
     flex-direction: column-reverse;
     gap: 16px;
+    background: transparent;
   }
 
   .user_profile_container .left .welcome img {
@@ -2552,5 +2655,108 @@ footer {
     font-weight: 400;
     line-height: 18px;
     letter-spacing: 0em;
+  }
+
+  /* Accom Page */
+
+  .user_profile_container .accom_right {
+    width: 100%;
+  }
+  .user_profile_container .accom_right .accom_info_tab {
+    gap: 12px;
+    overflow-x: scroll;
+    width: 100%;
+  }
+
+  .user_profile_container .accom_right .accom_info_tab span {
+    padding: 8px 10px;
+  }
+
+  .user_profile_container .accom_right .accom_info_tab span p {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    text-wrap: nowrap;
+  }
+
+  .user_profile_container .accom_right .accom_photos .res_photo {
+    display: block;
+  }
+
+  .user_profile_container .accom_right .accom_photos .main_photo,
+  .user_profile_container .accom_right .accom_photos .sub_photo {
+    display: none;
+  }
+
+  .user_profile_container .listing_left {
+    width: 100%;
+    padding: 8px;
+  }
+  .user_profile_container .listing_left .accom_details hr {
+    margin: 5px 0px;
+  }
+
+  .user_profile_container .accom_right hr {
+    margin: 30px 0px;
+  }
+
+  .user_profile_container .accom_right .accom_info {
+    width: 100%;
+  }
+
+  .user_profile_container .accom_right .accom_info .accom_info_heading h1 {
+    font-size: 36px;
+    line-height: 45px;
+  }
+  .user_profile_container .accom_right .accom_info .accom_info_heading img {
+    display: none;
+  }
+  .user_profile_container .accom_right .accom_rules {
+    border-bottom: 1px solid #d7d7d7;
+    padding-bottom: 30px;
+  }
+  .user_profile_container .accom_right .accom_rules h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .user_profile_container .accom_right .accom_rules .rules {
+    padding: 24px;
+  }
+  .user_profile_container .accom_right .accom_rules .rules span h2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .user_profile_container .accom_right .accom_rules .rules span p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .user_profile_container .accom_right .host_info {
+    padding-top: 30px;
+  }
+  .user_profile_container .accom_right .host_info .host_info_wrapper {
+    padding: 24px;
+  }
+  .user_profile_container .accom_right .host_info .host_info_card {
+    padding: 16px 12px;
+    gap: 4px;
+  }
+
+  .user_profile_container .accom_right .host_info .host_info_details {
+    gap: 5px;
+  }
+  .user_profile_container
+    .accom_right
+    .host_info
+    .host_info_details
+    .contact_info {
+    flex-direction: column;
+  }
+  .user_profile_container .accom_right .host_info .host_info_details .btn {
+    margin: 20px 0px 0px 0px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
   }
 }
