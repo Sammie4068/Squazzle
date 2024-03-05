@@ -1215,10 +1215,22 @@ footer {
   input {
   padding: 20px 16px;
   border-radius: 8px;
-  gap: 10px;
   background: #ffffff;
   border: 1px solid #bcbcbc;
   outline-color: #03796e;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  input::placeholder {
+  color: #787878;
 }
 
 .user_profile_container
@@ -1348,12 +1360,30 @@ footer {
 .user_profile_container
   .edit_right
   .edit_right_wrapper
-  .edit_right_feature .edit_duration {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+  .edit_right_feature
+  .edit_duration_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_duration {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .btn_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
 
 .user_profile_container .accom_right {
   display: flex;
