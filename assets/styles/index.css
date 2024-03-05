@@ -960,7 +960,8 @@ footer {
   gap: 64px;
 }
 
-.user_profile_container .edit_listing, .user_profile_container .edit_list {
+.user_profile_container .edit_listing,
+.user_profile_container .edit_list {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -970,7 +971,8 @@ footer {
   width: 30%;
 }
 
-.user_profile_container .edit_listing .edit_features,  .user_profile_container .edit_list .edit_features {
+.user_profile_container .edit_listing .edit_features,
+.user_profile_container .edit_list .edit_features {
   display: flex;
   padding: 20px 24px;
   justify-content: space-between;
@@ -978,7 +980,8 @@ footer {
   color: #cce6e7;
 }
 
-.user_profile_container .edit_listing .edit_features span,  .user_profile_container .edit_list .edit_features span{
+.user_profile_container .edit_listing .edit_features span,
+.user_profile_container .edit_list .edit_features span {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1059,11 +1062,11 @@ footer {
 }
 
 .user_profile_container .edit_sidebar span.onActive {
-  background: #CCE6E7;
+  background: #cce6e7;
 }
 
 .user_profile_container .edit_sidebar span:hover {
-  background: #CCE6E7;
+  background: #cce6e7;
 }
 
 .user_profile_container .edit_sidebar span p {
@@ -1180,15 +1183,177 @@ footer {
 
 .user_profile_container .edit_right {
   padding: 40px;
-  border: 1px solid #F5F5F5;
-  width: 70%;
+  border: 1px solid #f5f5f5;
+  width: 50%;
 }
 
-.user_profile_container .edit_right .edit_right_wrapperv{
+.user_profile_container .edit_right .edit_right_wrapper {
   display: flex;
   flex-direction: column;
-  
+  gap: 40px;
 }
+
+.user_profile_container .edit_right .edit_right_wrapper .edit_right_feature {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.user_profile_container .edit_right .edit_right_wrapper .edit_right_feature h1 {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  input {
+  padding: 20px 16px;
+  border-radius: 8px;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  outline-color: #03796e;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  textarea {
+  padding: 20px 16px;
+  border-radius: 8px;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  outline-color: #03796e;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_sub {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_sub
+  p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #03796e;
+}
+
+.user_profile_container .edit_right .edit_right_wrapper .edit_right_feature hr {
+  border-color: #d7d7d7;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_type {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_avail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_type
+  span,
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_avail
+  span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 30%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_type
+  span
+  input[type="radio"],
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_avail
+  span
+  input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_type
+  span
+  label,
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_avail
+  span
+  label {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #03796e;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature .edit_duration {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
 
 .user_profile_container .accom_right {
   display: flex;
