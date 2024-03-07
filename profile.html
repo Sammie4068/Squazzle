@@ -883,7 +883,7 @@
         </div>
 
         <div class="edit_right">
-          <div class="edit_right_wrapper">
+          <div class="edit_right_wrapper hidden">
             <div class="edit_right_feature">
               <h1>Accommodation name</h1>
               <input type="text" placeholder="Primrose View" />
@@ -959,9 +959,7 @@
               <h1>Accomodation Price</h1>
               <input type="text" placeholder="0.00" />
             </div>
-
             <hr />
-
             <div class="edit_right_feature" style="gap: 16px">
               <h1>Hosting duration</h1>
               <div class="edit_duration_wrapper">
@@ -975,6 +973,71 @@
                 </span>
               </div>
             </div>
+            <div class="btn_wrapper">
+              <button class="btn btn-secondary">Cancel</button>
+              <button class="btn btn-primary">Save & Continue</button>
+            </div>
+          </div>
+          <div class="edit_right_wrapper">
+            <div class="edit_right_feature">
+              <h1>About this accommodation</h1>
+              <textarea
+                cols="30"
+                rows="10"
+                placeholder="A brief description of the accommodation"
+              ></textarea>
+            </div>
+            <hr />
+            <div class="edit_right_feature">
+              <h1>Reason for listing this accommodation</h1>
+              <textarea
+                cols="30"
+                rows="7"
+                placeholder="Why are you listing this accommodation?"
+              ></textarea>
+            </div>
+            <hr />
+            <div class="edit_right_feature">
+              <h1>Accommodation type</h1>
+              <div class="edit_rules">
+                <div class="edit_rules_feat">
+                  <span class="edit_rules_head">Damage to property </span>
+                  <textarea cols="30" rows="5">
+Guests will be held responsible for any loss or damage to the property caused by negligence either by themselves, their guests or any person for whom they are responsible for.
+            </textarea
+                  >
+                </div>
+                <div class="edit_rules_feat">
+                  <span class="edit_rules_head">Check-in</span>
+                  <textarea cols="30" rows="1">Check-in time is from 12:00 - 22:00
+            </textarea
+                  >
+                </div>
+                <div class="edit_rules_feat">
+                  <span class="edit_rules_head">Departure </span>
+                  <textarea cols="30" rows="1">Check-out time is from 12:00 - 13:00
+            </textarea
+                  >
+                </div>
+                <div class="edit_rules_feat">
+                  <span class="edit_rules_head">Pets </span>
+                  <textarea cols="30" rows="2">Pets are not allowed here. Special arrangements could be made upon request.
+            </textarea
+                  >
+                </div>
+                <div class="edit_rules_feat">
+                  <span class="edit_rules_head">Settlement of bills </span>
+                  <textarea cols="30" rows="2">Bills can be paid through bank transfers or cash. Checks are not allowed.
+            </textarea
+                  >
+                </div>
+                <div class="add_rule">
+                  <p>Add new rule</p>
+                  <img src="./assets/images/add_circle_outline.png" alt="icon">
+                </div>
+              </div>
+            </div>
+            
             <div class="btn_wrapper">
               <button class="btn btn-secondary">Cancel</button>
               <button class="btn btn-primary">Save & Continue</button>
