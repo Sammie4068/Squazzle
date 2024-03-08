@@ -19,28 +19,13 @@ navLinks.forEach((link) => {
   link.addEventListener("click", hamMenu);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  flatpickr("#dateRange", {
-    mode: "range",
-    dateFormat: "Y-m-d",
-    minDate: "today",
-  });
+const browseAccomBtn = document.getElementById("browse_accom_btn");
+
+const listAccomBtn = document.getElementById("list_accom_btn");
+
+browseAccomBtn.addEventListener("click", () => {
+  window.location.href = "browse_accomodation.html";
+}); 
+listAccomBtn.addEventListener("click", () => {
+  window.location.href = "list_accomodation.html";
 });
-
-// Modals
-const modals = document.querySelectorAll("#modal");
-const overlay = document.querySelector(".overlay");
-const filterModal = document.querySelector(".filter_modal");
-
-function openModal(modal) {
-  overlay.classList.remove("hidden");
-  modal.classList.remove("hidden");
-}
-
-function closeModal() {
-  overlay.classList.add("hidden");
-  modals.forEach((modal) => modal.classList.add("hidden"));
-}
-
-filterBtn = document.querySelector(".filter_btn");
-filterBtn.addEventListener("click", () => openModal(filterModal));

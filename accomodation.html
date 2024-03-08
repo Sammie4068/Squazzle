@@ -6,10 +6,6 @@
     <link rel="stylesheet" href="./assets/styles/index.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
       crossorigin="anonymous"
@@ -17,7 +13,7 @@
     />
     <link
       rel="shortcut icon"
-      href="./assets/images/Logo Sample.png"
+      href="./assets/images/Logo smaple.png"
       type="image/png"
     />
     <title>Squazzle</title>
@@ -81,185 +77,20 @@
       </button>
     </header>
     <main>
-      <div class="accomodation_hero">
-        <div class="accomodation_hero_wrapper">
-        <form>
-          <span class="search_input">
-            <img src="./assets/images/search.png" alt="search icon" />
-            <input type="text" placeholder="Search by state or town" />
-          </span>
-          <p class="middle_line"></p>
-          <span class="search_calendar">
-            <input
-              type="text"
-              placeholder="Check in - Check-out"
-              id="dateRange"
-            />
-            <img src="./assets/images/calendar.png" alt="calendar icon" />
-          </span>
-          <button type="submit" class="search_btn">Search</button>
-
-        </form>
-
-        <button class="filter_btn">
-          <img src="./assets/images/filter_list.png" alt="filter icon" />
-          <p>Filter</p>
-        </button>
-      </div>
-      </div>
-
-      <div class="accomodation_container">
-        <div class="accomodation_card cell">
-          <img src="./assets/images/apt1.png" alt="Apartments" />
-          <p class="title">Primrose View</p>
-          <p class="location">Jos, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Available</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
+      <div class="accomodation_hero accom_hero">
+        <div class="accom_hero_wrap">
+          <div class="accom_hero_text">
+            <h1>Find that perfect home with Squazzle.</h1>
+            <p class="writeup">
+              Get the best accommodation and list your property for the right
+              prices.
+            </p>
+            <p class="question">So what would you like to do?</p>
           </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
-            <span>NGN</span> <span>65,000 /</span> <span>night</span>
-          </p>
-        </div>
-        <div class="accomodation_card cell">
-          <img src="./assets/images/apt2.png" alt="Apartments" />
-          <p class="title">Primrose View</p>
-          <p class="location">Jos, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Available</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
+          <div class="accom_hero_btn_wrapper">
+            <button id="list_accom_btn">List accomodation</button>
+            <button id="browse_accom_btn">Browse accomodation</button>
           </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
-            <span>NGN</span> <span>65,000 /</span> <span>night</span>
-          </p>
-        </div>
-        <div class="accomodation_card cell">
-          <img src="./assets/images/apt3.png" alt="Apartments" />
-          <p class="title">Primrose View</p>
-          <p class="location">Jos, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Available</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
-          </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
-            <span>NGN</span> <span>65,000 /</span> <span>night</span>
-          </p>
-        </div>
-        <div class="accomodation_card cell">
-          <img src="./assets/images/apt4.png" alt="Apartments" />
-          <p class="title">Primrose View</p>
-          <p class="location">Jos, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Available</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
-          </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
-            <span>NGN</span> <span>65,000 /</span> <span>night</span>
-          </p>
-        </div>
-        <div class="accomodation_card cell">
-          <img src="./assets/images/apt1.png" alt="Apartments" />
-          <p class="title">Primrose View</p>
-          <p class="location">Jos, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Available</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
-          </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
-            <span>NGN</span> <span>65,000 /</span> <span>night</span>
-          </p>
-        </div>
-        <div class="accomodation_card cell">
-          <img src="./assets/images/apt1.png" alt="Apartments" />
-          <p class="title">Primrose View</p>
-          <p class="location">Jos, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Available</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
-          </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
-            <span>NGN</span> <span>65,000 /</span> <span>night</span>
-          </p>
-        </div>
-        <div class="accomodation_card cell">
-          <img src="./assets/images/apt1.png" alt="Apartments" />
-          <p class="title">Primrose View</p>
-          <p class="location">Jos, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Available</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
-          </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
-            <span>NGN</span> <span>65,000 /</span> <span>night</span>
-          </p>
-        </div>
-        <div class="accomodation_card cell">
-          <img src="./assets/images/apt1.png" alt="Apartments" />
-          <p class="title">Primrose View</p>
-          <p class="location">Jos, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Available</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
-          </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
-            <span>NGN</span> <span>65,000 /</span> <span>night</span>
-          </p>
         </div>
       </div>
     </main>
@@ -310,106 +141,6 @@
       </div>
     </footer>
 
-    <div class="overlay hidden" onclick="closeModal()"></div>
-    <div class="filter_modal hidden" id="modal">
-      <div class="filter_wrapper">
-        <div class="filter_heading">
-          <p>Filter</p>
-          <i class="fa-solid fa-x" onclick="closeModal()"></i>
-        </div>
-        <div class="filter_content">
-          <div class="filter_item">
-            <span class="title"> <img src="./assets/images/house.png" alt="icon"> <p>Property type</p></span>
-            <hr>
-            <div class="filter_field">
-              <span>
-                <p>Duplex</p>
-                <input type="checkbox">
-              </span>
-              <span>
-                <p>Flat</p>
-                <input type="checkbox">
-              </span>
-              <span>
-                <p>Bungalow</p>
-                <input type="checkbox">
-              </span>
-              <span>
-                <p>Self-contain</p>
-                <input type="checkbox">
-              </span>
-              <span>
-                <p>Apartment</p>
-                <input type="checkbox">
-              </span>
-            </div>
-          </div>
-          <div class="filter_item">
-            <span class="title"> <img src="./assets/images/date_range.png" alt="icon"> <p>Date posted</p></span>
-            <hr>
-            <div class="filter_field">
-              <span>
-                <p>Just now</p>
-                <input type="checkbox">
-              </span>
-              <span>
-                <p>Less than an hour</p>
-                <input type="checkbox">
-              </span>
-              <span>
-                <p>Past 24 hours</p>
-                <input type="checkbox">
-              </span>
-              <span>
-                <p>Past week</p>
-                <input type="checkbox">
-              </span>
-              <span>
-                <p>Past month</p>
-                <input type="checkbox">
-              </span>
-            </div>
-          </div>
-          <div class="filter_item">
-            <span class="title"> <img src="./assets/images/person.png" alt="icon"> <p>Suitable for</p></span>
-            <hr>
-            <div class="filter_field">
-              <span>
-                <p>Female</p>
-                <input name="gender" type="radio">
-              </span>
-              <span>
-                <p>Male</p>
-                <input name="gender" type="radio">
-              </span>
-              <span>
-                <p>Both</p>
-                <input name="gender" type="radio">
-              </span>
-            </div>
-          </div>
-          <div class="filter_item">
-            <span class="title"> <img src="./assets/images/money.png" alt="icon"> <p>Price per night</p></span>
-            <hr>
-            <div class="filter_price">
-              <span>
-                <p>Minimum</p>
-                <input type="number" name="money" step="0.01" min="0" placeholder="NGN 0" >
-              </span>
-              <span>
-                <p>Minimum</p>
-                <input type="number" name="money" step="0.01" min="0" placeholder="NGN 250,000+">
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="apply_filter_btn">
-          <button class="btn btn-primary">Apply filter</button>
-        </div>
-      </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./assets/js/accomodation.js"></script>
   </body>
 </html>
