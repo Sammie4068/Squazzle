@@ -1100,17 +1100,27 @@ footer {
   gap: 6px;
 }
 
-.user_profile_container .add_accom .add_accom_form_wrapper .add_accom_feature.add_location_sub {
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature.add_location_sub {
   flex-direction: row;
   gap: 24px;
 }
 
-.user_profile_container .add_accom .add_accom_form_wrapper .add_accom_feature.add_location_sub div {
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature.add_location_sub
+  div {
   width: 100%;
 }
 
-
-.user_profile_container .add_accom .add_accom_form_wrapper .add_accom_feature.add_location_sub input {
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature.add_location_sub
+  input {
   width: 100%;
 }
 
@@ -1364,10 +1374,12 @@ footer {
   gap: 6px;
 }
 
-.user_profile_container .edit_right .edit_right_wrapper .edit_right_feature h1, .user_profile_container
+.user_profile_container .edit_right .edit_right_wrapper .edit_right_feature h1,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature h1 {
+  .add_accom_feature
+  h1 {
   font-size: 28px;
   font-weight: 400;
   line-height: 35px;
@@ -1380,10 +1392,12 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  input, .user_profile_container
+  input,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature input {
+  .add_accom_feature
+  input {
   padding: 20px 16px;
   border-radius: 8px;
   background: #ffffff;
@@ -1400,10 +1414,12 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  input::placeholder, .user_profile_container
+  input::placeholder,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature input::placeholder {
+  .add_accom_feature
+  input::placeholder {
   color: #787878;
 }
 
@@ -1411,10 +1427,12 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  textarea, .user_profile_container
+  textarea,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature textarea {
+  .add_accom_feature
+  textarea {
   padding: 20px 16px;
   border-radius: 8px;
   gap: 10px;
@@ -1427,10 +1445,12 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  .edit_sub, .user_profile_container
+  .edit_sub,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature .add_sub {
+  .add_accom_feature
+  .add_sub {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1441,10 +1461,13 @@ footer {
   .edit_right_wrapper
   .edit_right_feature
   .edit_sub
-  p, .user_profile_container
+  p,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature .add_sub p {
+  .add_accom_feature
+  .add_sub
+  p {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1453,7 +1476,8 @@ footer {
   color: #03796e;
 }
 
-.user_profile_container .edit_right .edit_right_wrapper .edit_right_feature hr, .user_profile_container .add_accom .add_accom_form_wrapper hr {
+.user_profile_container .edit_right .edit_right_wrapper .edit_right_feature hr,
+.user_profile_container .add_accom .add_accom_form_wrapper hr {
   border-color: #d7d7d7;
 }
 
@@ -1461,10 +1485,12 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  .edit_accom_type, .user_profile_container
+  .edit_accom_type,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature .add_accom_type {
+  .add_accom_feature
+  .add_accom_type {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -1475,7 +1501,12 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  .edit_accom_avail {
+  .edit_accom_avail,
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_accom_avail {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1494,10 +1525,19 @@ footer {
   .edit_right_wrapper
   .edit_right_feature
   .edit_accom_avail
-  span, .user_profile_container
+  span,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature .add_accom_type span {
+  .add_accom_feature
+  .add_accom_type
+  span,
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_accom_avail
+  span {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -1519,10 +1559,21 @@ footer {
   .edit_right_feature
   .edit_accom_avail
   span
-  input[type="radio"], .user_profile_container
+  input[type="radio"],
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature .add_accom_type span  input[type="radio"] {
+  .add_accom_feature
+  .add_accom_type
+  span
+  input[type="radio"],
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_accom_avail
+  span
+  input[type="radio"] {
   width: 20px;
   height: 20px;
 }
@@ -1540,10 +1591,21 @@ footer {
   .edit_right_feature
   .edit_accom_avail
   span
-  label, .user_profile_container
+  label,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
-  .add_accom_feature .add_accom_type span label {
+  .add_accom_feature
+  .add_accom_type
+  span
+  label,
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_accom_avail
+  span
+  label {
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
@@ -1556,7 +1618,12 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  .edit_duration_wrapper {
+  .edit_duration_wrapper,
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_accom_duration_wrapper {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1566,7 +1633,12 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  .edit_duration {
+  .edit_duration,
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_accom_duration {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1581,7 +1653,11 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  .edit_rules {
+  .edit_rules, .user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_rules {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -1592,7 +1668,11 @@ footer {
   .edit_right_wrapper
   .edit_right_feature
   .edit_rules
-  .edit_rules_feat {
+  .edit_rules_feat, .user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_rules .add_rules_feat {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1623,7 +1703,11 @@ footer {
   .edit_right_feature
   .edit_rules
   .edit_rules_feat
-  textarea {
+  textarea, .user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_feature
+  .add_rules .add_rules_feat textarea {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1642,11 +1726,7 @@ footer {
   gap: 20px;
 }
 
-.user_profile_container
-  .edit_right
-  .edit_right_wrapper
-  .edit_right_feature
-  .edit_rules
+
   .add_rule {
   display: flex;
   align-items: center;
@@ -1655,11 +1735,6 @@ footer {
   padding: 12px 24px;
 }
 
-.user_profile_container
-  .edit_right
-  .edit_right_wrapper
-  .edit_right_feature
-  .edit_rules
   .add_rule
   p {
   font-size: 16px;

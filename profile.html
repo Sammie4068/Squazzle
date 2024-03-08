@@ -998,7 +998,7 @@
             </div>
             <hr />
             <div class="edit_right_feature">
-              <h1>Accommodation type</h1>
+              <h1>Accommodation rules</h1>
               <div class="edit_rules">
                 <div class="edit_rules_feat">
                   <span class="edit_rules_head">Damage to property </span>
@@ -1090,7 +1090,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
 
         <div class="add_accom_form_wrapper">
           <div class="form_container">
-            <div class="add_accom_form">
+            <div class="add_accom_form hidden">
               <div class="add_accom_feature">
                 <h1>Accommodation name</h1>
                 <input type="text" placeholder="Name" />
@@ -1133,31 +1133,110 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                 </div>
               </div>
 
-              <hr>
+              <hr />
 
               <div class="add_accom_feature">
                 <h1>Location</h1>
-              <textarea
-                cols="30"
-                rows="7"
-                placeholder="Location address"
-              ></textarea>
+                <textarea
+                  cols="30"
+                  rows="7"
+                  placeholder="Location address"
+                ></textarea>
               </div>
               <div class="add_accom_feature add_location_sub">
                 <div>
                   <h1>State</h1>
-                  <input type="text" placeholder="State">
+                  <input type="text" placeholder="State" />
                 </div>
                 <div>
                   <h1>City</h1>
-                  <input type="text" placeholder="City">
+                  <input type="text" placeholder="City" />
                 </div>
               </div>
             </div>
+            <div class="add_accom_form hidden">
+              <div class="add_accom_feature">
+                <span class="add_sub">
+                  <h1>Availability</h1>
+                  <p>Choose availability</p>
+                </span>
+
+                <div class="add_accom_avail">
+                  <span>
+                    <input name="available" type="radio" />
+                    <label>Available</label>
+                  </span>
+                  <span>
+                    <input name="available" type="radio" />
+                    <label>Not available</label>
+                  </span>
+                </div>
+              </div>
+              <div class="add_accom_feature">
+                <h1>Price</h1>
+                <input type="text" placeholder="0.00NGN" />
+              </div>
+              <hr />
+
+              <div class="add_accom_feature" style="gap: 16px">
+                <h1>Hosting duration</h1>
+                <div class="add_accom_duration_wrapper">
+                  <span class="add_accom_duration">
+                    <label>Start date</label>
+                    <input type="date" />
+                  </span>
+                  <span class="add_accom_duration">
+                    <label>End date</label>
+                    <input type="date" />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="add_accom_form hidden">
+              <div class="add_accom_feature">
+                <h1>About this accommodation</h1>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  placeholder="A brief description of the accommodation"
+                ></textarea>
+              </div>
+              <hr />
+
+              <div class="add_accom_feature">
+                <h1>Reason for listing this accommodation</h1>
+                <textarea
+                  cols="30"
+                  rows="7"
+                  placeholder="Why are you listing this accommodation?"
+                ></textarea>
+              </div>
+              <hr />
+
+              <div class="add_accom_feature">
+              <h1>Accommodation rules</h1>
+              <div class="add_rules">
+                <div class="add_rules_feat">
+                  <input type="text" placeholder="Rule name">
+                  <textarea cols="30" rows="5" placeholder="Description">
+            </textarea
+                  >
+                </div>
+                <div class="add_rule">
+                  <p>Add new rule</p>
+                  <img
+                    src="./assets/images/add_circle_outline.png"
+                    alt="icon"
+                  />
+                </div>
+              </div>
+            </div>
+
+            </div>
           </div>
           <div class="btn_wrapper">
-            <button class="btn btn-secondary">Back</button>
-            <button class="btn btn-primary">Save & Continue</button>
+            <button class="btn btn-secondary" id="prevBtn">Cancel</button>
+            <button class="btn btn-primary" id="nextBtn">Save & Continue</button>
           </div>
         </div>
       </div>

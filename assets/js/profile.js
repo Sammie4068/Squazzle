@@ -62,3 +62,39 @@ const changePassBtn = document.querySelectorAll(".change_pass");
 changePassBtn.forEach((btn) =>
   btn.addEventListener("click", () => openModal(changePassModal))
 );
+
+// Add accomodation progress
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const progressBars = document.querySelectorAll(".progress_bars span");
+const activeProgressBars = document.querySelector(".progress_bars .active");
+
+function progress() {
+  let currentPage = 1;
+
+  function movePage() {
+    if (currentPage > 1) {
+      prevBtn.innerText = "Back";
+    } else if (currentPage === 4) {
+      nextBtn.innerText = "Save & Publish";
+    }
+    else if (currentPage > 4 || currentPage < 1) {
+      return
+    }
+
+    // activeProgressBars.classList.remove("active");
+    progressBars[currentPage - 1].classList.add("active");
+    console.log(currentPage);
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentPage -= 1;
+    movePage();
+  });
+  nextBtn.addEventListener("click", () => {
+    currentPage += 1;
+    movePage();
+  });
+}
+
+progress();
