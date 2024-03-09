@@ -1030,6 +1030,16 @@ footer {
   gap: 30px;
 }
 
+.add_accom_header {
+  display: none;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #232323;
+}
+
 .user_profile_container .add_accom .add_accom_pagination {
   display: flex;
   gap: 100px;
@@ -3303,7 +3313,7 @@ footer {
     letter-spacing: 0em;
   }
 
-  /* Accom Page */
+  /* Browse Accom Page */
 
   .user_profile_container .accom_right {
     width: 100%;
@@ -3404,5 +3414,144 @@ footer {
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
+  }
+
+  /* Accom Page */
+  .accom_hero {
+    background: transparent;
+    justify-content: start;
+  }
+
+  .accom_hero_wrap {
+    gap: 15px;
+  }
+
+  .accom_hero .accom_hero_text {
+    background: url(../images/onboarding\ 2.png) center/cover no-repeat;
+    padding: 40px;
+  }
+
+  .accom_hero .accom_hero_text h1 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 35px;
+    width: 100%;
+  }
+  .accom_hero .accom_hero_text .writeup {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    width: 100%;
+  }
+  .accom_hero .accom_hero_text .question {
+    display: none;
+  }
+  .accom_hero .accom_hero_btn_wrapper {
+    flex-direction: column;
+    gap: 13px;
+    width: 90%;
+  }
+  .accom_hero .accom_hero_btn_wrapper button {
+    width: 100%;
+  }
+  .add_accom_nav {
+    display: none;
+  }
+  .user_profile_container .add_accom {
+    align-items: baseline;
+    gap: 0px;
+  }
+  .add_accom_header {
+    display: block;
+  }
+  .user_profile_container .add_accom .add_accom_pagination {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .user_profile_container .add_accom .add_accom_pagination .progress_bars {
+    gap: 10px;
+  }
+  .user_profile_container .add_accom .add_accom_form_wrapper {
+    width: 100%;
+    border: none;
+    padding: 0px;
+  }
+
+  user_profile_container
+    .edit_right
+    .edit_right_wrapper
+    .edit_right_feature
+    .edit_accom_type
+    span,
+  .user_profile_container
+    .edit_right
+    .edit_right_wrapper
+    .edit_right_feature
+    .edit_accom_avail
+    span,
+  .user_profile_container
+    .add_accom
+    .add_accom_form_wrapper
+    .add_accom_feature
+    .add_accom_type
+    span,
+  .user_profile_container
+    .add_accom
+    .add_accom_form_wrapper
+    .add_accom_feature
+    .add_accom_avail
+    span {
+    width: 50%;
+  }
+  .user_profile_container
+    .edit_right
+    .edit_right_wrapper
+    .edit_right_feature
+    h1,
+  .user_profile_container
+    .add_accom
+    .add_accom_form_wrapper
+    .add_accom_feature
+    h1 {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .user_profile_container
+    .edit_right
+    .edit_right_wrapper
+    .edit_right_feature
+    input,
+  .user_profile_container
+    .add_accom
+    .add_accom_form_wrapper
+    .add_accom_feature
+    input {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+  .user_profile_container
+    .edit_right
+    .edit_right_wrapper
+    .edit_right_feature
+    textarea,
+  .user_profile_container
+    .add_accom
+    .add_accom_form_wrapper
+    .add_accom_feature
+    textarea {
+    height: 100px;
+  }
+  .user_profile_container
+    .add_accom
+    .add_accom_form_wrapper
+    .add_accom_feature.add_location_sub {
+    flex-direction: column;
+  }
+  .user_profile_container .add_accom .btn_wrapper {
+    flex-direction: column;
+    gap: 16px;
   }
 }
