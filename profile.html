@@ -1077,20 +1077,23 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
       <div class="add_accom">
         <div class="add_accom_pagination">
           <div class="progress_bars">
-            <span class="active"></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="active" data-step="0"></span>
+            <span data-step="1"></span>
+            <span data-step="2"></span>
+            <span data-step="3"></span>
           </div>
           <div class="progress_details">
-            <p class="progress_number">1/4</p>
-            <p class="page_name">Overview</p>
+            <p class="progress_number"><span>1</span>/4</p>
+            <p class="page_name name_active">Overview</p>
+            <p class="page_name">Pricing</p>
+            <p class="page_name">Description</p>
+            <p class="page_name">Images</p>
           </div>
         </div>
 
         <div class="add_accom_form_wrapper">
           <div class="form_container">
-            <div class="add_accom_form hidden">
+            <div class="add_accom_form step_active" id="overview">
               <div class="add_accom_feature">
                 <h1>Accommodation name</h1>
                 <input type="text" placeholder="Name" />
@@ -1153,8 +1156,15 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                   <input type="text" placeholder="City" />
                 </div>
               </div>
+
+              <div class="btn_wrapper">
+            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-primary" id="nextBtn">
+              Save & Continue
+            </button>
+          </div>
             </div>
-            <div class="add_accom_form hidden">
+            <div class="add_accom_form" id="pricing">
               <div class="add_accom_feature">
                 <span class="add_sub">
                   <h1>Availability</h1>
@@ -1191,8 +1201,14 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                   </span>
                 </div>
               </div>
+              <div class="btn_wrapper">
+            <button class="btn btn-secondary" id="prevBtn">Back</button>
+            <button class="btn btn-primary" id="nextBtn">
+              Save & Continue
+            </button>
+          </div>
             </div>
-            <div class="add_accom_form hidden">
+            <div class="add_accom_form" id="description">
               <div class="add_accom_feature">
                 <h1>About this accommodation</h1>
                 <textarea
@@ -1214,30 +1230,48 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
               <hr />
 
               <div class="add_accom_feature">
-              <h1>Accommodation rules</h1>
-              <div class="add_rules">
-                <div class="add_rules_feat">
-                  <input type="text" placeholder="Rule name">
-                  <textarea cols="30" rows="5" placeholder="Description">
-            </textarea
-                  >
-                </div>
-                <div class="add_rule">
-                  <p>Add new rule</p>
-                  <img
-                    src="./assets/images/add_circle_outline.png"
-                    alt="icon"
-                  />
+                <h1>Accommodation rules</h1>
+                <div class="add_rules">
+                  <div class="add_rules_feat">
+                    <input type="text" placeholder="Rule name" />
+                    <textarea cols="30" rows="5" placeholder="Description">
+                    </textarea>
+                  </div>
+                  <div class="add_rule">
+                    <p>Add new rule</p>
+                    <img
+                      src="./assets/images/add_circle_outline.png"
+                      alt="icon"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-
-            </div>
+              <div class="btn_wrapper">
+            <button class="btn btn-secondary" id="prevBtn">Back</button>
+            <button class="btn btn-primary" id="nextBtn">
+              Save & Continue
+            </button>
           </div>
-          <div class="btn_wrapper">
+            </div>
+            <div class="add_accom_form" id="images">
+              <div class="add_accom_feature">
+                <h1>Page 4</h1>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  placeholder="A brief description of the accommodation"
+                ></textarea>
+              </div>
+              <hr />
+              <div class="btn_wrapper">
             <button class="btn btn-secondary" id="prevBtn">Cancel</button>
-            <button class="btn btn-primary" id="nextBtn">Save & Continue</button>
+            <button class="btn btn-primary">
+              Save & Publish
+            </button>
           </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>

@@ -64,37 +64,77 @@ changePassBtn.forEach((btn) =>
 );
 
 // Add accomodation progress
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+const prevBtns = document.querySelectorAll("#prevBtn");
+const nextBtns = document.querySelectorAll("#nextBtn");
 const progressBars = document.querySelectorAll(".progress_bars span");
 const activeProgressBars = document.querySelector(".progress_bars .active");
+const addAccomPages = document.querySelectorAll(".add_accom_form");
+const pageNames = document.querySelectorAll(".page_name")
+const progressFig = document.querySelector(".progress_number span");
+let progressNum = parseInt(progressFig.textContent);
 
-function progress() {
-  let currentPage = 1;
+let stepNum = 0;
 
-  function movePage() {
-    if (currentPage > 1) {
-      prevBtn.innerText = "Back";
-    } else if (currentPage === 4) {
-      nextBtn.innerText = "Save & Publish";
-    }
-    else if (currentPage > 4 || currentPage < 1) {
-      return
-    }
-
-    // activeProgressBars.classList.remove("active");
-    progressBars[currentPage - 1].classList.add("active");
-    console.log(currentPage);
-  }
-
-  prevBtn.addEventListener("click", () => {
-    currentPage -= 1;
-    movePage();
+nextBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    stepNum++;
+    progressNum++;
+    updateSteps();
+    updateProgressbar();
   });
-  nextBtn.addEventListener("click", () => {
-    currentPage += 1;
-    movePage();
+});
+
+prevBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    stepNum--;
+    progressNum--;
+    updateSteps();
+    updateProgressbar();
   });
+});
+
+function updateSteps() {
+  addAccomPages.forEach((page) => {
+    page.classList.contains("step_active") &&
+      page.classList.remove("step_active");
+  });
+
+  addAccomPages[stepNum].classList.add("step_active");
 }
 
-progress();
+function updatePageName() {
+  pageNames.forEach((pageName) => {
+    pageName.classList.contains("name_active") &&
+      pageName.classList.remove("name_active");
+  });
+
+  pageNames[stepNum].classList.add("name_active");
+}
+
+function updateProgressbar() {
+  progressBars.forEach((progressStep, idx) => {
+    if (idx < stepNum + 1) {
+      progressStep.classList.add("active");
+    } else {
+      progressStep.classList.remove("active");
+    }
+  });
+  progressFig.textContent = progressNum;
+  updatePageName();
+}
+
+progressBars.forEach((progressStep, idx) => {
+  progressStep.addEventListener("click", () => {
+    stepNum = parseInt(progressStep.dataset.step);
+    progressNum = parseInt(progressStep.dataset.step);
+    updateSteps();
+    if (idx < stepNum + 1) {
+      progressStep.classList.add("active");
+    } else {
+        progressStep.classList.remove("active");
+      }
+      // console.log(idx, stepNum);
+       progressFig.textContent = progressNum + 1;
+       updatePageName();
+    });
+});

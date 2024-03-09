@@ -1080,7 +1080,16 @@ footer {
   .add_accom_pagination
   .progress_details
   .page_name {
+  display: none;
   line-height: 18px;
+}
+
+.user_profile_container
+  .add_accom
+  .add_accom_pagination
+  .progress_details
+  .page_name.name_active {
+  display: block;
 }
 
 .user_profile_container .add_accom .add_accom_form_wrapper {
@@ -1092,6 +1101,7 @@ footer {
   flex-direction: column;
   gap: 64px;
   width: 50%;
+  overflow: hidden;
 }
 
 .user_profile_container .add_accom .add_accom_form_wrapper .add_accom_feature {
@@ -1125,9 +1135,16 @@ footer {
 }
 
 .user_profile_container .add_accom .add_accom_form_wrapper .add_accom_form {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 40px;
+}
+
+.user_profile_container
+  .add_accom
+  .add_accom_form_wrapper
+  .add_accom_form.step_active {
+  display: flex;
 }
 
 .user_profile_container .add_accom .btn_wrapper {
@@ -1653,7 +1670,8 @@ footer {
   .edit_right
   .edit_right_wrapper
   .edit_right_feature
-  .edit_rules, .user_profile_container
+  .edit_rules,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
   .add_accom_feature
@@ -1668,11 +1686,13 @@ footer {
   .edit_right_wrapper
   .edit_right_feature
   .edit_rules
-  .edit_rules_feat, .user_profile_container
+  .edit_rules_feat,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
   .add_accom_feature
-  .add_rules .add_rules_feat {
+  .add_rules
+  .add_rules_feat {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1703,11 +1723,14 @@ footer {
   .edit_right_feature
   .edit_rules
   .edit_rules_feat
-  textarea, .user_profile_container
+  textarea,
+.user_profile_container
   .add_accom
   .add_accom_form_wrapper
   .add_accom_feature
-  .add_rules .add_rules_feat textarea {
+  .add_rules
+  .add_rules_feat
+  textarea {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1726,8 +1749,7 @@ footer {
   gap: 20px;
 }
 
-
-  .add_rule {
+.add_rule {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1735,8 +1757,7 @@ footer {
   padding: 12px 24px;
 }
 
-  .add_rule
-  p {
+.add_rule p {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
