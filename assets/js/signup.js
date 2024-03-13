@@ -1,5 +1,6 @@
 "use strict";
 
+const baseURL = "https://stayshare.onrender.com";
 const phoneInput = document.getElementById("phone");
 window.intlTelInput(phoneInput, {
   initialCountry: "auto",
@@ -31,32 +32,22 @@ const emailMsg = document.getElementById("emailMsg");
 const phoneMsg = document.getElementById("phoneMsg");
 
 const continueBtn = document.getElementById("continue_btn");
+const createAccountBtn = document.getElementById("createAccountBtn");
 
 const emailPattern =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-function updateDisplay() {
-  const state = window.location.hash.slice(1);
-  switch (state) {
-    case "":
-      infoForm.classList.remove("hidden");
-      passwordForm.classList.add("hidden");
-      formMsg.innerText = "It is quick and simple.";
-      break;
-    case "password":
-      infoForm.classList.add("hidden");
-      passwordForm.classList.remove("hidden");
-      formMsg.innerText =
-        "Use a minimum of 8 characters, including uppercase letters, lowercase letters and a number.";
-      break;
-
-    default:
-      break;
-  }
+// Loading spinner
+function renderSpinner(parentEle) {
+  const markup = `<div class="spinner"></div>
+`;
+  parentEle.insertAdjacentHTML("beforeend", markup);
 }
 
-window.addEventListener("hashchange", updateDisplay);
-window.addEventListener("load", updateDisplay);
+function removeSpinner() {
+  const spinner = document.querySelector(".spinner");
+  spinner.classList.add("hidden");
+}
 
 function nameValidation(ele, eleMsg) {
   if (ele.value === "") {
@@ -76,9 +67,22 @@ lastNameInput.addEventListener("input", () =>
   nameValidation(lastNameInput, lnMsg)
 );
 
-phoneInput.addEventListener("input", () => {
-  nameValidation(phoneInput, phoneMsg);
-});
+function phoneValidation() {
+  if (phoneInput.value === "") {
+    phoneMsg.classList.remove("hidden");
+    phoneInput.classList.add("input_error");
+  } else if (phoneInput.value.trim().length !== 10) {
+    phoneMsg.innerText = "Phone number must be 10 digits";
+    phoneMsg.classList.remove("hidden");
+    phoneInput.classList.add("input_error");
+  } else {
+    phoneMsg.classList.add("hidden");
+    phoneInput.classList.remove("input_error");
+    return true;
+  }
+}
+
+phoneInput.addEventListener("input", phoneValidation);
 
 function emailValidation() {
   if (emailInput.value === "") {
@@ -101,9 +105,13 @@ continueBtn.addEventListener("click", (e) => {
     nameValidation(firstNameInput, fnMsg) &&
     nameValidation(lastNameInput, lnMsg) &&
     emailValidation() &&
-    nameValidation(phoneInput, phoneMsg)
-  )
-    window.location.hash = `#password`;
+    phoneValidation()
+  ) {
+    infoForm.classList.add("hidden");
+    passwordForm.classList.remove("hidden");
+    formMsg.innerText =
+      "Use a minimum of 8 characters, including uppercase letters, lowercase letters and a number.";
+  }
 });
 
 // Confirm Password
@@ -203,8 +211,16 @@ function confirmPass() {
 // Form Submission
 signUpForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  renderSpinner(createAccountBtn);
+  const signupData = {
+    firstName: firstNameInput.value,
+    lastName: lastNameInput.value,
+    email: emailInput.value,
+    phoneNumber: phoneInput.value,
+    password: passwordInput.value,
+  };
   if (passwordValidation() && confirmPass()) {
-    alert("Thank God");
+    registerUser(signupData);
   }
 });
 
@@ -215,3 +231,35 @@ cancelBtn.addEventListener("click", (e) => {
   window.location.hash = `#`;
   location.reload();
 });
+
+// Api function
+const feedbackModal = document.getElementById("feedback");
+const feedback = document.getElementById("feedback_text");
+async function registerUser(data) {
+  try {
+    const res = await fetch(
+      "https://stayshare.onrender.com/api/v1/auth/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await res.json();
+    console.log(result);
+    if (result.success == false) {
+      feedback.innerText = result.error;
+      feedbackModal.classList.remove("hidden");
+      removeSpinner();
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 2000);
+    } else if (result.status == "success"){
+      window.location = `auth.html#email-sent`;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}

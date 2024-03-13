@@ -122,19 +122,3 @@ function updateProgressbar() {
   progressFig.textContent = progressNum;
   updatePageName();
 }
-
-progressBars.forEach((progressStep, idx) => {
-  progressStep.addEventListener("click", () => {
-    stepNum = parseInt(progressStep.dataset.step);
-    progressNum = parseInt(progressStep.dataset.step);
-    updateSteps();
-    if (idx < stepNum + 1) {
-      progressStep.classList.add("active");
-    } else {
-        progressStep.classList.remove("active");
-      }
-      // console.log(idx, stepNum);
-       progressFig.textContent = progressNum + 1;
-       updatePageName();
-    });
-});

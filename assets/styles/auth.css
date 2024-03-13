@@ -45,7 +45,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked::before {
-  content: '\2713'; 
+  content: "\2713";
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +87,9 @@ main {
 .prr_wrapper,
 .forgot_password_success,
 .pass_reset_success,
-.email_sent, .verify_success, .verify_failure {
+.email_sent,
+.verify_success,
+.verify_failure {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -177,7 +179,9 @@ main {
   margin-top: 15px;
 }
 
-#prs_btn, #vs_btn, #vf_btn {
+#prs_btn,
+#vs_btn,
+#vf_btn {
   width: 80%;
 }
 
@@ -395,7 +399,6 @@ section {
   margin-bottom: 10px;
 }
 .form-check-input {
-  background-color: #016d71;
   border-color: #016d71;
   cursor: pointer;
 }
@@ -447,6 +450,8 @@ section {
   border: 2px solid #016d71;
   background: #016d71;
   color: #cce6e7;
+  display: flex;
+  justify-content: center;
 }
 
 .btn:hover,
@@ -523,6 +528,81 @@ section {
   display: none;
 }
 
+/* Spinner */
+.spinner {
+  width: 20%;
+  position: relative;
+  animation: spin 3s linear infinite;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 4px solid #cce6e7;
+  border-top: 4px solid #016d71;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinRing 1.5s ease-out infinite;
+}
+
+.spinner::before {
+  filter: blur(10px);
+}
+
+.feedback_modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  background-color: transparent;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  transition: all 0.5s ease-out;
+  font-family: "Poppins", sans-serif;
+}
+
+.feedback_modal span {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  gap: 12px;
+}
+
+.feedback_modal .success {
+  background: #def2e4;
+  border: 1px solid #3d7d50;
+}
+
+.feedback_modal .error {
+  background: #f8dbd9;
+  border: 1px solid #91332d;
+}
+
+@keyframes spinRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
   section {
@@ -562,6 +642,22 @@ section {
   .to_signup {
     font-size: 14px;
     line-height: 22px;
+  }
+
+  input[type="checkbox"] {
+    width: 35px;
+    height: 22px;
+    border: 2px solid #323232;
+  }
+
+  .terms-check label {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #353535;
   }
 
   header {
@@ -647,7 +743,8 @@ section {
     line-height: 18px;
   }
 
-  #pr_resendBtn, #ev_resendBtn {
+  #pr_resendBtn,
+  #ev_resendBtn {
     font-size: 14px;
     line-height: 18px;
     border: none;
@@ -665,12 +762,17 @@ section {
     line-height: 18px;
   }
 
-  #prs_btn, #vs_btn, #vf_btn {
+  #prs_btn,
+  #vs_btn,
+  #vf_btn {
     width: 100%;
     font-size: 14px;
     font-weight: 700;
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
+  }
+  .feedback_modal {
+    width: 95%;
   }
 }

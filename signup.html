@@ -157,7 +157,11 @@
                 </label>
               </div>
 
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="createAccountBtn"
+              >
                 Create account
               </button>
 
@@ -170,6 +174,20 @@
         </div>
       </div>
     </section>
+
+    <div class="feedback_modal hidden">
+      <span class="success">
+        <img src="./assets/images/error_green.png" alt="feedback" />
+        <p>Successful</p>
+      </span>
+    </div>
+
+     <div class="feedback_modal hidden" id="feedback">
+      <span class="error">
+        <img src="./assets/images/error_red.png" alt="feedback" />
+        <p id="feedback_text">User name already exists</p>
+      </span>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.19/build/js/intlTelInput.min.js"></script>
 

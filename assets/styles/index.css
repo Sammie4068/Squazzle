@@ -3533,18 +3533,6 @@ footer {
     line-height: 18px;
   }
   .user_profile_container
-    .edit_right
-    .edit_right_wrapper
-    .edit_right_feature
-    textarea,
-  .user_profile_container
-    .add_accom
-    .add_accom_form_wrapper
-    .add_accom_feature
-    textarea {
-    height: 100px;
-  }
-  .user_profile_container
     .add_accom
     .add_accom_form_wrapper
     .add_accom_feature.add_location_sub {
