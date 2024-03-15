@@ -111,7 +111,46 @@ async function getResetCode(data) {
     removeSpinner();
     if (result.success == true) {
       window.location.hash = "#verify-email-sent";
-      location.reload();
+      userEmailUpdate();
+    } else if (result.success == false) {
+      renderError(result.error);
+    }
+  } catch (error) {
+    renderError("Oops! Something went wrong");
+  }
+}
+
+const resendBtn = document.querySelectorAll(".resendBtn");
+
+resendBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    renderSpinner(btn);
+    const resendCodeData = {
+      email: localStorage.getItem("email"),
+    };
+    resendResetCode(resendCodeData);
+  });
+});
+
+async function resendResetCode(data) {
+  try {
+    const res = await fetch(
+      "https://stayshare.onrender.com/api/v1/auth/resendOTP",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await res.json();
+    console.log(result);
+    removeSpinner();
+    if (result.success == true) {
+      window.location.hash = "#verify-email-sent";
+      userEmailUpdate();
     } else if (result.success == false) {
       renderError(result.error);
     }
@@ -180,7 +219,6 @@ const passwordResetCodeForm = document.getElementById("passwordResetCodeForm");
 passwordResetCodeForm.addEventListener("submit", (e) => {
   e.preventDefault();
   window.location.hash = "password-reset-request";
-
 });
 
 // New password
@@ -282,7 +320,7 @@ const prrResetBtn = document.getElementById("prr_reset_btn");
 
 prrForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  
+
   if (passwordValidation() && confirmPass()) {
     renderSpinner(prrResetBtn);
     const otp = getOtpValue();
@@ -293,7 +331,6 @@ prrForm.addEventListener("submit", (e) => {
       email: userEmail,
     };
     resetPassword(resetPasswordData);
-    // window.location.hash = "#password-reset-success";
   }
 });
 
@@ -302,7 +339,7 @@ async function resetPassword(data) {
     const res = await fetch(
       "https://stayshare.onrender.com/api/v1/auth/resetPassword",
       {
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
@@ -311,13 +348,13 @@ async function resetPassword(data) {
     );
     const result = await res.json();
     console.log(result);
-    // if (result.success == false) {
-    //   window.location.hash = "#verify-failure";
-    // } else if (result.status == "success") {
-    //   window.location.hash = "#verify-success";
-    // }
+    if (result.success == false) {
+      renderError(result.message);
+    } else if (result.success == true) {
+      window.location.hash = "#password-reset-success";
+    }
   } catch (error) {
-    console.log(error);
+    renderError("Oops! Something went wrong");
   }
 }
 
@@ -331,7 +368,7 @@ function renderSpinner(parentEle) {
 
 function removeSpinner() {
   const spinner = document.querySelector(".spinner");
-  spinner && spinner.classList.add("hidden");
+  spinner.classList.toggle("hidden");
 }
 
 const feedbackModal = document.getElementById("feedback");
@@ -342,7 +379,8 @@ function renderError(errMsg) {
   feedbackModal.classList.remove("hidden");
   removeSpinner();
   setTimeout(() => {
-    location.reload();
+    // location.reload();
+    feedbackModal.classList.add("hidden");
   }, 2000);
 }
 
@@ -354,12 +392,18 @@ userEmailAddr.forEach((email) => {
   email.textContent = userEmail;
 });
 
+function userEmailUpdate() {
+  userEmailAddr.forEach((email) => {
+    email.textContent = localStorage.getItem("email");
+  });
+}
+
 const evConfirmBtn = document.getElementById("ev_confirm_btn");
 
 evConfirmBtn.addEventListener("click", (e) => {
   e.preventDefault();
   renderSpinner(evConfirmBtn);
-  
+
   const otp = getOtpValue();
   const checkOtpData = {
     otp,
@@ -381,7 +425,6 @@ async function checkOtp(data) {
       }
     );
     const result = await res.json();
-    console.log(result);
     removeSpinner();
     if (result.success == false) {
       window.location.hash = "#verify-failure";
@@ -389,7 +432,6 @@ async function checkOtp(data) {
       window.location.hash = "#verify-success";
     }
   } catch (error) {
-    console.log(error);
+    renderError("Oops! Something went wrong");
   }
 }
-
