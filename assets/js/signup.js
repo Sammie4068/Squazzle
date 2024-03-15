@@ -41,12 +41,13 @@ const emailPattern =
 function renderSpinner(parentEle) {
   const markup = `<div class="spinner"></div>
 `;
-  parentEle.insertAdjacentHTML("beforeend", markup);
+  const spinner = document.querySelector(".spinner");
+  spinner || parentEle.insertAdjacentHTML("beforeend", markup);
 }
 
 function removeSpinner() {
   const spinner = document.querySelector(".spinner");
-  spinner.classList.add("hidden");
+  spinner && spinner.classList.add("hidden");
 }
 
 function nameValidation(ele, eleMsg) {
@@ -235,6 +236,12 @@ cancelBtn.addEventListener("click", (e) => {
 // Api function
 const feedbackModal = document.getElementById("feedback");
 const feedback = document.getElementById("feedback_text");
+
+function renderError(errMsg) {
+  feedback.innerText = errMsg;
+  feedbackModal.classList.remove("hidden");
+  removeSpinner();
+}
 async function registerUser(data) {
   try {
     const res = await fetch(
@@ -248,18 +255,17 @@ async function registerUser(data) {
       }
     );
     const result = await res.json();
-    console.log(result);
     if (result.success == false) {
-      feedback.innerText = result.error;
-      feedbackModal.classList.remove("hidden");
-      removeSpinner();
-      // setTimeout(() => {
-      //   location.reload();
-      // }, 2000);
-    } else if (result.status == "success"){
+      renderError(result.error);
+    } else if (result.status == "success") {
+      const userData = result.data.user;
+      localStorage.setItem("firstName", userData.firstName);
+      localStorage.setItem("lastName", userData.lastName);
+      localStorage.setItem("email", userData.email);
+      localStorage.setItem("phone", userData.phoneNumber);
       window.location = `auth.html#email-sent`;
     }
   } catch (error) {
-    console.log(error);
+    renderError("internal server error");
   }
 }

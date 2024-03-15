@@ -322,6 +322,11 @@ section {
   background: transparent;
 }
 
+.phone-input input::placeholder {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .iti--allow-dropdown input.iti__tel-input,
 .iti--allow-dropdown input.iti__tel-input[type="text"],
 .iti--allow-dropdown input.iti__tel-input[type="tel"],
@@ -397,6 +402,7 @@ section {
   justify-content: space-between;
   text-wrap: nowrap;
   margin-bottom: 10px;
+  gap: 8px;
 }
 .form-check-input {
   border-color: #016d71;
@@ -645,9 +651,16 @@ section {
   }
 
   input[type="checkbox"] {
+    border: 2px solid #323232;
+  }
+
+  .terms-check input {
     width: 35px;
     height: 22px;
-    border: 2px solid #323232;
+  }
+
+  .form_wrapper form .form_check label {
+    color: #787878;
   }
 
   .terms-check label {

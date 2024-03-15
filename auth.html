@@ -77,9 +77,12 @@
                 Continue
               </button></a
             >
-            <button class="btn btn-secondary cancel_btn" id="fp_resendBtn">
-              Reset code
+            <a href="#verify-email">
+              <button class="btn btn-secondary cancel_btn" id="fp_resendBtn">
+              Resend code
             </button>
+            </a>
+            
           </div>
         </div>
 
@@ -89,10 +92,10 @@
             <span class="pr_heading">
               <h1>Password reset</h1>
               <p>Please enter the 6-digit code sent to</p>
-              <span>zhara@gmail.com</span>
+              <span id="userEmailAddr">zhara@gmail.com</span>
             </span>
 
-            <form class="verify_code_form">
+            <form class="verify_code_form" id="passwordResetCodeForm">
               <div class="input_box_field">
                 <input class="input_box" type="number" required />
                 <input class="input_box" type="number" disabled required />
@@ -106,9 +109,10 @@
                 Continue
               </button>
             </form>
-            <button class="btn btn-secondary cancel_btn" id="pr_resendBtn">
+            <a href="#verify-email"><button class="btn btn-secondary cancel_btn" id="pr_resendBtn">
               Resend code
             </button>
+            </a>
           </div>
         </div>
 
@@ -123,7 +127,7 @@
               </p>
             </span>
 
-            <form class="prr_form">
+            <form class="prr_form" id="passResetForm">
               <div class="mb-3 input">
                 <label for="passwordInput" class="form-label"
                   >Password <i class="fa-solid fa-asterisk"></i
@@ -194,11 +198,11 @@
             <span class="es_heading">
               <h1>Email has been sent!</h1>
               <p class="first_p">
-                We have sent a 6 digit PIN to <span>zhara@gmail.com.</span>Click
+                We have sent a 6 digit PIN to <span id="userEmailAddr"></span>Click
                 on the button to confirm the validity of your email address.
               </p>
               <p class="second_p">
-                We have sent a 6 digit PIN to <span>zhara@gmail.com.</span> <p class="pp">Check
+                We have sent a 6 digit PIN to <span id="userEmailAddr"></span> <p class="pp">Check
                 your email to get code.</p>
               </p>
             </span>
@@ -216,7 +220,7 @@
             <span class="pr_heading">
               <h1>Email Verification</h1>
               <p>Please enter the 6-digit code sent to</p>
-              <span>zhara@gmail.com</span>
+              <span id="userEmailAddr">zhara@gmail.com</span>
             </span>
 
             <form class="verify_code_form">
@@ -270,9 +274,16 @@
             </button></a
           >
         </div>
-        
+
       </div>
     </main>
+
+    <div class="feedback_modal hidden" id="feedback">
+      <span class="error">
+        <img src="./assets/images/error_red.png" alt="feedback" />
+        <p id="feedback_text"></p>
+      </span>
+    </div>
 
     <script src="./assets/js/auth.js"></script>
   </body>

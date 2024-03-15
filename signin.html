@@ -34,10 +34,10 @@
       <div class="form_section">
         <div class="form_wrapper">
           <span>
-            <h1>Welcome back!</h1>
-            <p>We are thrilled to see you</p>
+            <h1 id="heading">Welcome back!</h1>
+            <p id="heading_text">We are thrilled to see you</p>
           </span>
-          <form>
+          <form id="signin_form">
             <div class="mb-3 input">
               <label for="email" class="form-label"
                 >Email <i class="fa-solid fa-asterisk"></i
@@ -45,7 +45,7 @@
               <input
                 type="email"
                 class="form-control"
-                id="email"
+                id="emailInput"
                 aria-describedby="emailMsg"
                 placeholder="Email"
               />
@@ -77,7 +77,7 @@
               <a href="auth.html#verify-email">Forgot Password?</a>
             </div>
 
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary" id="signinBtn">Sign in</button>
           </form>
           <button class="btn btn-secondary">Cancel</button>
           <p class="to_signup">New to squazzle account? <a href="signup.html">Sign up</a></p>

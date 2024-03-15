@@ -6,7 +6,7 @@ const forgotPassSent = document.querySelector(".forgot_password_success");
 const passwordReset = document.querySelector(".password_reset");
 const passwordResetReq = document.querySelector(".prr_wrapper");
 const passwordResetSuccess = document.querySelector(".pass_reset_success");
-const emailSent = document.querySelector(".email_sent")
+const emailSent = document.querySelector(".email_sent");
 const emailCode = document.querySelector(".email-code");
 const emailVerifySuccess = document.querySelector(".verify_success");
 const emailVerifyFailure = document.querySelector(".verify_failure");
@@ -57,34 +57,68 @@ window.addEventListener("hashchange", updateDisplay);
 window.addEventListener("load", updateDisplay);
 
 // Form Validation for forgot password
-const inputEmailForm = document.querySelector(".fp_form");
-const inputEmail = document.getElementById("fp_email");
-const inputEmailMsg = document.getElementById("fp_emailMsg");
+const verifyEmailForm = document.querySelector(".fp_form");
+const verifyEmail = document.getElementById("fp_email");
+const verifyEmailMsg = document.getElementById("fp_emailMsg");
 
 const emailPattern =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function emailValidation() {
-  if (inputEmail.value === "") {
-    inputEmailMsg.classList.remove("hidden");
-    inputEmail.classList.add("input_error");
-  } else if (!inputEmail.value.match(emailPattern)) {
-    inputEmailMsg.classList.remove("hidden");
-    inputEmail.classList.add("input_error");
+  if (verifyEmail.value === "") {
+    verifyEmailMsg.classList.remove("hidden");
+    verifyEmail.classList.add("input_error");
+  } else if (!verifyEmail.value.match(emailPattern)) {
+    verifyEmailMsg.classList.remove("hidden");
+    verifyEmail.classList.add("input_error");
   } else {
-    inputEmailMsg.classList.add("hidden");
-    inputEmail.classList.remove("input_error");
+    verifyEmailMsg.classList.add("hidden");
+    verifyEmail.classList.remove("input_error");
     return true;
   }
 }
-inputEmail.addEventListener("input", emailValidation);
+verifyEmail.addEventListener("input", emailValidation);
 
-inputEmailForm.addEventListener("submit", (e) => {
+verifyEmailForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  localStorage.setItem("email", verifyEmail.value);
+  const verifyEmailData = {
+    email: verifyEmail.value,
+  };
   if (emailValidation()) {
-    window.location.hash = "#verify-email-sent";
+    renderSpinner(getResetCodeBtn);
+    getResetCode(verifyEmailData);
   }
 });
+
+// Verify-email for forgot password
+const getResetCodeBtn = document.getElementById("reset_btn");
+
+async function getResetCode(data) {
+  try {
+    const res = await fetch(
+      "https://stayshare.onrender.com/api/v1/auth/forgotPassword",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await res.json();
+    console.log(result);
+    removeSpinner();
+    if (result.success == true) {
+      window.location.hash = "#verify-email-sent";
+      location.reload();
+    } else if (result.success == false) {
+      renderError(result.error);
+    }
+  } catch (error) {
+    renderError("Oops! Something went wrong");
+  }
+}
 
 // Password Reset
 const inputBoxes = document.querySelectorAll(".input_box");
@@ -123,12 +157,30 @@ inputBoxes.forEach((input, index1) => {
 
 window.addEventListener("load", () => inputBoxes[0].focus());
 
+function getOtpValue() {
+  let otpArr = [];
+  inputBoxes.forEach((input) => {
+    otpArr.push(input.value);
+    otpArr.filter((item) => (item === "" ? otpArr.pop() : item));
+  });
+  return otpArr.join("");
+}
+
 const verifyPassForm = document.querySelector(".verify_code_form");
 const passResetReq = document.querySelector(".pass_reset_req");
 
 verifyPassForm.addEventListener("submit", (e) => {
   e.preventDefault();
   window.location.hash = "#password-reset-request";
+});
+
+const passResetContBtn = document.getElementById("pr_cont_btn");
+const passwordResetCodeForm = document.getElementById("passwordResetCodeForm");
+
+passwordResetCodeForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  window.location.hash = "password-reset-request";
+
 });
 
 // New password
@@ -226,10 +278,118 @@ function confirmPass() {
 }
 
 const prrForm = document.querySelector(".prr_form");
+const prrResetBtn = document.getElementById("prr_reset_btn");
 
 prrForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  
   if (passwordValidation() && confirmPass()) {
-    window.location.hash = "#password-reset-success";
+    renderSpinner(prrResetBtn);
+    const otp = getOtpValue();
+    const resetPasswordData = {
+      OTP: otp,
+      newPassword: passwordInput.value,
+      confirmNewPassword: confirmPasswordInput.value,
+      email: userEmail,
+    };
+    resetPassword(resetPasswordData);
+    // window.location.hash = "#password-reset-success";
   }
 });
+
+async function resetPassword(data) {
+  try {
+    const res = await fetch(
+      "https://stayshare.onrender.com/api/v1/auth/resetPassword",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await res.json();
+    console.log(result);
+    // if (result.success == false) {
+    //   window.location.hash = "#verify-failure";
+    // } else if (result.status == "success") {
+    //   window.location.hash = "#verify-success";
+    // }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Utilities
+function renderSpinner(parentEle) {
+  const markup = `<div class="spinner"></div>
+`;
+  const spinner = document.querySelector(".spinner");
+  spinner || parentEle.insertAdjacentHTML("beforeend", markup);
+}
+
+function removeSpinner() {
+  const spinner = document.querySelector(".spinner");
+  spinner && spinner.classList.add("hidden");
+}
+
+const feedbackModal = document.getElementById("feedback");
+const feedback = document.getElementById("feedback_text");
+
+function renderError(errMsg) {
+  feedback.innerText = errMsg;
+  feedbackModal.classList.remove("hidden");
+  removeSpinner();
+  setTimeout(() => {
+    location.reload();
+  }, 2000);
+}
+
+// Email verification page
+const userEmailAddr = document.querySelectorAll("#userEmailAddr");
+const userEmail = localStorage.getItem("email");
+
+userEmailAddr.forEach((email) => {
+  email.textContent = userEmail;
+});
+
+const evConfirmBtn = document.getElementById("ev_confirm_btn");
+
+evConfirmBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  renderSpinner(evConfirmBtn);
+  
+  const otp = getOtpValue();
+  const checkOtpData = {
+    otp,
+    email: userEmail,
+  };
+  checkOtp(checkOtpData);
+});
+
+async function checkOtp(data) {
+  try {
+    const res = await fetch(
+      "https://stayshare.onrender.com/api/v1/auth/activateAccount",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await res.json();
+    console.log(result);
+    removeSpinner();
+    if (result.success == false) {
+      window.location.hash = "#verify-failure";
+    } else if (result.status == "success") {
+      window.location.hash = "#verify-success";
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
