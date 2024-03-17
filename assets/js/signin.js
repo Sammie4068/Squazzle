@@ -70,7 +70,17 @@ async function signinUser(data) {
     const result = await res.json();
     console.log(result);
     if (result.success == false) {
-      renderError(result.error);
+      renderError("Invalid Email or Password");
+    } else if (result.success == true) {
+      const userInfo = result.response.data.user;
+      const jsonString = JSON.stringify(userInfo);
+      const parsedObject = JSON.parse(jsonString);
+      for (const key in parsedObject) {
+        if (parsedObject.hasOwnProperty(key)) {
+          localStorage.setItem(key, parsedObject[key]);
+        }
+      }
+      window.location = "index.html"
     }
   } catch (error) {
     renderError(error);

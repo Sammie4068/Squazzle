@@ -148,12 +148,12 @@ async function resendResetCode(data) {
     const result = await res.json();
     console.log(result);
     removeSpinner();
-    if (result.success == true) {
-      window.location.hash = "#verify-email-sent";
-      userEmailUpdate();
-    } else if (result.success == false) {
-      renderError(result.error);
-    }
+    // if (result.success == true) {
+    //   window.location.hash = "#verify-email-sent";
+    //   userEmailUpdate();
+    // } else if (result.success == false) {
+    //   renderError(result.error);
+    // }
   } catch (error) {
     renderError("Oops! Something went wrong");
   }
@@ -347,7 +347,6 @@ async function resetPassword(data) {
       }
     );
     const result = await res.json();
-    console.log(result);
     if (result.success == false) {
       renderError(result.message);
     } else if (result.success == true) {
@@ -406,7 +405,7 @@ evConfirmBtn.addEventListener("click", (e) => {
 
   const otp = getOtpValue();
   const checkOtpData = {
-    otp,
+    OTP: otp,
     email: userEmail,
   };
   checkOtp(checkOtpData);

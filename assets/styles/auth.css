@@ -371,9 +371,6 @@ section {
   letter-spacing: 0em;
   text-align: left;
   color: #91332d;
-}
-
-.prr_form .password_msg {
   display: flex;
   flex-direction: column;
 }
@@ -633,6 +630,9 @@ section {
   }
   .form_wrapper span {
     margin-bottom: 20px;
+  }
+  .password_msg span {
+    margin-bottom: 0px;
   }
   .form_wrapper span h1 {
     font-size: 16px;
