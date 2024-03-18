@@ -578,14 +578,23 @@ section {
   gap: 12px;
 }
 
+.feedback_modal span svg {
+  width: 20px;
+  height: 20px;
+}
+
 .feedback_modal .success {
   background: #def2e4;
   border: 1px solid #3d7d50;
+  color: #3d7d50;
+  stroke: #3d7d50;
 }
 
 .feedback_modal .error {
   background: #f8dbd9;
   border: 1px solid #91332d;
+  stroke: #91332d;
+  color: #91332d;
 }
 
 @keyframes spinRing {

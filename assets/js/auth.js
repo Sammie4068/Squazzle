@@ -113,10 +113,10 @@ async function getResetCode(data) {
       window.location.hash = "#verify-email-sent";
       userEmailUpdate();
     } else if (result.success == false) {
-      renderError(result.error);
+      renderFeedback(result.error, "error");
     }
   } catch (error) {
-    renderError("Oops! Something went wrong");
+    renderFeedback("Oops! Something went wrong", "error");
   }
 }
 
@@ -146,16 +146,15 @@ async function resendResetCode(data) {
       }
     );
     const result = await res.json();
-    console.log(result);
-    removeSpinner();
-    // if (result.success == true) {
-    //   window.location.hash = "#verify-email-sent";
-    //   userEmailUpdate();
-    // } else if (result.success == false) {
-    //   renderError(result.error);
-    // }
+    removeSpinner()
+    if (result.success == true) {
+      renderFeedback(result.message, "success");
+      userEmailUpdate();
+    } else if (result.success == false) {
+      renderFeedback(result.error, "error");
+    }
   } catch (error) {
-    renderError("Oops! Something went wrong");
+    renderFeedback("Oops! Something went wrong", "error");
   }
 }
 
@@ -347,13 +346,14 @@ async function resetPassword(data) {
       }
     );
     const result = await res.json();
+    removeSpinner()
     if (result.success == false) {
-      renderError(result.message);
+      renderFeedback(result.message, "error");
     } else if (result.success == true) {
       window.location.hash = "#password-reset-success";
     }
   } catch (error) {
-    renderError("Oops! Something went wrong");
+    renderFeedback("Oops! Something went wrong", "error");
   }
 }
 
@@ -371,14 +371,14 @@ function removeSpinner() {
 }
 
 const feedbackModal = document.getElementById("feedback");
+const feedbackStatus = document.getElementById("feedback_status");
 const feedback = document.getElementById("feedback_text");
 
-function renderError(errMsg) {
-  feedback.innerText = errMsg;
+function renderFeedback(msg, status) {
+  feedback.innerText = msg;
+   feedbackStatus.classList.add(status);
   feedbackModal.classList.remove("hidden");
-  removeSpinner();
   setTimeout(() => {
-    // location.reload();
     feedbackModal.classList.add("hidden");
   }, 2000);
 }
@@ -431,6 +431,6 @@ async function checkOtp(data) {
       window.location.hash = "#verify-success";
     }
   } catch (error) {
-    renderError("Oops! Something went wrong");
+    renderFeedback("Oops! Something went wrong", "error");
   }
 }

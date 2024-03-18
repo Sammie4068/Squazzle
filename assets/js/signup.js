@@ -235,12 +235,16 @@ cancelBtn.addEventListener("click", (e) => {
 
 // Api function
 const feedbackModal = document.getElementById("feedback");
+const feedbackStatus = document.getElementById("feedback_status");
 const feedback = document.getElementById("feedback_text");
 
-function renderError(errMsg) {
-  feedback.innerText = errMsg;
+function renderFeedback(msg, status) {
+  feedback.innerText = msg;
+  feedbackStatus.classList.add(status);
   feedbackModal.classList.remove("hidden");
-  removeSpinner();
+  setTimeout(() => {
+    feedbackModal.classList.add("hidden");
+  }, 2000);
 }
 async function registerUser(data) {
   try {
@@ -255,17 +259,21 @@ async function registerUser(data) {
       }
     );
     const result = await res.json();
+    removeSpinner();
     if (result.success == false) {
-      renderError(result.error);
+      renderFeedback(result.error, "error");
     } else if (result.status == "success") {
       const userData = result.data.user;
-      localStorage.setItem("firstName", userData.firstName);
-      localStorage.setItem("lastName", userData.lastName);
-      localStorage.setItem("email", userData.email);
-      localStorage.setItem("phone", userData.phoneNumber);
+      const jsonString = JSON.stringify(userData);
+      const parsedObject = JSON.parse(jsonString);
+      for (const key in parsedObject) {
+        if (parsedObject.hasOwnProperty(key)) {
+          localStorage.setItem(key, parsedObject[key]);
+        }
+      }
       window.location = `auth.html#email-sent`;
     }
   } catch (error) {
-    renderError("internal server error");
+    renderFeedback("internal server error", "error");
   }
 }

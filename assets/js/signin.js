@@ -20,7 +20,6 @@ function renderError(errMsg) {
   heading.innerText = "Oops! We can’t sign you in at the moment";
   headingText.innerText = errMsg;
   headingText.classList.add("error");
-  removeSpinner();
 }
 
 // Password show and hide
@@ -68,7 +67,7 @@ async function signinUser(data) {
       }
     );
     const result = await res.json();
-    console.log(result);
+    removeSpinner();
     if (result.success == false) {
       renderError("Invalid Email or Password");
     } else if (result.success == true) {
@@ -80,7 +79,7 @@ async function signinUser(data) {
           localStorage.setItem(key, parsedObject[key]);
         }
       }
-      window.location = "index.html"
+      window.location = "index.html";
     }
   } catch (error) {
     renderError(error);
