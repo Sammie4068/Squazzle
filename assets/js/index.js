@@ -5,6 +5,20 @@ const navLinks = document.querySelectorAll("#nav_link");
 const menuToggleBtn = document.getElementById("nav_toggle_btn");
 const overlay = document.querySelector(".overlay");
 
+const id = localStorage.getItem("_id");
+const signinBtn = document.querySelectorAll(".signinBtn");
+const toProfile = document.getElementById("toProfile");
+const profileImg = document.querySelector("#toProfile img");
+const imageUrl = localStorage.getItem("profileImage");
+if (id) {
+  signinBtn.forEach((btn) => btn.classList.add("hidden"));
+  toProfile.classList.remove("hidden");
+  profileImg.attributes.src.value = imageUrl;
+} else {
+  signinBtn.forEach((btn) => btn.classList.remove("hidden"));
+  toProfile.classList.add("hidden");
+}
+
 function hamMenu() {
   navbar.classList.toggle("active");
   menuToggleBtn.classList.toggle("active");

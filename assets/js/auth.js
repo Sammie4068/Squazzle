@@ -121,6 +121,7 @@ async function getResetCode(data) {
 }
 
 const resendBtn = document.querySelectorAll(".resendBtn");
+const verifyfailBtn = document.getElementById("vf_btn");
 
 resendBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -131,6 +132,15 @@ resendBtn.forEach((btn) => {
     };
     resendResetCode(resendCodeData);
   });
+});
+
+verifyfailBtn.addEventListener("click", () => {
+  renderSpinner(verifyfailBtn);
+  const resendCodeData = {
+    email: localStorage.getItem("email"),
+  };
+  resendResetCode(resendCodeData);
+  localStorage.setItem("vf", true);
 });
 
 async function resendResetCode(data) {
@@ -146,12 +156,15 @@ async function resendResetCode(data) {
       }
     );
     const result = await res.json();
-    removeSpinner()
+    removeSpinner();
     if (result.success == true) {
       renderFeedback(result.message, "success");
       userEmailUpdate();
+      if (localStorage.getItem("vf")) window.location.hash = "email-code";
+      return true;
     } else if (result.success == false) {
       renderFeedback(result.error, "error");
+      return false;
     }
   } catch (error) {
     renderFeedback("Oops! Something went wrong", "error");
@@ -346,7 +359,7 @@ async function resetPassword(data) {
       }
     );
     const result = await res.json();
-    removeSpinner()
+    removeSpinner();
     if (result.success == false) {
       renderFeedback(result.message, "error");
     } else if (result.success == true) {
@@ -376,7 +389,7 @@ const feedback = document.getElementById("feedback_text");
 
 function renderFeedback(msg, status) {
   feedback.innerText = msg;
-   feedbackStatus.classList.add(status);
+  feedbackStatus.classList.add(status);
   feedbackModal.classList.remove("hidden");
   setTimeout(() => {
     feedbackModal.classList.add("hidden");
@@ -425,9 +438,10 @@ async function checkOtp(data) {
     );
     const result = await res.json();
     removeSpinner();
+    console.log(result)
     if (result.success == false) {
       window.location.hash = "#verify-failure";
-    } else if (result.status == "success") {
+    } else {
       window.location.hash = "#verify-success";
     }
   } catch (error) {
