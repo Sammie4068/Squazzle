@@ -1,5 +1,53 @@
 "use strict";
 
+// State
+const allContents = document.querySelectorAll(".user_profile_container");
+const personalInfo = document.getElementById("personalInfo");
+const editProfile = document.getElementById("editProfile");
+const viewListing = document.getElementById("viewListing");
+const myListings = document.getElementById("myListings");
+const editListing = document.getElementById("editListing");
+const addListing = document.getElementById("addListing");
+
+function displayContent(ele) {
+  allContents.forEach((content) => {
+    content.classList.add("hidden");
+  });
+  ele.classList.remove("hidden");
+}
+
+function updateDisplay() {
+  const state = window.location.hash.slice(1);
+  switch (state) {
+    case "personal-details":
+      displayContent(personalInfo);
+      break;
+    case "edit-profile":
+      displayContent(editProfile);
+      break;
+    case "listing":
+      displayContent(viewListing);
+      break;
+    case "edit-listing":
+      displayContent(editListing);
+      break;
+    case "add-listing":
+      displayContent(addListing);
+      break;
+
+    default:
+      break;
+  }
+}
+
+window.addEventListener("hashchange", updateDisplay);
+window.addEventListener("load", updateDisplay);
+
+// Profile Image
+const profileImage = document.querySelector(".profile_img img");
+const imageUrl = localStorage.getItem("profileImage");
+imageUrl ? (profileImage.attributes.src.value = imageUrl) : null;
+// Phone country code API
 const phoneInput = document.getElementById("phone");
 window.intlTelInput(phoneInput, {
   initialCountry: "auto",
@@ -13,9 +61,9 @@ window.intlTelInput(phoneInput, {
     "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.19/build/js/utils.js",
 });
 
-const profileImg = document.querySelector(".profile_img");
+const profileImgWrapper = document.querySelector(".profile_img");
 const dropdownWrapper = document.querySelector(".dropdown__wrapper");
-profileImg.addEventListener("click", () => {
+profileImgWrapper.addEventListener("click", () => {
   dropdownWrapper.classList.toggle("hidden");
 });
 
@@ -69,7 +117,7 @@ const nextBtns = document.querySelectorAll("#nextBtn");
 const progressBars = document.querySelectorAll(".progress_bars span");
 const activeProgressBars = document.querySelector(".progress_bars .active");
 const addAccomPages = document.querySelectorAll(".add_accom_form");
-const pageNames = document.querySelectorAll(".page_name")
+const pageNames = document.querySelectorAll(".page_name");
 const progressFig = document.querySelector(".progress_number span");
 let progressNum = parseInt(progressFig.textContent);
 

@@ -102,7 +102,7 @@ header nav ul li a:hover {
   cursor: pointer;
 }
 
-#toProfile img {
+#toProfile img, .profile_img img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -220,7 +220,7 @@ header nav ul li a:hover {
   letter-spacing: 0em;
   text-align: left;
   color: #03796e;
-  width: 50%;
+  width: 57%;
   margin-bottom: 20px;
 }
 

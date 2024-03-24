@@ -14,10 +14,16 @@ if (id) {
   signinBtn.forEach((btn) => btn.classList.add("hidden"));
   toProfile.classList.remove("hidden");
   profileImg.attributes.src.value = imageUrl;
+  // getUserInfo();
 } else {
   signinBtn.forEach((btn) => btn.classList.remove("hidden"));
   toProfile.classList.add("hidden");
 }
+
+toProfile.addEventListener(
+  "click",
+  () => (window.location = "profile.html#personal-details")
+);
 
 function hamMenu() {
   navbar.classList.toggle("active");
@@ -58,3 +64,31 @@ document.addEventListener("DOMContentLoaded", function () {
     minDate: "today",
   });
 });
+
+// Get User Info
+// async function getUserInfo() {
+//   try {
+//     const res = await fetch(
+//       `https://stayshare.onrender.com/api/v1/users/profile/${id}`
+//     );
+//     const data = await res.json();
+//     console.log(data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+
+// getUserInfo()
+async function getAccomodations() {
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/accommodations`
+    );
+    const data = await res.json();
+    const accommodations = data.data.accomodation;
+    console.log(accommodations);
+  } catch (err) {
+    console.log(err);
+  }
+}
+getAccomodations();

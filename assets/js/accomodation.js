@@ -27,5 +27,5 @@ browseAccomBtn.addEventListener("click", () => {
   window.location.href = "browse_accomodation.html";
 }); 
 listAccomBtn.addEventListener("click", () => {
-  window.location.href = "list_accomodation.html";
+  window.location.href = "profile.html#add-listing";
 });
