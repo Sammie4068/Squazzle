@@ -7,23 +7,23 @@ const overlay = document.querySelector(".overlay");
 
 const id = localStorage.getItem("_id");
 const signinBtn = document.querySelectorAll(".signinBtn");
-const toProfile = document.getElementById("toProfile");
-const profileImg = document.querySelector("#toProfile img");
+const toProfile = document.querySelector(".profile_img");
+const profileImage = document.querySelector(".profile_img img");
 const imageUrl = localStorage.getItem("profileImage");
 if (id) {
   signinBtn.forEach((btn) => btn.classList.add("hidden"));
   toProfile.classList.remove("hidden");
-  profileImg.attributes.src.value = imageUrl;
+  profileImage.attributes.src.value = imageUrl;
   // getUserInfo();
 } else {
   signinBtn.forEach((btn) => btn.classList.remove("hidden"));
   toProfile.classList.add("hidden");
 }
 
-toProfile.addEventListener(
-  "click",
-  () => (window.location = "profile.html#personal-details")
-);
+const dropdownWrapper = document.querySelector(".dropdown__wrapper");
+toProfile.addEventListener("click", () => {
+  dropdownWrapper.classList.toggle("hidden");
+});
 
 function hamMenu() {
   navbar.classList.toggle("active");
@@ -78,17 +78,3 @@ document.addEventListener("DOMContentLoaded", function () {
 //   }
 // }
 
-// getUserInfo()
-async function getAccomodations() {
-  try {
-    const res = await fetch(
-      `https://stayshare.onrender.com/api/v1/accommodations`
-    );
-    const data = await res.json();
-    const accommodations = data.data.accomodation;
-    console.log(accommodations);
-  } catch (err) {
-    console.log(err);
-  }
-}
-getAccomodations();

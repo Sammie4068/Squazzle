@@ -142,6 +142,10 @@ header nav ul li a:hover {
   color: #03796e;
 }
 
+.list-items li:hover {
+  transform: scale(1.03);
+}
+
 .list-items li hr {
   color: #bcbcbc;
 }
@@ -2458,8 +2462,7 @@ footer {
   flex-wrap: wrap;
   gap: 44px;
   align-items: center;
-  justify-content: center;
-  padding: 100px 0px;
+  padding: 100px 20px;
 }
 
 .accomodation_card {

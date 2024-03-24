@@ -46,7 +46,7 @@ window.addEventListener("load", updateDisplay);
 // Profile Image
 const profileImage = document.querySelector(".profile_img img");
 const imageUrl = localStorage.getItem("profileImage");
-imageUrl ? (profileImage.attributes.src.value = imageUrl) : null;
+imageUrl && (profileImage.attributes.src.value = imageUrl);
 // Phone country code API
 const phoneInput = document.getElementById("phone");
 window.intlTelInput(phoneInput, {
