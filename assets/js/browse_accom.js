@@ -57,7 +57,7 @@ async function getAccomodations() {
     );
     const data = await res.json();
     const accommodations = data.data.accomodation;
-   occupyAccommodations(accommodations)
+    occupyAccommodations(accommodations);
   } catch (err) {
     console.log(err);
   }
@@ -67,10 +67,12 @@ const accomodationContainer = document.querySelector(".accomodation_container");
 
 function occupyAccommodations(data) {
   data.forEach((accom) => {
+    const accomId = JSON.stringify(accom._id);
+    const displayImg = accom.gallery[0].imageUrl;
     let markup = `<div class="accomodation_card cell">
-          <img src="./assets/images/apt1.png" alt="Apartments" />
+          <img src="${displayImg}" alt="${accom.accommodationName}" />
           <p class="title">${accom.accommodationName}</p>
-          <p class="location">${accom.city}</p>
+          <p class="location">${accom.city}, Nigeria</p>
           <div class="available">
             <span
               ><i class="fa-solid fa-circle"></i>
@@ -81,13 +83,22 @@ function occupyAccommodations(data) {
               <p>Mansion</p></span
             >
           </div>
-          <p class="duration">Duration: Fri 18 Nov - Fri 16 Dec</p>
-          <p class="price">
+          <p class="duration">Duration: ${accom.hostingPeriodFrom} - ${accom.hostingPeriodTo}</p>
+          <button value='${accomId}' class="price">
             <span>NGN</span> <span>${accom.price} /</span> <span>night</span>
-          </p>
+          </button>
         </div>`;
 
     accomodationContainer.insertAdjacentHTML("beforeend", markup);
+
+    const accomCard = document.querySelectorAll(".accomodation_card");
+    accomCard.forEach((card) => {
+      card.addEventListener("click", () => {
+        const priceBtn = card.querySelector(".price");
+        const accomId = JSON.parse(priceBtn.value);
+        console.log(accomId);
+      });
+    });
   });
 }
 

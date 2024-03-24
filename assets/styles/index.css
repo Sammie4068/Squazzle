@@ -2468,6 +2468,7 @@ footer {
 .accomodation_card {
   width: 290px;
   cursor: pointer;
+  text-transform: capitalize;
 }
 
 .accomodation_card img {
@@ -2515,6 +2516,12 @@ footer {
   letter-spacing: 0em;
   text-align: left;
   color: #232323;
+}
+
+.accomodation_card button {
+  background-color: inherit;
+  text-align: left;
+
 }
 
 .filter_modal {
