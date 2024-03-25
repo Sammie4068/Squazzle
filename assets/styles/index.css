@@ -1819,6 +1819,10 @@ footer {
   gap: 20px;
 }
 
+ .user_profile_container .accom_right .accom_photos img{
+  width: 100%
+ }
+
 .user_profile_container .accom_right .accom_photos .sub_photo {
   display: flex;
   flex-direction: column;
@@ -3347,7 +3351,12 @@ footer {
     gap: 12px;
     overflow-x: scroll;
     width: 100%;
+    -ms-overflow-style: none;
   }
+
+   .user_profile_container .accom_right .accom_info_tab::-webkit-scrollbar {
+    display: none;
+   }
 
   .user_profile_container .accom_right .accom_info_tab span {
     padding: 8px 10px;

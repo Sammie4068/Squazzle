@@ -179,7 +179,7 @@ const listingDate = document.querySelectorAll("#listing_date");
 const listingType = document.querySelectorAll("#listing_type");
 const listingPrice = document.getElementById("listing_price");
 const mainPhoto = document.querySelector(".main_photo img");
-const subPhotos = document.querySelectorAll(".sub_photo img");
+const subPhotos = document.querySelectorAll(".view_sub_photo img");
 const resPhoto = document.querySelector(".res_photo img");
 const listingTitle = document.querySelector("#listing_title");
 const listingDesc = document.querySelector("#listing_desc");
@@ -207,6 +207,10 @@ async function getSingleAccomodation(accomID) {
       `NGN ${accommodationInfo.price} per night`
     );
     displayListingProp(listingDesc, accommodationInfo.description);
+    mainPhoto.attributes.src.value = accommodationInfo.gallery[0].imageUrl;
+    subPhotos[0].attributes.src.value = accommodationInfo.gallery[1].imageUrl;
+    subPhotos[1].attributes.src.value = accommodationInfo.gallery[2].imageUrl;
+    resPhoto.attributes.src.value = accommodationInfo.gallery[1].imageUrl;
   } catch (err) {
     console.log(err);
   }
