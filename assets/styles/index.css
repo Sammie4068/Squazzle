@@ -2518,6 +2518,10 @@ footer {
   color: #232323;
 }
 
+.accom_status_avail {
+  color: #016d71 !important;
+}
+
 .accomodation_card button {
   background-color: inherit;
   text-align: left;

@@ -75,7 +75,7 @@ function occupyAccommodations(data) {
           <p class="location">${accom.city}, Nigeria</p>
           <div class="available">
             <span
-              ><i class="fa-solid fa-circle"></i>
+              ><i class="fa-solid fa-circle ${accom.status == 'available' && 'accom_status_avail'}"></i>
               <p>${accom.status}</p></span
             >
             <span
@@ -96,7 +96,8 @@ function occupyAccommodations(data) {
       card.addEventListener("click", () => {
         const priceBtn = card.querySelector(".price");
         const accomId = JSON.parse(priceBtn.value);
-        console.log(accomId);
+        localStorage.setItem("accomId", accomId)
+        window.location = "profile.html#listing"
       });
     });
   });

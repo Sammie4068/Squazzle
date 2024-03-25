@@ -170,3 +170,32 @@ function updateProgressbar() {
   progressFig.textContent = progressNum;
   updatePageName();
 }
+
+
+// View Accomodation
+const accomId = localStorage.getItem("accomId")
+const listingLocation = document.querySelectorAll("#listing_location");
+const listingReason = document.querySelectorAll("#listing_reason");
+const listingDate = document.querySelectorAll("#listing_date");
+const listingType = document.querySelectorAll("#listing_type");
+const listingPrice = document.getElementById("listing_price");
+const mainPhoto = document.querySelector(".main_photo img");
+const subPhotos = document.querySelectorAll(".sub_photo img");
+const resPhoto = document.querySelector(".res_photo img");
+const listingTitle = document.querySelector(".listing_title");
+const listingDesc = document.querySelector(".listing_desc");
+
+async function getSingleAccomodation(accomID) {
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/accommodations/${accomID}`
+    );
+    const data = await res.json();
+    const accommodationInfo = data.data.accomodation;
+    console.log(accommodationInfo);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getSingleAccomodation(accomId)
