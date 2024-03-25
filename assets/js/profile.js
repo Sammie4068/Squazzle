@@ -171,9 +171,8 @@ function updateProgressbar() {
   updatePageName();
 }
 
-
 // View Accomodation
-const accomId = localStorage.getItem("accomId")
+const accomId = localStorage.getItem("accomId");
 const listingLocation = document.querySelectorAll("#listing_location");
 const listingReason = document.querySelectorAll("#listing_reason");
 const listingDate = document.querySelectorAll("#listing_date");
@@ -182,8 +181,8 @@ const listingPrice = document.getElementById("listing_price");
 const mainPhoto = document.querySelector(".main_photo img");
 const subPhotos = document.querySelectorAll(".sub_photo img");
 const resPhoto = document.querySelector(".res_photo img");
-const listingTitle = document.querySelector(".listing_title");
-const listingDesc = document.querySelector(".listing_desc");
+const listingTitle = document.querySelector("#listing_title");
+const listingDesc = document.querySelector("#listing_desc");
 
 async function getSingleAccomodation(accomID) {
   try {
@@ -192,10 +191,44 @@ async function getSingleAccomodation(accomID) {
     );
     const data = await res.json();
     const accommodationInfo = data.data.accomodation;
-    console.log(accommodationInfo);
+    displayListingProp(
+      listingLocation,
+      `${accommodationInfo.address}, ${accommodationInfo.city}, ${accommodationInfo.state}, Nigeria`
+    );
+    displayListingProp(listingReason, accommodationInfo.whyListing);
+    displayListingProp(
+      listingDate,
+      `${accommodationInfo.hostingPeriodFrom} - ${accommodationInfo.hostingPeriodTo}`
+    );
+    displayListingProp(listingType, accommodationInfo.accommodationType);
+    displayListingProp(listingTitle, accommodationInfo.accommodationName);
+    displayListingProp(
+      listingPrice,
+      `NGN ${accommodationInfo.price} per night`
+    );
+    displayListingProp(listingDesc, accommodationInfo.description);
   } catch (err) {
     console.log(err);
   }
 }
+getSingleAccomodation(accomId);
 
-getSingleAccomodation(accomId)
+function displayListingProp(ele, data) {
+  if (ele instanceof NodeList) {
+    ele.forEach((e) => (e.innerText = data));
+  } else {
+    ele.innerText = data;
+  }
+}
+
+// async function getUserInfo(userID) {
+//   try {
+//     const res = await fetch(
+//       `https://stayshare.onrender.com/api/v1/users/profile/${userID}`
+//     );
+//     const data = await res.json();
+//     console.log(data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }

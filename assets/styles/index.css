@@ -102,7 +102,8 @@ header nav ul li a:hover {
   cursor: pointer;
 }
 
-#toProfile img, .profile_img img {
+#toProfile img,
+.profile_img img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -1222,6 +1223,11 @@ footer {
   padding: 12px;
   gap: 16px;
 }
+
+  .accom_details img {
+    width: 20px;
+    height: 20px;
+  }
 
 .user_profile_container .listing_left .accom_details h1 {
   font-size: 18px;
@@ -2525,7 +2531,6 @@ footer {
 .accomodation_card button {
   background-color: inherit;
   text-align: left;
-
 }
 
 .filter_modal {
