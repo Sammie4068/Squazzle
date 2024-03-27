@@ -1,8 +1,24 @@
 "use strict";
 
-// Utilities
+const isLogout = localStorage.getItem("isLogout");
+const accessToken = localStorage.getItem("accessToken");
+const imageHead = document.getElementById("imageHead");
+const imageWriteup = document.getElementById("imageWriteup");
 const heading = document.getElementById("heading");
 const headingText = document.getElementById("heading_text");
+
+if (accessToken) {
+  window.location = "index.html";
+}
+
+if (isLogout) {
+  imageHead.innerText = "";
+  imageWriteup.innerText = "";
+  heading.innerText = "We don’t want to see you go";
+  headingText.innerText = "You have successfully logged out.";
+}
+
+// Utilities
 
 function renderSpinner(parentEle) {
   const markup = `<div class="spinner"></div>
@@ -71,6 +87,9 @@ async function signinUser(data) {
     if (result.success == false) {
       renderError("Invalid Email or Password");
     } else if (result.success == true) {
+      localStorage.clear();
+      localStorage.setItem("accessToken", result.response.accessToken);
+      localStorage.setItem("refreshToken", result.response.refreshToken);
       const userInfo = result.response.data.user;
       const jsonString = JSON.stringify(userInfo);
       const parsedObject = JSON.parse(jsonString);

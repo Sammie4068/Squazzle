@@ -5,12 +5,20 @@ const navLinks = document.querySelectorAll("#nav_link");
 const menuToggleBtn = document.getElementById("nav_toggle_btn");
 const overlay = document.querySelector(".overlay");
 
+const accessToken = localStorage.getItem("accessToken");
+const refreshToken = localStorage.getItem("refreshToken");
 const id = localStorage.getItem("_id");
+
 const signinBtn = document.querySelectorAll(".signinBtn");
 const toProfile = document.querySelector(".profile_img");
 const profileImage = document.querySelector(".profile_img img");
 const imageUrl = localStorage.getItem("profileImage");
-if (id) {
+
+signinBtn.forEach((btn) =>
+  btn.addEventListener("click", () => localStorage.clear())
+);
+
+if (accessToken) {
   signinBtn.forEach((btn) => btn.classList.add("hidden"));
   toProfile.classList.remove("hidden");
   profileImage.attributes.src.value = imageUrl;
@@ -78,3 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
 //   }
 // }
 
+// Logout
+function logout() {
+  localStorage.clear();
+  localStorage.setItem("isLogout", true);
+  window.location = "signin.html";
+}
