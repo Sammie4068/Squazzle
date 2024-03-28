@@ -74,17 +74,51 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Get User Info
-// async function getUserInfo() {
-//   try {
-//     const res = await fetch(
-//       `https://stayshare.onrender.com/api/v1/users/profile/${id}`
-//     );
-//     const data = await res.json();
-//     console.log(data);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
+async function getUserInfo() {
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/users/profile/${id}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+    if (data.error == "Expired token please login") {
+      getToken();
+      location.reload();
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+// getUserInfo();
+
+// refreshToken
+const userEmail = localStorage.getItem("email");
+async function getToken() {
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/auth/refreshToken`,
+      {
+        method: "GET",
+        headers: {
+          "x-user-email": userEmail,
+          "x-user-token": refreshToken,
+        },
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+    localStorage.setItem("accessToken", data.accessToken);
+    localStorage.setItem("refreshToken", data.refreshToken);
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 // Logout
 function logout() {

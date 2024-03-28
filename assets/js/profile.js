@@ -183,6 +183,10 @@ const subPhotos = document.querySelectorAll(".view_sub_photo img");
 const resPhoto = document.querySelector(".res_photo img");
 const listingTitle = document.querySelector("#listing_title");
 const listingDesc = document.querySelector("#listing_desc");
+const hostPhotos = document.querySelectorAll(".host_photo img");
+const hostName = document.getElementById("hostName");
+const hostJoined = document.getElementById("hostJoined");
+const hostPhone = document.getElementById("hostPhone");
 
 async function getSingleAccomodation(accomID) {
   try {
@@ -191,6 +195,22 @@ async function getSingleAccomodation(accomID) {
     );
     const data = await res.json();
     const accommodationInfo = data.data.accomodation;
+    console.log(accommodationInfo);
+    const hostApiData = await getUserInfo(accommodationInfo.createdBy);
+    const hostData = hostApiData.data.user;
+
+    const dateObj = new Date(hostData.createdAt);
+    const year = dateObj.getFullYear();
+    const month = dateObj.toLocaleString("default", { month: "long" });
+
+    displayListingProp(hostJoined, `joined squazzle ${month} ${year}`);
+
+    hostPhotos.forEach(
+      (ele) => (ele.attributes.src.value = hostData.profileImage)
+    );
+    displayListingProp(hostName, `${hostData.firstName} ${hostData.lastName}`);
+    displayListingProp(hostPhone, `+234${hostData.phoneNumber}`);
+
     displayListingProp(
       listingLocation,
       `${accommodationInfo.address}, ${accommodationInfo.city}, ${accommodationInfo.state}, Nigeria`
@@ -225,14 +245,51 @@ function displayListingProp(ele, data) {
   }
 }
 
-// async function getUserInfo(userID) {
-//   try {
-//     const res = await fetch(
-//       `https://stayshare.onrender.com/api/v1/users/profile/${userID}`
-//     );
-//     const data = await res.json();
-//     console.log(data);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
+const accessToken = localStorage.getItem("accessToken");
+const refreshToken = localStorage.getItem("refreshToken");
+
+async function getUserInfo(userID) {
+  console.log(userID);
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/users/profile`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await res.json();
+    if (data.error == "Expired token please login") {
+      getToken();
+      // location.reload()
+    }
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// Refresh Token
+const userEmail = localStorage.getItem("email");
+async function getToken() {
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/auth/refreshToken`,
+      {
+        method: "GET",
+        headers: {
+          "x-user-email": userEmail,
+          "x-user-token": refreshToken,
+        },
+      }
+    );
+    const data = await res.json();
+
+    localStorage.setItem("accessToken", data.accessToken);
+    localStorage.setItem("refreshToken", data.refreshToken);
+  } catch (err) {
+    console.log(err);
+  }
+}
