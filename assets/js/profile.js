@@ -49,10 +49,11 @@ window.addEventListener("load", updateDisplay);
 
 // Profile Image
 const profileImage = document.querySelectorAll(".profile_picture");
-const imageUrl = localStorage.getItem("profilePicture");
+const imageUrl = localStorage.getItem("profileImage");
 profileImage.forEach((img) => {
   img.attributes.src.value = imageUrl;
 });
+
 // Phone country code API
 const phoneInput = document.getElementById("phone");
 window.intlTelInput(phoneInput, {
@@ -73,6 +74,14 @@ profileImgWrapper.addEventListener("click", () => {
   dropdownWrapper.classList.toggle("hidden");
 });
 
+document.addEventListener("click", (e) => {
+  if (!e.target.matches(".profile_img img")) {
+    if (!dropdownWrapper.classList.contains("hidden")) {
+      dropdownWrapper.classList.add("hidden");
+    }
+  }
+});
+
 const navbar = document.getElementById("navbar");
 const navLinks = document.querySelectorAll("#nav_link");
 const menuToggleBtn = document.getElementById("nav_toggle_btn");
@@ -89,6 +98,7 @@ navLinks.forEach((link) => {
 });
 
 // Manage Account Page
+const userId = localStorage.getItem("id");
 const userFullName = `${localStorage.getItem(
   "firstName"
 )} ${localStorage.getItem("lastName")}`;
@@ -152,6 +162,73 @@ const editProfileLink = document.querySelectorAll(".edit_profile");
 updateHash(personalDetailsLinks, "personal-details");
 updateHash(editProfileLink, "edit-profile");
 
+// Edit Profile Page
+const editProfileForm = document.getElementById("edit_profile_form");
+const firstNameInput = document.getElementById("firstname_input");
+const lastNameInput = document.getElementById("lastname_input");
+const emailInput = document.getElementById("email_input");
+const occupationInput = document.getElementById("occupation_input");
+const genderInput = document.getElementById("gender_input");
+const addressInput = document.getElementById("address_input");
+const stateInput = document.getElementById("state_input");
+const cityInput = document.getElementById("city_input");
+const ninInput = document.getElementById("nin_input");
+const aboutInput = document.getElementById("about_input");
+const changeProfilePicture = document.getElementById("change_profile_picture");
+const pictureDisplay = document.getElementById("picture_display");
+
+changeProfilePicture.addEventListener("change", () => {
+  const file = changeProfilePicture.files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener("load", () => {
+    pictureDisplay.attributes.src.value = reader.result;
+  });
+  reader.readAsDataURL(file);
+});
+
+const editProfileSubmitBtn = document.getElementById("edit_profile_submit_btn");
+const editProfileCancelBtn = document.getElementById("edit_profile_cancel_btn");
+
+updateHash(editProfileCancelBtn, "personal-details");
+
+editProfileForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  editProfileSubmitBtn.style.width = "35%";
+  renderSpinner(editProfileSubmitBtn);
+
+  const formData = new FormData();
+  formData.append("firstName", firstNameInput.value);
+  formData.append("lastName", lastNameInput.value);
+  formData.append("email", emailInput.value);
+  formData.append("occupation", occupationInput.value);
+  formData.append("gender", genderInput.value);
+  formData.append("address", addressInput.value);
+  formData.append("state", stateInput.value);
+  formData.append("city", cityInput.value);
+  formData.append("phoneNumber", phoneInput.value);
+  formData.append("bio", aboutInput.value);
+  formData.append("image", changeProfilePicture.files[0]);
+
+  editProfileFunction(formData);
+});
+
+async function editProfileFunction(data) {
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/auth/users/${id}`,
+      {
+        method: "PATCH",
+        body: data,
+      }
+    );
+    const result = await res.json();
+    removeSpinner();
+    console.log(result);
+  } catch (err) {
+    console.error(`Error: ${err}`);
+  }
+}
 
 // Modals
 const modals = document.querySelectorAll("#modal");
@@ -181,6 +258,26 @@ const changePassBtn = document.querySelectorAll(".change_pass");
 changePassBtn.forEach((btn) =>
   btn.addEventListener("click", () => openModal(changePassModal))
 );
+
+// Logout
+function logout() {
+  localStorage.clear();
+  localStorage.setItem("isLogout", true);
+  window.location = "signin.html";
+}
+
+// Render Spinner
+function renderSpinner(parentEle) {
+  const markup = `<div class="spinner"></div>
+`;
+  const spinner = document.querySelector(".spinner");
+  spinner || parentEle.insertAdjacentHTML("beforeend", markup);
+}
+
+function removeSpinner() {
+  const spinner = document.querySelector(".spinner");
+  spinner && spinner.classList.add("hidden");
+}
 
 // Add accomodation progress
 const prevBtns = document.querySelectorAll("#prevBtn");
@@ -306,28 +403,28 @@ accomId && getSingleAccomodation(accomId);
 const accessToken = localStorage.getItem("accessToken");
 const refreshToken = localStorage.getItem("refreshToken");
 
-async function getUserInfo(userID) {
-  console.log(userID);
-  try {
-    const res = await fetch(
-      `https://stayshare.onrender.com/api/v1/users/profile`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-    const data = await res.json();
-    if (data.error == "Expired token please login") {
-      getToken();
-      // location.reload()
-    }
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-}
+// async function getUserInfo(userID) {
+//   // console.log(userID);
+//   try {
+//     const res = await fetch(
+//       `https://stayshare.onrender.com/api/v1/users/profile`,
+//       {
+//         method: "GET",
+//         headers: {
+//           Authorization: `Bearer ${accessToken}`,
+//         },
+//       }
+//     );
+//     const data = await res.json();
+//     if (data.error == "Expired token please login") {
+//       getToken();
+//       // location.reload()
+//     }
+//     return data;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
 
 // Refresh Token
 async function getToken() {

@@ -51,7 +51,7 @@
             <a href="#" id="nav_link">Wishlist</a>
           </li>
           <hr />
-          <li>
+          <li onclick="logout()">
             <a href="#" id="nav_link" style="color: #8d173a">Logout</a>
           </li>
         </ul>
@@ -76,7 +76,7 @@
                   <a href="#">Help</a>
                 </li>
                 <hr />
-                <li class="logout_link">
+                <li class="logout_link" onclick="logout()">
                   <a href="#">Logout</a>
                 </li>
               </ul>
@@ -214,7 +214,7 @@
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
-            <a href="#manage-profile">Manage Account</a>
+            <a href="#manage-account">Manage Account</a>
           </li>
           <li>
             <i class="fa-solid fa-chevron-right"></i>
@@ -233,7 +233,6 @@
               <i class="fa-solid fa-pen"></i>
             </div>
             <span>
-              <!-- <h1>Welcome back Zhara Doe</h1> -->
               <h2 class="user_name"></h2>
               <p class="user_email"></p>
             </span>
@@ -323,13 +322,13 @@
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
-            <a href="#">Manage Account</a>
+            <a href="#manage-account">Manage Account</a>
           </li>
           <li>
             <i class="fa-solid fa-chevron-right"></i>
           </li>
           <li>
-            <a href="#">Edit Profile</a>
+            <a href="#edit-profile">Edit Profile</a>
           </li>
         </ul>
 
@@ -353,13 +352,14 @@
               <i class="fa-solid fa-pen"></i>
             </div>
             <span>
-              <h1>Welcome back Zhara Doe</h1>
-              <h2>Zhara Doe</h2>
-              <p>zhara@gmail.com</p>
+              <h2 class="user_name"></h2>
+              <p class="user_email"></p>
             </span>
 
             <div class="img_wrap">
-              <img src="./assets/images/account_circle.png" alt="user image" />
+              <img src="" alt="profile picture" class="profile_picture" id="picture_display"/>
+
+              <input type="file" id="change_profile_picture">
 
               <div class="edit_profile toShow">
                 <p>Edit profile</p>
@@ -369,44 +369,48 @@
           </div>
         </div>
         <div class="display_right">
-          <form>
+          <form id="edit_profile_form">
             <div class="input_field">
               <label>First Name</label>
-              <input type="text" placeholder="First name" class="input" />
+              <input type="text" placeholder="First name" class="input" id="firstname_input" required/>
             </div>
             <div class="input_field">
               <label>Last Name</label>
-              <input type="text" placeholder="Last name" class="input" />
+              <input type="text" placeholder="Last name" class="input" id="lastname_input" required/>
             </div>
             <div class="input_field">
               <label>Email Address</label>
-              <input type="email" placeholder="Email" class="input" />
+              <input type="email" placeholder="Email" class="input" id="email_input" required/>
             </div>
             <div class="input_field">
               <label>Occupation</label>
-              <input type="text" placeholder="Your occupation" class="input" />
+              <input type="text" placeholder="Your occupation" class="input" id="occupation_input" required/>
             </div>
             <div class="input_field">
               <label>Gender</label>
-              <select name="gender">
+              <select name="gender" id="gender_input" required>
                 <option value="" disabled selected>Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
             </div>
+            <div class="input_field">
+              <label>Address</label>
+              <input type="text" placeholder="Your Address" class="input" id="address_input" required/>
+            </div>
             <div class="input_field combo_inputs">
               <span>
                 <label>State</label>
-                <input type="text" placeholder="State" class="input" />
+                <input type="text" placeholder="State" class="input" id="state_input" required/>
               </span>
               <span>
                 <label>City</label>
-                <input type="text" placeholder="City" class="input" />
+                <input type="text" placeholder="City" class="input" id="city_input" required/>
               </span>
             </div>
             <div class="input_field">
               <label>NIN</label>
-              <input type="text" placeholder="NIN" class="input" />
+              <input type="text" placeholder="NIN" class="input" id="nin_input" required/>
             </div>
             <div class="input_field">
               <label>Phone Number</label>
@@ -420,12 +424,13 @@
                 cols="30"
                 rows="10"
                 placeholder="Describe yourself"
+                id="about_input" required
               ></textarea>
             </div>
 
             <div class="btn_wrapper">
-              <button class="btn btn-secondary">Cancel</button>
-              <button class="btn btn-primary">Submit</button>
+              <button class="btn btn-secondary" id="edit_profile_cancel_btn">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="edit_profile_submit_btn">Save</button>
             </div>
           </form>
         </div>

@@ -12,7 +12,7 @@ const id = localStorage.getItem("_id");
 const signinBtn = document.querySelectorAll(".signinBtn");
 const toProfile = document.querySelector(".profile_img");
 const profileImage = document.querySelector(".profile_img img");
-const imageUrl = localStorage.getItem("profilePicture");
+const imageUrl = localStorage.getItem("profileImage");
 
 signinBtn.forEach((btn) =>
   btn.addEventListener("click", () => localStorage.clear())
@@ -31,6 +31,14 @@ if (accessToken) {
 const dropdownWrapper = document.querySelector(".dropdown__wrapper");
 toProfile.addEventListener("click", () => {
   dropdownWrapper.classList.toggle("hidden");
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.matches(".profile_img img")) {
+    if (!dropdownWrapper.classList.contains("hidden")) {
+      dropdownWrapper.classList.add("hidden");
+    }
+  }
 });
 
 function hamMenu() {
@@ -86,18 +94,19 @@ async function getUserInfo() {
       }
     );
     const data = await res.json();
-    console.log(data);
-     const userInfo = data.data.profile;
-     const jsonString = JSON.stringify(userInfo);
-     const parsedObject = JSON.parse(jsonString);
-     for (const key in parsedObject) {
-       if (parsedObject.hasOwnProperty(key)) {
-         localStorage.setItem(key, parsedObject[key]);
-       }
-     }
+    if (data.success == true) {
+      const userInfo = data.data.profile;
+      const jsonString = JSON.stringify(userInfo);
+      const parsedObject = JSON.parse(jsonString);
+      for (const key in parsedObject) {
+        if (parsedObject.hasOwnProperty(key)) {
+          localStorage.setItem(key, parsedObject[key]);
+        }
+      }
+    }
     if (data.error == "Expired token please login") {
       getToken();
-      // location.reload();
+      renderFeedback(data.message, "error");
     }
   } catch (err) {
     console.log(err);
@@ -119,7 +128,6 @@ async function getToken() {
       }
     );
     const data = await res.json();
-    console.log(data);
     localStorage.setItem("accessToken", data.accessToken);
     localStorage.setItem("refreshToken", data.refreshToken);
   } catch (err) {
@@ -132,4 +140,15 @@ function logout() {
   localStorage.clear();
   localStorage.setItem("isLogout", true);
   window.location = "signin.html";
+}
+
+// Feedback modal
+const feedbackModal = document.getElementById("feedback_modal");
+const feedbackStatus = document.getElementById("feedback_status");
+const feedback = document.getElementById("feedback_text");
+
+function renderFeedback(msg, status) {
+  feedback.innerText = msg;
+  feedbackStatus.classList.add(status);
+  feedbackModal.classList.remove("hidden");
 }

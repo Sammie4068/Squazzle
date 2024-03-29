@@ -68,6 +68,50 @@ input[type="radio"]:checked {
   outline: #575757;
 }
 
+/* Spinner */
+.spinner {
+  width: 20%;
+  position: relative;
+  animation: spin 3s linear infinite;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 4px solid #cce6e7;
+  border-top: 4px solid #016d71;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinRing 1.5s ease-out infinite;
+}
+
+.spinner::before {
+  filter: blur(10px);
+}
+
+@keyframes spinRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* Nav */
 
 header {
@@ -117,6 +161,16 @@ header nav ul li a:hover {
   width: 104px;
   height: 104px;
   border-radius: 50%;
+}
+
+.img_wrap input {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  left: 168px;
 }
 
 .dropdown__wrapper {
@@ -2211,6 +2265,11 @@ footer {
   outline-color: #03796e;
 }
 
+.user_profile_container .display_right form .phone::placeholder {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .user_profile_container .display_right form .input_field .input,
 .user_profile_container .display_right form .input_field select,
 .user_profile_container .display_right form .input_field textarea {
@@ -2327,6 +2386,48 @@ footer {
   z-index: 1000;
   transition: all 0.5s;
   cursor: pointer;
+}
+
+/* Modal */
+
+.feedback_modal {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  background-color: transparent;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  transition: all 0.5s ease-out;
+  font-family: "Poppins", sans-serif;
+}
+
+.feedback_modal span {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  gap: 12px;
+}
+
+.feedback_modal span svg {
+  width: 20px;
+  height: 20px;
+}
+
+.feedback_modal .success {
+  background: #def2e4;
+  border: 1px solid #3d7d50;
+  color: #3d7d50;
+  stroke: #3d7d50;
+}
+
+.feedback_modal .error {
+  background: #f8dbd9;
+  border: 1px solid #91332d;
+  stroke: #91332d;
+  color: #91332d;
 }
 
 .delete_modal,
@@ -3588,5 +3689,9 @@ footer {
   .user_profile_container .add_accom .btn_wrapper {
     flex-direction: column;
     gap: 16px;
+  }
+
+  .img_wrap input {
+    left: 5%;
   }
 }
