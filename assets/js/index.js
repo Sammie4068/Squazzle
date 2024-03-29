@@ -12,7 +12,7 @@ const id = localStorage.getItem("_id");
 const signinBtn = document.querySelectorAll(".signinBtn");
 const toProfile = document.querySelector(".profile_img");
 const profileImage = document.querySelector(".profile_img img");
-const imageUrl = localStorage.getItem("profileImage");
+const imageUrl = localStorage.getItem("profilePicture");
 
 signinBtn.forEach((btn) =>
   btn.addEventListener("click", () => localStorage.clear())
@@ -22,7 +22,7 @@ if (accessToken) {
   signinBtn.forEach((btn) => btn.classList.add("hidden"));
   toProfile.classList.remove("hidden");
   profileImage.attributes.src.value = imageUrl;
-  // getUserInfo();
+  getUserInfo();
 } else {
   signinBtn.forEach((btn) => btn.classList.remove("hidden"));
   toProfile.classList.add("hidden");
@@ -87,15 +87,22 @@ async function getUserInfo() {
     );
     const data = await res.json();
     console.log(data);
+     const userInfo = data.data.profile;
+     const jsonString = JSON.stringify(userInfo);
+     const parsedObject = JSON.parse(jsonString);
+     for (const key in parsedObject) {
+       if (parsedObject.hasOwnProperty(key)) {
+         localStorage.setItem(key, parsedObject[key]);
+       }
+     }
     if (data.error == "Expired token please login") {
       getToken();
-      location.reload();
+      // location.reload();
     }
   } catch (err) {
     console.log(err);
   }
 }
-// getUserInfo();
 
 // refreshToken
 const userEmail = localStorage.getItem("email");

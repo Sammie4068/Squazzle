@@ -27,6 +27,10 @@ body {
   overflow-x: hidden;
 }
 
+.user_name {
+  text-transform: capitalize;
+}
+
 input[type="checkbox"] {
   width: 18px;
   height: 18px;
@@ -106,6 +110,12 @@ header nav ul li a:hover {
 .profile_img img {
   width: 50px;
   height: 50px;
+  border-radius: 50%;
+}
+
+.img_wrap img {
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
 }
 
@@ -1224,10 +1234,10 @@ footer {
   gap: 16px;
 }
 
-  .accom_details img {
-    width: 20px;
-    height: 20px;
-  }
+.accom_details img {
+  width: 20px;
+  height: 20px;
+}
 
 .user_profile_container .listing_left .accom_details h1 {
   font-size: 18px;
@@ -1384,6 +1394,7 @@ footer {
   letter-spacing: 0em;
   text-align: center;
   color: #232323;
+  text-transform: capitalize;
 }
 
 .user_profile_container .left .welcome span p {
@@ -1393,6 +1404,12 @@ footer {
   letter-spacing: 0.01em;
   text-align: left;
   color: #353535;
+}
+
+.user_profile_container .left .welcome img {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
 }
 
 .toHide {
@@ -1819,9 +1836,9 @@ footer {
   gap: 20px;
 }
 
- .user_profile_container .accom_right .accom_photos img{
-  width: 100%
- }
+.user_profile_container .accom_right .accom_photos img {
+  width: 100%;
+}
 
 .user_profile_container .accom_right .accom_photos .sub_photo {
   display: flex;
@@ -3171,11 +3188,6 @@ footer {
     background: transparent;
   }
 
-  .user_profile_container .left .welcome img {
-    width: 54px;
-    height: 54px;
-  }
-
   .user_profile_container .left .welcome span {
     width: 50%;
     align-items: baseline;
@@ -3355,9 +3367,9 @@ footer {
     -ms-overflow-style: none;
   }
 
-   .user_profile_container .accom_right .accom_info_tab::-webkit-scrollbar {
+  .user_profile_container .accom_right .accom_info_tab::-webkit-scrollbar {
     display: none;
-   }
+  }
 
   .user_profile_container .accom_right .accom_info_tab span {
     padding: 8px 10px;

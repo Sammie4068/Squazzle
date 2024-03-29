@@ -30,7 +30,7 @@
       <nav id="navbar" class="profile_nav">
         <ul>
           <li>
-            <a href="#" id="nav_link" class="active">Manage Account</a>
+            <a href="#manage-account" id="nav_link" class="active">Manage Account</a>
           </li>
           <li>
             <a href="#" id="nav_link">Accomodations</a>
@@ -59,12 +59,12 @@
       <span class="nav_right">
         <img src="./assets/images/Frame 34979.png" alt="notification" />
         <span class="profile_img">
-          <img src="./assets/images/toProfileIcon.png" alt="icon" />
+          <img src="" alt="profile picture" class="profile_picture" />
           <div class="dropdown__wrapper hidden">
             <div class="dropdown">
               <ul class="list-items">
                 <li>
-                  <a href="profile.html#personal-details">Manage account</a>
+                  <a href="profile.html#manage-account">Manage account</a>
                 </li>
                 <li>
                   <a href="#">Settings</a>
@@ -92,12 +92,13 @@
     </header>
     <div
       class="user_profile_container hidden"
+      id="manageAccount"
       style="background-color: #f5f5f5"
     >
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
-            <a href="#">Manage Account</a>
+            <a href="#manage-account">Manage Account</a>
           </li>
         </ul>
       </div>
@@ -106,11 +107,11 @@
         <div class="left">
           <div class="welcome">
             <span>
-              <h1>Welcome back Zhara Doe</h1>
-              <p>zhara@gmail.com</p>
+              <h1>Welcome back  <span class="user_name"></span> </h1>
+              <p class="user_email"></p>
             </span>
 
-            <img src="./assets/images/account_circle.png" alt="user image" />
+            <img src="./assets/images/account_circle.png" alt="user image" class="profile_picture" />
           </div>
 
           <div class="nav_links hidden">
@@ -141,7 +142,7 @@
           <h1>Manage Account</h1>
 
           <div class="links">
-            <span>
+            <span class="personal_details_link">
               <img src="./assets/images/greenUser.png" alt="icon" />
               <p>Personal Information</p>
             </span>
@@ -179,7 +180,7 @@
 
         <div class="right">
           <div class="cards top_cards">
-            <span>
+            <span class="personal_details_link">
               <img src="./assets/images/personal_details.png" alt="icon" />
               <p>Personal Details</p>
             </span>
@@ -213,13 +214,13 @@
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
-            <a href="#">Manage Account</a>
+            <a href="#manage-profile">Manage Account</a>
           </li>
           <li>
             <i class="fa-solid fa-chevron-right"></i>
           </li>
           <li>
-            <a href="#">Personal Details</a>
+            <a href="#personal-details">Personal Details</a>
           </li>
         </ul>
       </div>
@@ -232,13 +233,13 @@
               <i class="fa-solid fa-pen"></i>
             </div>
             <span>
-              <h1>Welcome back Zhara Doe</h1>
-              <h2>Zhara Doe</h2>
-              <p>zhara@gmail.com</p>
+              <!-- <h1>Welcome back Zhara Doe</h1> -->
+              <h2 class="user_name"></h2>
+              <p class="user_email"></p>
             </span>
 
             <div class="img_wrap">
-              <img src="./assets/images/account_circle.png" alt="user image" />
+              <img src="" alt="profile picture" class="profile_picture" />
 
               <div class="edit_profile toShow">
                 <p>Edit profile</p>
@@ -247,9 +248,9 @@
             </div>
           </div>
 
-          <div class="nav_links">
-            <span class="active">
-              <img src="./assets/images/personal_details.png" alt="icon" />
+          <div class="nav_links hidden">
+            <span class="active personal_details_link">
+              <img src="" alt="profile picture" />
               <p>Personal Details</p>
             </span>
             <span>
@@ -278,41 +279,37 @@
           <div class="user_details">
             <span>
               <h2>Name</h2>
-              <p>Zhara Doe</p>
+              <p class="user_name"></p>
             </span>
             <span class="email_addr">
               <h2>Email address</h2>
-              <p>
-                zharadoe@gmail.com
+              <p class="user_email">
                 <img src="./assets/images/verified.png" alt="verified" />
               </p>
             </span>
             <span>
               <h2>Occupation</h2>
-              <p>Real Estate Manager</p>
+              <p class="user_occupation"></p>
             </span>
             <span>
               <h2>Gender</h2>
-              <p>Female</p>
+              <p class="user_gender">Female</p>
             </span>
             <span>
               <h2>Address</h2>
-              <p>No 49 East-End, Jos, Plateau State, Nigeria.</p>
+              <p class="user_addr">No 49 East-End, Jos, Plateau State, Nigeria.</p>
             </span>
             <span>
               <h2>Phone number</h2>
-              <p>08123181961</p>
+              <p class="user_phone"></p>
             </span>
             <span>
               <h2>NIN</h2>
-              <p>75312208056610</p>
+              <p class="user_nin"></p>
             </span>
             <span>
               <h2>About me</h2>
-              <p>
-                Lorem ipsum is simply a dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry.
-              </p>
+              <p class="user_about"></p>
             </span>
           </div>
           <div class="delete_account" style="cursor: pointer">
@@ -550,7 +547,7 @@
           <div class="accom_info">
             <div class="accom_info_heading host_photo">
               <h1 id="listing_title"></h1>
-              <img src="./assets/images/accom_user.png" alt="person" />
+              <img src="" alt="" />
             </div>
 
             <div class="accom_writeup">
@@ -605,7 +602,7 @@
               <div class="host_info_wrapper">
                 <div class="host_info_card">
                   <div class="host_photo" id="hostPhoto">
-                    <img src="" alt="person" />
+                    <img src="" alt="" />
                   </div>
                   <div class="host_info_details">
                     <p class="host_name" id="hostName"></p>
@@ -1309,7 +1306,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
     </footer>
 
     <div class="overlay hidden" onclick="closeModal()"></div>
-    <div class="delete_pass_modal hidden" id="modal">
+    <div class="delete_modal hidden" id="modal">
       <div class="delete_wrapper">
         <div class="delete_heading">
           <h1>Delete your squazzle account</h1>
