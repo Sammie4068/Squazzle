@@ -98,6 +98,8 @@ navLinks.forEach((link) => {
 });
 
 // Manage Account Page
+const accessToken = localStorage.getItem("accessToken");
+const refreshToken = localStorage.getItem("refreshToken");
 const userId = localStorage.getItem("_id");
 const userFirstName = localStorage.getItem("firstName");
 const userLastName = localStorage.getItem("lastName");
@@ -338,6 +340,109 @@ changePassBtn.forEach((btn) =>
   btn.addEventListener("click", () => openModal(changePassModal))
 );
 
+// Change Password
+const changePasswordForm = document.querySelector(".change_pass_form");
+const oldPasswordInput = document.getElementById("oldPasswordInput");
+const newPasswordInput = document.getElementById("newPasswordInput");
+const confirmNewPasswordInput = document.getElementById(
+  "confirmNewPasswordInput"
+);
+const oldPasswordMsg = document.querySelector(".oldPass_msg");
+const newPasswordMsg = document.querySelector(".new_password_msg");
+const letterMsg = document.querySelector(".new_password_msg .letter");
+const numberMsg = document.querySelector(".new_password_msg .number");
+const charMsg = document.querySelector(".new_password_msg .char");
+const symbolMsg = document.querySelector(".new_password_msg .symbol");
+const confirmNewPasswordMsg = document.querySelector(".confirm_newPass_msg");
+const changePassDoneBtn = document.getElementById("change_password_submit");
+
+function oldPassvalidation() {
+  if (oldPasswordInput.value == "") {
+    oldPasswordMsg.innerText = "Please enter a correct password";
+    oldPasswordInput.classList.add("error");
+    oldPasswordMsg.classList.remove("hidden");
+  } else {
+    oldPasswordInput.classList.remove("error");
+    oldPasswordMsg.classList.add("hidden");
+  }
+}
+oldPasswordInput.addEventListener("input", oldPassvalidation);
+
+function passwordValidation() {
+  newPasswordMsg.classList.remove("hidden");
+
+  let lowerCaseLetters = /[a-z]/g;
+  let upperCaseLetters = /[A-Z]/g;
+  if (
+    newPasswordInput.value.match(lowerCaseLetters) &&
+    newPasswordInput.value.match(upperCaseLetters)
+  ) {
+    letterMsg.classList.remove("error");
+    letterMsg.classList.add("success");
+  } else {
+    newPasswordInput.classList.add("error");
+    letterMsg.classList.remove("success");
+    letterMsg.classList.add("error");
+  }
+
+  let numbers = /[0-9]/g;
+  if (newPasswordInput.value.match(numbers)) {
+    numberMsg.classList.remove("error");
+    numberMsg.classList.add("success");
+  } else {
+    numberMsg.classList.remove("success");
+    newPasswordInput.classList.add("error");
+    numberMsg.classList.add("error");
+  }
+
+  if (newPasswordInput.value.length >= 8) {
+    charMsg.classList.remove("error");
+    charMsg.classList.add("success");
+  } else {
+    newPasswordInput.classList.add("error");
+    charMsg.classList.remove("success");
+    charMsg.classList.add("error");
+  }
+
+  let SpecialCharacters =
+    /[\!\@\#\$\%\^\&\*\)\(\+\=\.\<\>\{\}\[\]\:\;\'\"\|\~\`\_\-]/g;
+  if (newPasswordInput.value.match(SpecialCharacters)) {
+    symbolMsg.classList.remove("error");
+    symbolMsg.classList.add("success");
+  } else {
+    newPasswordInput.classList.add("error");
+    symbolMsg.classList.remove("success");
+    symbolMsg.classList.add("error");
+  }
+
+  let passRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+  if (passRegex.test(newPasswordInput.value)) {
+    newPasswordInput.classList.remove("error");
+    newPasswordMsg.classList.add("hidden");
+    return true;
+  }
+}
+
+newPasswordInput.addEventListener("input", passwordValidation);
+
+function confirmPass() {
+  if (confirmNewPasswordInput.value == "") {
+    confirmNewPasswordInput.classList.add("error");
+    confirmNewPasswordMsg.innerText = "Re-enter password";
+    confirmNewPasswordMsg.classList.remove("hidden");
+  } else if (confirmNewPasswordInput.value != newPasswordInput.value) {
+    confirmNewPasswordInput.classList.add("error");
+    confirmNewPasswordMsg.innerText = "Passwords do not match";
+    confirmNewPasswordMsg.classList.remove("hidden");
+  } else {
+    confirmNewPasswordInput.classList.remove("error");
+    confirmNewPasswordMsg.classList.add("hidden");
+    return true;
+  }
+}
+confirmNewPasswordInput.addEventListener("input", confirmPass);
+
 // Logout
 function logout() {
   localStorage.clear();
@@ -356,7 +461,7 @@ function renderSpinner(parentEle) {
 
 function removeSpinner() {
   const spinner = document.querySelector(".spinner");
-  spinner && spinner.remove()
+  spinner && spinner.remove();
 }
 
 // Add accomodation progress
@@ -479,32 +584,6 @@ async function getSingleAccomodation(accomID) {
   }
 }
 accomId && getSingleAccomodation(accomId);
-
-const accessToken = localStorage.getItem("accessToken");
-const refreshToken = localStorage.getItem("refreshToken");
-
-// async function getUserInfo(userID) {
-//   // console.log(userID);
-//   try {
-//     const res = await fetch(
-//       `https://stayshare.onrender.com/api/v1/users/profile`,
-//       {
-//         method: "GET",
-//         headers: {
-//           Authorization: `Bearer ${accessToken}`,
-//         },
-//       }
-//     );
-//     const data = await res.json();
-//     if (data.error == "Expired token please login") {
-//       getToken();
-//       // location.reload()
-//     }
-//     return data;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
 
 // Refresh Token
 async function getToken() {

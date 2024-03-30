@@ -2594,6 +2594,10 @@ footer {
   font-size: 20px;
 }
 
+.change_pass_wrapper .change_pass_form .cpf_input_field .cpf_input.error {
+  outline-color: #A20111;
+}
+
 .oldPass_msg,
 .newPass_msg,
 .confirm_newPass_msg {
@@ -2603,6 +2607,25 @@ footer {
   letter-spacing: 0em;
   text-align: left;
   color: #a20111;
+}
+
+.new_password_msg {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #91332d;
+  display: flex;
+  flex-direction: column;
+}
+
+.success {
+  color: #3d7d50 !important;
+}
+
+.error {
+  color: #a20111 !important;
 }
 
 /* Accomodation */

@@ -201,13 +201,19 @@ const confirmPassInput = document.getElementById("confirmPasswordInput");
 const confirmPassMsg = document.getElementById("confirmPassMsg");
 
 function confirmPass() {
-  if (confirmPassInput.value != passwordInput.value) {
+  if (confirmPassInput.value == "") {
+    confirmPassMsg.innerText = "Re-enter password";
+    confirmPassMsg.classList.remove("hidden");
+  } else if (confirmPassInput.value != passwordInput.value) {
+    confirmPassMsg.innerText = "Passwords do not match";
     confirmPassMsg.classList.remove("hidden");
   } else {
     confirmPassMsg.classList.add("hidden");
     return true;
   }
 }
+
+confirmPassInput.addEventListener("input", confirmPass);
 
 // Form Submission
 signUpForm.addEventListener("submit", (e) => {

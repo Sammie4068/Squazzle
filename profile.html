@@ -1458,6 +1458,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
             <input
               type="password"
               class="cpf_input"
+              id="oldPasswordInput"
               placeholder="Enter your old password"
             />
             <span class="oldPass_msg hidden"></span>
@@ -1467,15 +1468,25 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
             <input
               type="password"
               class="cpf_input"
+              id="newPasswordInput"
               placeholder="Enter your new password"
             />
-            <span class="newPass_msg hidden"></span>
+            <!-- <span class="newPass_msg hidden"></span> -->
+             <div class="new_password_msg hidden">
+                  <span class="letter"
+                    >*Include an uppercase and a lowercase</span
+                  >
+                  <span class="number">*Contain a number</span>
+                  <span class="char">*Contain least 8 characters</span>
+                  <span class="symbol">*Contain a symbol</span>
+                </div>
           </div>
           <div class="cpf_input_field">
             <label class="cpf_label">Re-enter password</label>
             <input
               type="password"
               class="cpf_input"
+              id="confirmNewPasswordInput"
               placeholder="Re-enter your new password"
             />
             <span class="confirm_newPass_msg hidden"
@@ -1487,7 +1498,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
             <button class="btn btn-secondary" onclick="closeModal()">
               Cancel
             </button>
-            <button class="btn btn-primary">Done</button>
+            <button type="submit" class="btn btn-primary" id="change_password_submit">Done</button>
           </span>
         </form>
       </div>
