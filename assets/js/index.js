@@ -94,7 +94,7 @@ async function getUserInfo() {
       }
     );
     const data = await res.json();
-    if (data.success == true) {
+    if (data.status == "success") {
       const userInfo = data.data.profile;
       const jsonString = JSON.stringify(userInfo);
       const parsedObject = JSON.parse(jsonString);
@@ -104,6 +104,7 @@ async function getUserInfo() {
         }
       }
     }
+    console.log(data);
     if (data.error == "Expired token please login") {
       getToken();
       renderFeedback(data.message, "error");

@@ -25,12 +25,16 @@
   <body>
     <header>
       <div class="logo">
-        <a href="index.html"><img src="./assets/images/logo.png" alt="logo" /></a>
+        <a href="index.html"
+          ><img src="./assets/images/logo.png" alt="logo"
+        /></a>
       </div>
       <nav id="navbar" class="profile_nav">
         <ul>
           <li>
-            <a href="#manage-account" id="nav_link" class="active">Manage Account</a>
+            <a href="#manage-account" id="nav_link" class="active"
+              >Manage Account</a
+            >
           </li>
           <li>
             <a href="#" id="nav_link">Accomodations</a>
@@ -107,11 +111,15 @@
         <div class="left">
           <div class="welcome">
             <span>
-              <h1>Welcome back  <span class="user_name"></span> </h1>
+              <h1>Welcome back <span class="user_name"></span></h1>
               <p class="user_email"></p>
             </span>
 
-            <img src="./assets/images/account_circle.png" alt="user image" class="profile_picture" />
+            <img
+              src="./assets/images/account_circle.png"
+              alt="user image"
+              class="profile_picture"
+            />
           </div>
 
           <div class="nav_links hidden">
@@ -296,7 +304,9 @@
             </span>
             <span>
               <h2>Address</h2>
-              <p class="user_addr">No 49 East-End, Jos, Plateau State, Nigeria.</p>
+              <p class="user_addr">
+                No 49 East-End, Jos, Plateau State, Nigeria.
+              </p>
             </span>
             <span>
               <h2>Phone number</h2>
@@ -332,14 +342,29 @@
           </li>
         </ul>
 
-        <div class="feedbacks hidden">
-          <span class="success">
-            <img src="./assets/images/error_green.png" alt="feedback" />
-            <p>Your profile has been updated.</p>
-          </span>
-          <span class="failure">
-            <img src="./assets/images/error_red.png" alt="feedback" />
-            <p>Its looks like something went wrong. Try refreshing the page</p>
+        <div class="feedbacks hidden" id="feedback">
+          <span id="feedback_status" class="success">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M12 8V13M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                  stroke=""
+                  stroke-width="2"
+                  stroke-linecap="round"
+                ></path>
+              </g>
+            </svg>
+            <p id="feedback_text">Something came up</p>
           </span>
         </div>
       </div>
@@ -357,9 +382,14 @@
             </span>
 
             <div class="img_wrap">
-              <img src="" alt="profile picture" class="profile_picture" id="picture_display"/>
+              <img
+                src=""
+                alt="profile picture"
+                class="profile_picture"
+                id="picture_display"
+              />
 
-              <input type="file" id="change_profile_picture">
+              <input type="file" id="change_profile_picture" />
 
               <div class="edit_profile toShow">
                 <p>Edit profile</p>
@@ -372,19 +402,43 @@
           <form id="edit_profile_form">
             <div class="input_field">
               <label>First Name</label>
-              <input type="text" placeholder="First name" class="input" id="firstname_input" required/>
+              <input
+                type="text"
+                placeholder="First name"
+                class="input"
+                id="firstname_input"
+                required
+              />
             </div>
             <div class="input_field">
               <label>Last Name</label>
-              <input type="text" placeholder="Last name" class="input" id="lastname_input" required/>
+              <input
+                type="text"
+                placeholder="Last name"
+                class="input"
+                id="lastname_input"
+                required
+              />
             </div>
             <div class="input_field">
               <label>Email Address</label>
-              <input type="email" placeholder="Email" class="input" id="email_input" required/>
+              <input
+                type="email"
+                placeholder="Email"
+                class="input"
+                id="email_input"
+                required
+              />
             </div>
             <div class="input_field">
               <label>Occupation</label>
-              <input type="text" placeholder="Your occupation" class="input" id="occupation_input" required/>
+              <input
+                type="text"
+                placeholder="Your occupation"
+                class="input"
+                id="occupation_input"
+                required
+              />
             </div>
             <div class="input_field">
               <label>Gender</label>
@@ -396,21 +450,45 @@
             </div>
             <div class="input_field">
               <label>Address</label>
-              <input type="text" placeholder="Your Address" class="input" id="address_input" required/>
+              <input
+                type="text"
+                placeholder="Your Address"
+                class="input"
+                id="address_input"
+                required
+              />
             </div>
             <div class="input_field combo_inputs">
               <span>
                 <label>State</label>
-                <input type="text" placeholder="State" class="input" id="state_input" required/>
+                <input
+                  type="text"
+                  placeholder="State"
+                  class="input"
+                  id="state_input"
+                  required
+                />
               </span>
               <span>
                 <label>City</label>
-                <input type="text" placeholder="City" class="input" id="city_input" required/>
+                <input
+                  type="text"
+                  placeholder="City"
+                  class="input"
+                  id="city_input"
+                  required
+                />
               </span>
             </div>
             <div class="input_field">
               <label>NIN</label>
-              <input type="text" placeholder="NIN" class="input" id="nin_input" required/>
+              <input
+                type="text"
+                placeholder="NIN"
+                class="input"
+                id="nin_input"
+                required
+              />
             </div>
             <div class="input_field">
               <label>Phone Number</label>
@@ -420,24 +498,35 @@
               <label>About You</label>
               <textarea
                 name="about"
-                id=""
                 cols="30"
                 rows="10"
                 placeholder="Describe yourself"
-                id="about_input" required
+                id="about_input"
+                required
               ></textarea>
             </div>
 
             <div class="btn_wrapper">
-              <button class="btn btn-secondary" id="edit_profile_cancel_btn">Cancel</button>
-              <button type="submit" class="btn btn-primary" id="edit_profile_submit_btn">Save</button>
+              <button class="btn btn-secondary" id="edit_profile_cancel_btn">
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="edit_profile_submit_btn"
+              >
+                Save
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
 
-    <div class="user_profile_container accom_profile_cont hidden" id="viewListing">
+    <div
+      class="user_profile_container accom_profile_cont hidden"
+      id="viewListing"
+    >
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
@@ -457,20 +546,18 @@
           <div class="accom_details">
             <h1>Location</h1>
             <hr />
-            <p id="listing_location">
-            </p>
+            <p id="listing_location"></p>
           </div>
           <div class="accom_details">
             <h1>Reason for listing this accommodation</h1>
             <hr />
-            <p id="listing_reason">
-            </p>
+            <p id="listing_reason"></p>
           </div>
           <div class="accom_details">
             <h1>Hosting duration</h1>
             <hr />
             <span>
-              <img src="./assets/images/date_range.png" alt="icon"/>
+              <img src="./assets/images/date_range.png" alt="icon" />
               <p class="acccom_date_range" id="listing_date"></p>
             </span>
           </div>
@@ -514,7 +601,7 @@
             </span>
 
             <span class="res_photo">
-              <img src=""/>
+              <img src="" />
             </span>
           </div>
 
@@ -522,14 +609,12 @@
             <div class="accom_details">
               <h1>Location</h1>
               <hr />
-              <p id="listing_location">
-              </p>
+              <p id="listing_location"></p>
             </div>
             <div class="accom_details">
               <h1>Reason for listing this accommodation</h1>
               <hr />
-              <p id="listing_reason">
-              </p>
+              <p id="listing_reason"></p>
             </div>
             <div class="accom_details">
               <h1>Hosting duration</h1>
@@ -557,9 +642,7 @@
 
             <div class="accom_writeup">
               <h2>About this apartment</h2>
-              <p id="listing_desc">
-                
-              </p>
+              <p id="listing_desc"></p>
               <!-- <a href="#">Read more</a> -->
             </div>
 
@@ -635,7 +718,10 @@
         </div>
       </div>
     </div>
-    <div class="user_profile_container accom_profile_cont hidden" id="myListings">
+    <div
+      class="user_profile_container accom_profile_cont hidden"
+      id="myListings"
+    >
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
@@ -829,7 +915,10 @@
         </div>
       </div>
     </div>
-    <div class="user_profile_container accom_profile_cont hidden" id="editListing">
+    <div
+      class="user_profile_container accom_profile_cont hidden"
+      id="editListing"
+    >
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
@@ -1040,7 +1129,10 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
         </div>
       </div>
     </div>
-    <div class="user_profile_container accom_profile_cont hidden" id="addListing">
+    <div
+      class="user_profile_container accom_profile_cont hidden"
+      id="addListing"
+    >
       <div class="navigation add_accom_nav">
         <ul class="breadcrumb">
           <li>

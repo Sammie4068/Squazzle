@@ -98,10 +98,10 @@ navLinks.forEach((link) => {
 });
 
 // Manage Account Page
-const userId = localStorage.getItem("id");
-const userFullName = `${localStorage.getItem(
-  "firstName"
-)} ${localStorage.getItem("lastName")}`;
+const userId = localStorage.getItem("_id");
+const userFirstName = localStorage.getItem("firstName");
+const userLastName = localStorage.getItem("lastName");
+const userFullName = `${userFirstName} ${userLastName}`;
 const userEmail = localStorage.getItem("email");
 const userOccupation = localStorage.getItem("occupation");
 const userGender = localStorage.getItem("gender");
@@ -109,6 +109,8 @@ const userAddr = localStorage.getItem("address");
 const userPhone = localStorage.getItem("phoneNumber");
 const userNin = localStorage.getItem("nin");
 const userAbout = localStorage.getItem("about");
+const userState = localStorage.getItem("state");
+const userCity = localStorage.getItem("city");
 
 const userNameEle = document.querySelectorAll(".user_name");
 const userEmailEle = document.querySelectorAll(".user_email");
@@ -129,15 +131,36 @@ conditionalDisplayProp(userNin, userNinEle);
 conditionalDisplayProp(userAbout, userAboutEle);
 
 function displayProp(ele, data) {
-  if (ele instanceof NodeList) {
-    ele.forEach((e) => (e.innerText = data));
+  if (
+    ele instanceof HTMLInputElement ||
+    ele instanceof HTMLSelectElement ||
+    ele instanceof HTMLTextAreaElement
+  ) {
+    if (ele instanceof NodeList) {
+      ele.forEach((e) => (e.value = data));
+    } else {
+      ele.value = data;
+    }
   } else {
-    ele.innerText = data;
+    if (ele instanceof NodeList) {
+      ele.forEach((e) => (e.innerText = data));
+    } else {
+      ele.innerText = data;
+    }
   }
 }
 
 function conditionalDisplayProp(lsProp, ele) {
-  lsProp ? displayProp(ele, lsProp) : displayProp(ele, "N/A");
+  lsProp
+    ? displayProp(ele, lsProp)
+    : displayProp(
+        ele,
+        ele instanceof HTMLInputElement ||
+          ele instanceof HTMLSelectElement ||
+          ele instanceof HTMLTextAreaElement
+          ? ""
+          : "N/A"
+      );
 }
 
 function updateHash(ele, hash) {
@@ -174,8 +197,21 @@ const stateInput = document.getElementById("state_input");
 const cityInput = document.getElementById("city_input");
 const ninInput = document.getElementById("nin_input");
 const aboutInput = document.getElementById("about_input");
+
 const changeProfilePicture = document.getElementById("change_profile_picture");
 const pictureDisplay = document.getElementById("picture_display");
+
+displayProp(firstNameInput, userFirstName);
+displayProp(lastNameInput, userLastName);
+displayProp(emailInput, userEmail);
+conditionalDisplayProp(userOccupation, occupationInput);
+conditionalDisplayProp(userGender, genderInput);
+conditionalDisplayProp(userAddr, addressInput);
+conditionalDisplayProp(userState, stateInput);
+conditionalDisplayProp(userCity, cityInput);
+displayProp(phoneInput, userPhone);
+conditionalDisplayProp(userAbout, aboutInput);
+conditionalDisplayProp(userNin, ninInput);
 
 changeProfilePicture.addEventListener("change", () => {
   const file = changeProfilePicture.files[0];
@@ -208,7 +244,10 @@ editProfileForm.addEventListener("submit", (e) => {
   formData.append("city", cityInput.value);
   formData.append("phoneNumber", phoneInput.value);
   formData.append("bio", aboutInput.value);
-  formData.append("image", changeProfilePicture.files[0]);
+  formData.append(
+    "image",
+    changeProfilePicture.files[0] ? changeProfilePicture.files[0] : null
+  );
 
   editProfileFunction(formData);
 });
@@ -216,18 +255,47 @@ editProfileForm.addEventListener("submit", (e) => {
 async function editProfileFunction(data) {
   try {
     const res = await fetch(
-      `https://stayshare.onrender.com/api/v1/auth/users/${id}`,
+      `https://stayshare.onrender.com/api/v1/users/${userId}`,
       {
         method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
         body: data,
       }
     );
     const result = await res.json();
     removeSpinner();
+     if (result.error == "Expired token please login") {
+       getToken();
+       renderProfileFeedback(result.message, "error");
+     }
+     if(result.status == "success") {
+      renderProfileFeedback(result.message, "success");
+      const userInfo = result.data;
+      const jsonString = JSON.stringify(userInfo);
+      const parsedObject = JSON.parse(jsonString);
+      for (const key in parsedObject) {
+        if (parsedObject.hasOwnProperty(key)) {
+          localStorage.setItem(key, parsedObject[key]);
+        }
+      }
+     }
     console.log(result);
   } catch (err) {
     console.error(`Error: ${err}`);
   }
+}
+
+// Profile Feedback
+const profileFeedback = document.getElementById("feedback");
+const profileFeedbackStatus = document.getElementById("feedback_status");
+const profileFeedbackMsg = document.getElementById("feedback_text");
+
+function renderProfileFeedback(msg, status) {
+  profileFeedbackMsg.innerText = msg;
+  profileFeedbackStatus.classList.add(status);
+  profileFeedback.classList.remove("hidden");
 }
 
 // Modals
