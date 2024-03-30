@@ -29,7 +29,7 @@ function renderSpinner(parentEle) {
 
 function removeSpinner() {
   const spinner = document.querySelector(".spinner");
-  spinner && spinner.classList.add("hidden");
+ spinner && spinner.remove();
 }
 
 function renderError(errMsg) {

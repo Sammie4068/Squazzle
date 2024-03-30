@@ -230,7 +230,6 @@ updateHash(editProfileCancelBtn, "personal-details");
 
 editProfileForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  editProfileSubmitBtn.style.width = "35%";
   renderSpinner(editProfileSubmitBtn);
 
   const formData = new FormData();
@@ -266,13 +265,24 @@ async function editProfileFunction(data) {
     );
     const result = await res.json();
     removeSpinner();
-     if (result.error == "Expired token please login") {
-       getToken();
-       renderProfileFeedback(result.message, "error");
-     }
-     if(result.status == "success") {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    if (result.error) {
+      renderProfileFeedback(result.error, "error");
+      if (result.error == "Expired token please login") {
+        getToken();
+        renderProfileFeedback(
+          "Access expired, Try refreshing the page",
+          "error"
+        );
+      }
+    }
+
+    if (result.status == "success") {
       renderProfileFeedback(result.message, "success");
-      const userInfo = result.data;
+      const userInfo = result.data.user;
       const jsonString = JSON.stringify(userInfo);
       const parsedObject = JSON.parse(jsonString);
       for (const key in parsedObject) {
@@ -280,7 +290,7 @@ async function editProfileFunction(data) {
           localStorage.setItem(key, parsedObject[key]);
         }
       }
-     }
+    }
     console.log(result);
   } catch (err) {
     console.error(`Error: ${err}`);
@@ -294,6 +304,7 @@ const profileFeedbackMsg = document.getElementById("feedback_text");
 
 function renderProfileFeedback(msg, status) {
   profileFeedbackMsg.innerText = msg;
+  profileFeedbackStatus.className = "";
   profileFeedbackStatus.classList.add(status);
   profileFeedback.classList.remove("hidden");
 }
@@ -339,12 +350,13 @@ function renderSpinner(parentEle) {
   const markup = `<div class="spinner"></div>
 `;
   const spinner = document.querySelector(".spinner");
+  console.log(spinner);
   spinner || parentEle.insertAdjacentHTML("beforeend", markup);
 }
 
 function removeSpinner() {
   const spinner = document.querySelector(".spinner");
-  spinner && spinner.classList.add("hidden");
+  spinner && spinner.remove()
 }
 
 // Add accomodation progress

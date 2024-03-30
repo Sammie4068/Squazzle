@@ -380,7 +380,7 @@ function renderSpinner(parentEle) {
 
 function removeSpinner() {
   const spinner = document.querySelector(".spinner");
-  spinner.classList.toggle("hidden");
+ spinner && spinner.remove();
 }
 
 const feedbackModal = document.getElementById("feedback");

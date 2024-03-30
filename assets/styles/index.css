@@ -2346,6 +2346,11 @@ footer {
   justify-content: space-between;
 }
 
+.user_profile_container .display_right form .btn_wrapper button {
+  width: 25%;
+  gap: 10px;
+}
+
 .btn {
   padding: 16px 24px;
   border-radius: 12px;
