@@ -107,7 +107,7 @@ async function getUserInfo() {
     console.log(data);
     if (data.error == "Expired token please login") {
       getToken();
-      renderFeedback(data.message, "error");
+      renderFeedback("Access expired, Try refreshing the page", "error");
     }
   } catch (err) {
     console.log(err);

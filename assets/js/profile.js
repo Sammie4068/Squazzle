@@ -267,10 +267,6 @@ async function editProfileFunction(data) {
     );
     const result = await res.json();
     removeSpinner();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
     if (result.error) {
       renderProfileFeedback(result.error, "error");
       if (result.error == "Expired token please login") {
@@ -309,6 +305,17 @@ function renderProfileFeedback(msg, status) {
   profileFeedbackStatus.className = "";
   profileFeedbackStatus.classList.add(status);
   profileFeedback.classList.remove("hidden");
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+// Modal feedback
+const changePassFeedback = document.getElementById("changePassFeedback");
+function renderModalFeedback(ele, msg, status) {
+  ele.innerText = msg;
+  ele.classList.add(status);
 }
 
 // Modals
@@ -364,6 +371,7 @@ function oldPassvalidation() {
   } else {
     oldPasswordInput.classList.remove("error");
     oldPasswordMsg.classList.add("hidden");
+    return true;
   }
 }
 oldPasswordInput.addEventListener("input", oldPassvalidation);
@@ -416,7 +424,7 @@ function passwordValidation() {
   }
 
   let passRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,100}$/;
   if (passRegex.test(newPasswordInput.value)) {
     newPasswordInput.classList.remove("error");
     newPasswordMsg.classList.add("hidden");
@@ -443,6 +451,56 @@ function confirmPass() {
 }
 confirmNewPasswordInput.addEventListener("input", confirmPass);
 
+changePasswordForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const changePassData = {
+    currentPassword: oldPasswordInput.value,
+    newPassword: newPasswordInput.value,
+    confirmPassword: confirmNewPasswordInput.value,
+  };
+  if (oldPassvalidation() && passwordValidation() & confirmPass()) {
+    renderSpinner(changePassDoneBtn);
+    changePasswordFunction(changePassData);
+  }
+});
+
+async function changePasswordFunction(data) {
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/users/changePassword`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: data,
+      }
+    );
+    const result = await res.json();
+    removeSpinner();
+    if(result.success == false){
+      renderModalFeedback(changePassFeedback, result.message, "error");
+    }
+    if (result.error) {
+      renderModalFeedback(changePassFeedback, result.error, "error");
+      if (result.error == "Expired token please login") {
+        getToken();
+        renderProfileFeedback(
+          "Access expired, Try refreshing the page",
+          "error"
+        );
+      }
+    }
+
+    if (result.status == "success") {
+      renderModalFeedback(changePassFeedback, result.message, "success");
+    }
+    console.log(result);
+  } catch (err) {
+    console.error(`Error: ${err}`);
+  }
+}
+
 // Logout
 function logout() {
   localStorage.clear();
@@ -455,7 +513,6 @@ function renderSpinner(parentEle) {
   const markup = `<div class="spinner"></div>
 `;
   const spinner = document.querySelector(".spinner");
-  console.log(spinner);
   spinner || parentEle.insertAdjacentHTML("beforeend", markup);
 }
 

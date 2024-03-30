@@ -2346,7 +2346,8 @@ footer {
   justify-content: space-between;
 }
 
-.user_profile_container .display_right form .btn_wrapper button {
+.user_profile_container .display_right form .btn_wrapper button, .delete_wrapper .delete_form .delete_btn_wrapper button,
+.cpf_btn_wrapper button {
   width: 25%;
   gap: 10px;
 }
@@ -2406,7 +2407,7 @@ footer {
 
 .feedback_modal {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
