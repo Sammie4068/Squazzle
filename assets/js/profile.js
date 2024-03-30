@@ -478,7 +478,7 @@ async function changePasswordFunction(data) {
     );
     const result = await res.json();
     removeSpinner();
-    if(result.success == false){
+    if (result.success == false) {
       renderModalFeedback(changePassFeedback, result.message, "error");
     }
     if (result.error) {
@@ -663,3 +663,16 @@ async function getToken() {
     console.log(err);
   }
 }
+
+// Add accomodation images
+const addImageOptions = document.querySelectorAll("#addImageOption");
+
+addImageOptions.forEach((card) => {
+  const optionModalControl = card.querySelectorAll("#optionModalControl");
+  const optionModal = card.querySelector(".add_image_option_modal");
+  optionModalControl.forEach((opt) => {
+    opt.addEventListener("click", () => {
+      optionModal.classList.toggle("hidden");
+    });
+  });
+});

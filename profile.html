@@ -510,11 +510,7 @@
               <button class="btn btn-secondary" id="edit_profile_cancel_btn">
                 Cancel
               </button>
-              <button
-
-                class="btn btn-primary"
-                id="edit_profile_submit_btn"
-              >
+              <button class="btn btn-primary" id="edit_profile_submit_btn">
                 Save
               </button>
             </div>
@@ -1136,7 +1132,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
       <div class="navigation add_accom_nav">
         <ul class="breadcrumb">
           <li>
-            <a href="#">Manage Account</a>
+            <a href="#manage-account">Manage Account</a>
           </li>
           <li>
             <i class="fa-solid fa-chevron-right"></i>
@@ -1173,7 +1169,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
 
         <div class="add_accom_form_wrapper">
           <div class="form_container">
-            <div class="add_accom_form step_active" id="overview">
+            <div class="add_accom_form" id="overview">
               <div class="add_accom_feature">
                 <h1>Accommodation name</h1>
                 <input
@@ -1336,16 +1332,33 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                 </button>
               </div>
             </div>
-            <div class="add_accom_form" id="images">
+            <div class="add_accom_form step_active" id="images">
               <div class="add_accom_feature">
-                <h1>Page 4</h1>
-                <textarea
-                  cols="30"
-                  rows="10"
-                  placeholder="A brief description of the accommodation"
-                ></textarea>
+                <span class="add_sub">
+                  <h1>Upload an image</h1>
+                  <p>You can upload at least 3 images</p>
+                </span>
+
+                <div class="add_accom_image_wrapper">
+                  <div class="add_accom_image">
+                    <span class="add_accom_image_container">
+                      <img src="./assets/images/accom_1.png" alt="" />
+                    </span>
+
+                    <div class="add_image_option" id="addImageOption">
+                      <div class="open_option" id="optionModalControl">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                      </div>
+                      <div class="add_image_option_modal hidden">
+                        <i class="fa-solid fa-x" id="optionModalControl"></i>
+                        <span>Set as cover photo</span>
+                        <span>Hide from gallery</span>
+                        <span>Hide from gallery</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <hr />
               <div class="btn_wrapper">
                 <button class="btn btn-secondary" id="prevBtn">Cancel</button>
                 <button class="btn btn-primary">Save & Publish</button>
@@ -1471,14 +1484,12 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
               id="newPasswordInput"
               placeholder="Enter your new password"
             />
-             <div class="new_password_msg hidden">
-                  <span class="letter"
-                    >*Include an uppercase and a lowercase</span
-                  >
-                  <span class="number">*Contain a number</span>
-                  <span class="char">*Contain least 8 characters</span>
-                  <span class="symbol">*Contain a symbol</span>
-                </div>
+            <div class="new_password_msg hidden">
+              <span class="letter">*Include an uppercase and a lowercase</span>
+              <span class="number">*Contain a number</span>
+              <span class="char">*Contain least 8 characters</span>
+              <span class="symbol">*Contain a symbol</span>
+            </div>
           </div>
           <div class="cpf_input_field">
             <label class="cpf_label">Re-enter password</label>
@@ -1497,7 +1508,13 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
             <button class="btn btn-secondary" onclick="closeModal()">
               Cancel
             </button>
-            <button type="submit" class="btn btn-primary" id="change_password_submit">Done</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="change_password_submit"
+            >
+              Done
+            </button>
           </span>
         </form>
       </div>

@@ -1097,7 +1097,7 @@ footer {
 .navigation .feedbacks .error {
   background: #f8dbd9;
   border: 1px solid #91332d;
-   stroke: #91332d;
+  stroke: #91332d;
   color: #91332d;
 }
 
@@ -2346,7 +2346,8 @@ footer {
   justify-content: space-between;
 }
 
-.user_profile_container .display_right form .btn_wrapper button, .delete_wrapper .delete_form .delete_btn_wrapper button,
+.user_profile_container .display_right form .btn_wrapper button,
+.delete_wrapper .delete_form .delete_btn_wrapper button,
 .cpf_btn_wrapper button {
   width: 25%;
   gap: 10px;
@@ -2596,7 +2597,7 @@ footer {
 }
 
 .change_pass_wrapper .change_pass_form .cpf_input_field .cpf_input.error {
-  outline-color: #A20111;
+  outline-color: #a20111;
 }
 
 .oldPass_msg,
@@ -2835,6 +2836,73 @@ footer {
   justify-content: end;
 }
 
+.add_accom_image_wrapper {
+  margin-top: 20px;
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add_accom_image {
+  height: fit-content;
+}
+
+.add_accom_image_container {
+  width: 50%;
+}
+
+.add_image_option {
+  position: relative;
+  top: -240px;
+  left: 220px;
+}
+
+.add_accom_image {
+  height: 245px;
+}
+
+.add_accom_image img {
+  height: 245px;
+}
+.open_option {
+  background: #ffffff87;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  padding: 8px;
+  cursor: pointer;
+  color: #323232;
+}
+
+.add_image_option_modal {
+  position: relative;
+  top: -35px;
+  left: -140px;
+  background: #fff;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+.add_image_option_modal i {
+  position: relative;
+  left: 130px;
+  cursor: pointer;
+  width: 10px;
+  color: #323232;
+}
+
+.add_image_option_modal span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  color: #353535;
+  cursor: pointer;
+}
 /* Media Queries */
 @media screen and (max-width: 768px) {
   header {
