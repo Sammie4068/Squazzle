@@ -215,6 +215,10 @@ displayProp(phoneInput, userPhone);
 conditionalDisplayProp(userAbout, aboutInput);
 conditionalDisplayProp(userNin, ninInput);
 
+pictureDisplay.addEventListener("click", () => {
+  changeProfilePicture.click();
+});
+
 changeProfilePicture.addEventListener("change", () => {
   const file = changeProfilePicture.files[0];
   const reader = new FileReader();
@@ -665,14 +669,68 @@ async function getToken() {
 }
 
 // Add accomodation images
-const addImageOptions = document.querySelectorAll("#addImageOption");
-
-addImageOptions.forEach((card) => {
-  const optionModalControl = card.querySelectorAll("#optionModalControl");
-  const optionModal = card.querySelector(".add_image_option_modal");
-  optionModalControl.forEach((opt) => {
-    opt.addEventListener("click", () => {
-      optionModal.classList.toggle("hidden");
+function imageOption() {
+  const addImageOptions = document.querySelectorAll("#addImageOption");
+  addImageOptions.forEach((card) => {
+    const optionModalControl = card.querySelectorAll("#optionModalControl");
+    const optionModal = card.querySelector(".add_image_option_modal");
+    optionModalControl.forEach((opt) => {
+      opt.addEventListener("click", () => {
+        optionModal.classList.toggle("hidden");
+      });
     });
   });
+}
+imageOption();
+
+const addAccomImageeWrapper = document.querySelector(
+  ".add_accom_image_wrapper"
+);
+const addNewImageCard = document.getElementById("addNewImage");
+const newImageUpload = document.getElementById("newImageUpload");
+
+addNewImageCard.addEventListener("click", () => {
+  newImageUpload.click();
 });
+
+function addNewImageEle(ele) {
+  ele.addEventListener("change", () => {
+    const file = ele.files[0];
+    if (!file) return; // Return early if no file selected
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const markup = `
+        <div class="add_accom_image">
+          <span class="add_accom_image_container">
+            <img src="${e.target.result}" alt="" />
+          </span>
+          <div class="add_image_option">
+            <div class="open_option">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+            <div class="add_image_option_modal hidden">
+              <i class="fa-solid fa-x closeModal"></i>
+              <span>Set as cover photo</span>
+              <span>Hide from gallery</span>
+              <span>Delete</span>
+            </div>
+          </div>
+        </div>`;
+      addAccomImageeWrapper.insertAdjacentHTML("afterbegin", markup);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("open_option")) {
+    const optionModal = e.target.nextElementSibling;
+    optionModal.classList.toggle("hidden");
+  } else if (e.target.classList.contains("closeModal")) {
+    const optionModal = e.target.parentElement;
+    optionModal.classList.add("hidden");
+  }
+});
+
+addNewImageEle(newImageUpload);

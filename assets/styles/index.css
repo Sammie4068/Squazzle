@@ -161,16 +161,7 @@ header nav ul li a:hover {
   width: 104px;
   height: 104px;
   border-radius: 50%;
-}
-
-.img_wrap input {
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-  opacity: 0;
   cursor: pointer;
-  position: absolute;
-  left: 168px;
 }
 
 .dropdown__wrapper {
@@ -1085,6 +1076,7 @@ footer {
 
 .navigation .feedbacks span svg {
   width: 30px;
+  height: 30px;
 }
 
 .navigation .feedbacks .success {
@@ -2851,6 +2843,33 @@ footer {
   width: 50%;
 }
 
+.add_new_image {
+  cursor: pointer;
+}
+
+.add_new_image .svg_span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #f5f5f5;
+  width: 270px;
+  height: 211px;
+}
+
+.add_new_image .svg_span svg {
+  width: 53.33px;
+  height: 53.33px;
+}
+
+.add_photo_span {
+  padding: 8px 0px;
+  background: #d7d7d7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .add_image_option {
   position: relative;
   top: -240px;
@@ -2860,9 +2879,9 @@ footer {
 .add_accom_image {
   height: 245px;
 }
-
 .add_accom_image img {
   height: 245px;
+  width: 270px;
 }
 .open_option {
   background: #ffffff87;
@@ -2883,16 +2902,15 @@ footer {
   width: 70%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px 24px;
 }
 
 .add_image_option_modal i {
-  position: relative;
-  left: 130px;
+  display: flex;
+  justify-content: end;
   cursor: pointer;
-  width: 10px;
   color: #323232;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 .add_image_option_modal span {
@@ -2902,7 +2920,13 @@ footer {
   text-align: left;
   color: #353535;
   cursor: pointer;
+  padding: 16px 24px;
 }
+
+.add_image_option_modal span:hover {
+  background: #f0f0f0;
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
   header {
@@ -3801,9 +3825,5 @@ footer {
   .user_profile_container .add_accom .btn_wrapper {
     flex-direction: column;
     gap: 16px;
-  }
-
-  .img_wrap input {
-    left: 5%;
   }
 }

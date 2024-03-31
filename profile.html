@@ -344,25 +344,8 @@
 
         <div class="feedbacks hidden" id="feedback">
           <span id="feedback_status">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  d="M12 8V13M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                  stroke=""
-                  stroke-width="2"
-                  stroke-linecap="round"
-                ></path>
-              </g>
+            <svg>
+              <use xlink:href="./assets/icon.svg#feedback-alert"></use>
             </svg>
             <p id="feedback_text"></p>
           </span>
@@ -387,9 +370,10 @@
                 alt="profile picture"
                 class="profile_picture"
                 id="picture_display"
+                title="Click to change profile picture"
               />
 
-              <input type="file" id="change_profile_picture" />
+              <input hidden type="file" id="change_profile_picture" />
 
               <div class="edit_profile toShow">
                 <p>Edit profile</p>
@@ -1340,22 +1324,16 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                 </span>
 
                 <div class="add_accom_image_wrapper">
-                  <div class="add_accom_image">
-                    <span class="add_accom_image_container">
-                      <img src="./assets/images/accom_1.png" alt="" />
-                    </span>
-
-                    <div class="add_image_option" id="addImageOption">
-                      <div class="open_option" id="optionModalControl">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                      </div>
-                      <div class="add_image_option_modal hidden">
-                        <i class="fa-solid fa-x" id="optionModalControl"></i>
-                        <span>Set as cover photo</span>
-                        <span>Hide from gallery</span>
-                        <span>Hide from gallery</span>
-                      </div>
+                  <div class="add_accom_image" id="addNewImage">
+                    <div class="add_new_image">
+                      <span class="svg_span">
+                        <svg>
+                          <use xlink:href="/assets/icon.svg#add-circle"></use>
+                        </svg>
+                      </span>
                     </div>
+                    <span class="add_photo_span"> Add photo </span>
+                     <input type="file" hidden id="newImageUpload">
                   </div>
                 </div>
               </div>
