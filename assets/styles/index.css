@@ -1834,11 +1834,11 @@ footer {
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
-  color: #03796e;
+  color: #232323;
   min-height: 50px;
   resize: none;
   overflow-y: hidden;
-}
+  padding: 20px 16px; }
 
 .user_profile_container .accom_right {
   display: flex;
@@ -2421,6 +2421,7 @@ footer {
 
 .feedback_modal span svg {
   width: 30px;
+  height: 30px;
 }
 
 .feedback_modal span p {
@@ -3823,7 +3824,20 @@ footer {
     flex-direction: column;
   }
   .user_profile_container .add_accom .btn_wrapper {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 16px;
+  }
+  .add_accom_image_wrapper {
+    flex-direction: column;
+  }
+  .add_new_image .svg_span {
+    width: 100%;
+  }
+  .add_accom_image img {
+    width: 100%;
+  }
+  .open_option {
+    position: relative;
+    left: 55px;
   }
 }

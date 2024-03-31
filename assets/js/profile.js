@@ -271,15 +271,13 @@ async function editProfileFunction(data) {
     );
     const result = await res.json();
     removeSpinner();
+
+    if (result.error == "Expired token please login") {
+      getToken();
+      renderFeedback("Access expired, Try refreshing the page", "error");
+    }
     if (result.error) {
       renderProfileFeedback(result.error, "error");
-      if (result.error == "Expired token please login") {
-        getToken();
-        renderProfileFeedback(
-          "Access expired, Try refreshing the page",
-          "error"
-        );
-      }
     }
 
     if (result.status == "success") {
@@ -309,6 +307,22 @@ function renderProfileFeedback(msg, status) {
   profileFeedbackStatus.className = "";
   profileFeedbackStatus.classList.add(status);
   profileFeedback.classList.remove("hidden");
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+// Feedback Modal
+const feedbackModal = document.getElementById("feedback");
+const feedbackModalStatus = document.getElementById("feedback_status");
+const feedbackModalMsg = document.getElementById("feedback_text");
+
+function renderFeedback(msg, status) {
+  feedbackModalMsg.innerText = msg;
+  feedbackModalStatus.className = "";
+  feedbackModalStatus.classList.add(status);
+  feedbackModal.classList.remove("hidden");
   window.scrollTo({
     top: 0,
     behavior: "smooth",
@@ -469,6 +483,7 @@ changePasswordForm.addEventListener("submit", (e) => {
 });
 
 async function changePasswordFunction(data) {
+  console.log(data);
   try {
     const res = await fetch(
       `https://stayshare.onrender.com/api/v1/users/changePassword`,
@@ -526,8 +541,8 @@ function removeSpinner() {
 }
 
 // Add accomodation progress
-const prevBtns = document.querySelectorAll("#prevBtn");
-const nextBtns = document.querySelectorAll("#nextBtn");
+const prevBtns = document.querySelectorAll(".prevBtn");
+const nextBtns = document.querySelectorAll(".nextBtn");
 const progressBars = document.querySelectorAll(".progress_bars span");
 const activeProgressBars = document.querySelector(".progress_bars .active");
 const addAccomPages = document.querySelectorAll(".add_accom_form");
@@ -669,20 +684,6 @@ async function getToken() {
 }
 
 // Add accomodation images
-function imageOption() {
-  const addImageOptions = document.querySelectorAll("#addImageOption");
-  addImageOptions.forEach((card) => {
-    const optionModalControl = card.querySelectorAll("#optionModalControl");
-    const optionModal = card.querySelector(".add_image_option_modal");
-    optionModalControl.forEach((opt) => {
-      opt.addEventListener("click", () => {
-        optionModal.classList.toggle("hidden");
-      });
-    });
-  });
-}
-imageOption();
-
 const addAccomImageeWrapper = document.querySelector(
   ".add_accom_image_wrapper"
 );
@@ -696,7 +697,7 @@ addNewImageCard.addEventListener("click", () => {
 function addNewImageEle(ele) {
   ele.addEventListener("change", () => {
     const file = ele.files[0];
-    if (!file) return; // Return early if no file selected
+    if (!file) return;
 
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -734,3 +735,19 @@ document.addEventListener("click", (e) => {
 });
 
 addNewImageEle(newImageUpload);
+
+const addAccomRuleBtn = document.getElementById("addAccomRuleBtn");
+const accomRulesWrapper = document.getElementById("accomRulesWrapper");
+
+function addRulesDiv() {
+  const markup = `<div class="add_rules_feat">
+                    <input type="text" placeholder="Rule name" />
+                    <textarea
+                      cols="30"
+                      rows="5"
+                      placeholder="description"
+                    ></textarea>
+                  </div>`;
+  accomRulesWrapper.insertAdjacentHTML("beforeend", markup);
+}
+addAccomRuleBtn.addEventListener('click', addRulesDiv)

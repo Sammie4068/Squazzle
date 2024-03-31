@@ -1153,7 +1153,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
 
         <div class="add_accom_form_wrapper">
           <div class="form_container">
-            <div class="add_accom_form" id="overview">
+            <div class="add_accom_form step_active" id="overview">
               <div class="add_accom_feature">
                 <h1>Accommodation name</h1>
                 <input
@@ -1222,7 +1222,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
 
               <div class="btn_wrapper">
                 <button class="btn btn-secondary">Cancel</button>
-                <button class="btn btn-primary" id="nextBtn">
+                <button class="btn btn-primary nextBtn">
                   Save & Continue
                 </button>
               </div>
@@ -1265,8 +1265,8 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                 </div>
               </div>
               <div class="btn_wrapper">
-                <button class="btn btn-secondary" id="prevBtn">Back</button>
-                <button class="btn btn-primary" id="nextBtn">
+                <button class="btn btn-secondary prevBtn">Back</button>
+                <button class="btn btn-primary nextBtn">
                   Save & Continue
                 </button>
               </div>
@@ -1294,29 +1294,32 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
 
               <div class="add_accom_feature">
                 <h1>Accommodation rules</h1>
-                <div class="add_rules">
+                <div class="add_rules" id="accomRulesWrapper">
                   <div class="add_rules_feat">
                     <input type="text" placeholder="Rule name" />
-                    <textarea cols="30" rows="5" placeholder="Description">
-                    </textarea>
+                    <textarea
+                      cols="30"
+                      rows="5"
+                      placeholder="description"
+                    ></textarea>
                   </div>
-                  <div class="add_rule">
-                    <p>Add new rule</p>
-                    <img
-                      src="./assets/images/add_circle_outline.png"
-                      alt="icon"
-                    />
-                  </div>
+                </div>
+                <div class="add_rule" id="addAccomRuleBtn">
+                  <p>Add new rule</p>
+                  <img
+                    src="./assets/images/add_circle_outline.png"
+                    alt="icon"
+                  />
                 </div>
               </div>
               <div class="btn_wrapper">
-                <button class="btn btn-secondary" id="prevBtn">Back</button>
-                <button class="btn btn-primary" id="nextBtn">
+                <button class="btn btn-secondary prevBtn">Back</button>
+                <button class="btn btn-primary nextBtn">
                   Save & Continue
                 </button>
               </div>
             </div>
-            <div class="add_accom_form step_active" id="images">
+            <div class="add_accom_form" id="images">
               <div class="add_accom_feature">
                 <span class="add_sub">
                   <h1>Upload an image</h1>
@@ -1333,12 +1336,12 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                       </span>
                     </div>
                     <span class="add_photo_span"> Add photo </span>
-                     <input type="file" hidden id="newImageUpload">
+                    <input type="file" hidden id="newImageUpload" />
                   </div>
                 </div>
               </div>
               <div class="btn_wrapper">
-                <button class="btn btn-secondary" id="prevBtn">Cancel</button>
+                <button class="btn btn-secondary prevBtn">Cancel</button>
                 <button class="btn btn-primary">Save & Publish</button>
               </div>
             </div>
@@ -1496,6 +1499,14 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
           </span>
         </form>
       </div>
+    </div>
+    <div class="feedback_modal hidden" id="feedback_modal">
+      <span id="feedback_modal_status">
+        <svg>
+          <use xlink:href="/assets/icon.svg#feedback-alert"></use>
+        </svg>
+        <p id="feedback_modal_text"></p>
+      </span>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.19/build/js/intlTelInput.min.js"></script>
