@@ -311,6 +311,9 @@ function renderProfileFeedback(msg, status) {
     top: 0,
     behavior: "smooth",
   });
+  setTimeout(() => {
+    profileFeedback.classList.add("hidden");
+  }, 5000);
 }
 
 // Feedback Modal
@@ -364,6 +367,16 @@ const changePassBtn = document.querySelectorAll(".change_pass");
 changePassBtn.forEach((btn) =>
   btn.addEventListener("click", () => openModal(changePassModal))
 );
+
+// Get Radio Value
+function getSelectedRadio(ele) {
+  const selectedOption = ele.querySelector(
+    'input[name="accomodation_type"]:checked'
+  );
+  if (selectedOption) {
+    return selectedOption.value;
+  }
+}
 
 // Change Password
 const changePasswordForm = document.querySelector(".change_pass_form");
@@ -483,7 +496,6 @@ changePasswordForm.addEventListener("submit", (e) => {
 });
 
 async function changePasswordFunction(data) {
-  console.log(data);
   try {
     const res = await fetch(
       `https://stayshare.onrender.com/api/v1/users/changePassword`,
@@ -491,8 +503,9 @@ async function changePasswordFunction(data) {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
         },
-        body: data,
+        body: JSON.stringify(data),
       }
     );
     const result = await res.json();
@@ -504,17 +517,13 @@ async function changePasswordFunction(data) {
       renderModalFeedback(changePassFeedback, result.error, "error");
       if (result.error == "Expired token please login") {
         getToken();
-        renderProfileFeedback(
-          "Access expired, Try refreshing the page",
-          "error"
-        );
+        renderFeedback("Access expired, Try refreshing the page", "error");
       }
     }
 
     if (result.status == "success") {
       renderModalFeedback(changePassFeedback, result.message, "success");
     }
-    console.log(result);
   } catch (err) {
     console.error(`Error: ${err}`);
   }
@@ -683,7 +692,7 @@ async function getToken() {
   }
 }
 
-// Add accomodation images
+// Add accomodation images container
 const addAccomImageeWrapper = document.querySelector(
   ".add_accom_image_wrapper"
 );
@@ -694,9 +703,12 @@ addNewImageCard.addEventListener("click", () => {
   newImageUpload.click();
 });
 
+let imgFileArr = [];
+
 function addNewImageEle(ele) {
   ele.addEventListener("change", () => {
     const file = ele.files[0];
+    imgFileArr.push(file);
     if (!file) return;
 
     const reader = new FileReader();
@@ -734,20 +746,137 @@ document.addEventListener("click", (e) => {
   }
 });
 
-addNewImageEle(newImageUpload);
-
+// Add accomodation rules container
 const addAccomRuleBtn = document.getElementById("addAccomRuleBtn");
 const accomRulesWrapper = document.getElementById("accomRulesWrapper");
 
 function addRulesDiv() {
   const markup = `<div class="add_rules_feat">
-                    <input type="text" placeholder="Rule name" />
+                    <input type="text" placeholder="Rule name" class="addAccomRule" required/>
                     <textarea
                       cols="30"
                       rows="5"
                       placeholder="description"
+                      required
                     ></textarea>
                   </div>`;
   accomRulesWrapper.insertAdjacentHTML("beforeend", markup);
 }
-addAccomRuleBtn.addEventListener('click', addRulesDiv)
+addAccomRuleBtn.addEventListener("click", addRulesDiv);
+
+// Add Accomodation
+const overviewForm = document.getElementById("overview");
+const pricingForm = document.getElementById("pricing");
+const descriptionForm = document.getElementById("description");
+const imageForm = document.getElementById("images");
+const addAccomNameInput = document.getElementById("addAccomNameInput");
+const addAccomTypeForm = document.getElementById("addAccomTypeForm");
+const addAccomLocationInput = document.getElementById("addAccomLocationInput");
+const addAccomStateInput = document.getElementById("addAccomStateInput");
+const addAccomCityInput = document.getElementById("addAccomCityInput");
+const addAccomAvailForm = document.getElementById("addAccomAvailForm");
+const addAccomPrice = document.getElementById("addAccomPrice");
+const addAccomStartDate = document.getElementById("addAccomStartDate");
+const addAccomEndDate = document.getElementById("addAccomEndDate");
+const addAccomAbout = document.getElementById("addAccomAbout");
+const addAccomReason = document.getElementById("addAccomReason");
+const addAccmRules = document.querySelectorAll(".addAccomRule");
+
+const addImgFeedback = document.getElementById("addImgFeedback");
+const publishAccomBtn = document.getElementById("publishAccomBtn");
+
+document.addEventListener("DOMContentLoaded", () => {
+  addAccomPrice.addEventListener("input", (e) => {
+    const filteredValue = e.target.value.replace(/[^\d]/g, "");
+    e.target.value = filteredValue;
+  });
+});
+function formProgress(e) {
+  e.preventDefault();
+  stepNum++;
+  progressNum++;
+  updateSteps();
+  updateProgressbar();
+}
+
+function getInputValueFromNodeList(ele) {
+  let valueArr = [];
+  ele.forEach((input) => {
+    valueArr.push(input.value);
+  });
+  return valueArr;
+}
+
+overviewForm.addEventListener("submit", formProgress);
+pricingForm.addEventListener("submit", formProgress);
+descriptionForm.addEventListener("submit", formProgress);
+
+addNewImageEle(newImageUpload);
+
+imageForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  renderSpinner(publishAccomBtn);
+  const addedImages = document.querySelectorAll(".add_accom_image");
+
+  if (!addedImages || addedImages.length < 4) {
+    removeSpinner();
+    renderModalFeedback(addImgFeedback, "Please add atleast 3 images", "error");
+  }
+
+  const formData = new FormData();
+  formData.append("accommodationName", addAccomNameInput.value);
+  formData.append("description", addAccomAbout.value);
+  formData.append("whyListing", addAccomReason.value);
+  formData.append("accommodationType", getSelectedRadio(addAccomTypeForm));
+  formData.append(
+    "accommodationRules",
+    getInputValueFromNodeList(addAccmRules)
+  );
+  formData.append("price", addAccomPrice.value);
+  formData.append("hostingPeriodFrom", addAccomStartDate.value);
+  formData.append("address", addAccomLocationInput.value);
+  formData.append("hostingPeriodTo", addAccomEndDate.value);
+  formData.append("state", addAccomStateInput.value);
+  formData.append("city", addAccomEndDate.value);
+  formData.append("hostingPeriodTo", addAccomCityInput.value);
+  imgFileArr.forEach((file) => {
+    formData.append("images", file);
+  });
+
+  //  const formDataArray = [];
+  //   formData.forEach((value, key) => {
+  //     formDataArray.push({ [key]: value });
+  //   });
+
+  //   console.log(formDataArray);
+  publishAccom(formData);
+});
+
+async function publishAccom(data) {
+  try {
+    const res = await fetch(
+      "https://stayshare.onrender.com/api/v1/accommodations",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: data,
+      }
+    );
+    removeSpinner();
+    const result = await res.json();
+    console.log(result);
+    // if (result.status === "success") {
+    //   renderFeedback(result.message, "success");
+    //   setTimeout(() => {
+    //     location.assign("/profile");
+    //   }, 2000);
+    // }
+  } catch (err) {
+    console.error(err);
+    renderFeedback("internal server error", "error");
+  }
+}
+

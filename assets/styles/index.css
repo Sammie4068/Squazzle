@@ -1190,6 +1190,12 @@ footer {
   overflow: hidden;
 }
 
+.user_profile_container .add_accom .add_accom_form_wrapper .form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .user_profile_container .add_accom .add_accom_form_wrapper .add_accom_feature {
   display: flex;
   flex-direction: column;
@@ -1236,6 +1242,11 @@ footer {
 .user_profile_container .add_accom .btn_wrapper {
   display: flex;
   justify-content: space-between;
+}
+
+.user_profile_container .add_accom .btn_wrapper button {
+  text-wrap: nowrap;
+  gap: 20px;
 }
 
 .user_profile_container .edit_listing,
@@ -1838,7 +1849,8 @@ footer {
   min-height: 50px;
   resize: none;
   overflow-y: hidden;
-  padding: 20px 16px; }
+  padding: 20px 16px;
+}
 
 .user_profile_container .accom_right {
   display: flex;
@@ -2391,7 +2403,7 @@ footer {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
-  z-index: 1000;
+  z-index: 99;
   transition: all 0.5s;
   cursor: pointer;
 }
@@ -2456,7 +2468,7 @@ footer {
   border-radius: 8px;
   padding: 40px;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
-  z-index: 1000;
+  z-index: 100;
   transition: all 1s ease-out;
   font-family: "Poppins", sans-serif;
   overflow: scroll;

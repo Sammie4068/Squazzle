@@ -1152,13 +1152,15 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
         </div>
 
         <div class="add_accom_form_wrapper">
-          <div class="form_container">
-            <div class="add_accom_form step_active" id="overview">
+          <div class="form_container" id="addAccomForm">
+            <form class="add_accom_form step_active" id="overview">
               <div class="add_accom_feature">
                 <h1>Accommodation name</h1>
                 <input
                   type="text"
                   placeholder="What is the title of your listing?"
+                  id="addAccomNameInput"
+                  required
                 />
               </div>
               <div class="add_accom_feature">
@@ -1167,33 +1169,58 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                   <p>Choose accommodation type</p>
                 </span>
 
-                <div class="add_accom_type">
+                <div class="add_accom_type" id="addAccomTypeForm">
                   <span>
-                    <input name="accomodation" type="radio" />
+                    <input
+                      name="accomodation_type"
+                      type="radio"
+                      value="Duplex"
+                      required
+                    />
                     <label>Duplex</label>
                   </span>
                   <span>
-                    <input name="accomodation" type="radio" />
+                    <input
+                      name="accomodation_type"
+                      type="radio"
+                      value="Apartment"
+                    />
                     <label>Apartment</label>
                   </span>
                   <span>
-                    <input name="accomodation" type="radio" />
+                    <input
+                      name="accomodation_type"
+                      type="radio"
+                      value="Single room"
+                    />
                     <label>Single room</label>
                   </span>
                   <span>
-                    <input name="accomodation" type="radio" />
+                    <input
+                      name="accomodation_type"
+                      type="radio"
+                      value="Bungalow"
+                    />
                     <label>Bungalow</label>
                   </span>
                   <span>
-                    <input name="accomodation" type="radio" />
+                    <input name="accomodation_type" type="radio" value="Flat" />
                     <label>Flat</label>
                   </span>
                   <span>
-                    <input name="accomodation" type="radio" />
+                    <input
+                      name="accomodation_type"
+                      type="radio"
+                      value="Studio"
+                    />
                     <label>Studio</label>
                   </span>
                   <span>
-                    <input name="accomodation" type="radio" />
+                    <input
+                      name="accomodation_type"
+                      type="radio"
+                      value="Mansion"
+                    />
                     <label>Mansion</label>
                   </span>
                 </div>
@@ -1207,47 +1234,73 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                   cols="30"
                   rows="7"
                   placeholder="Location address"
+                  id="addAccomLocationInput"
+                  required
                 ></textarea>
               </div>
               <div class="add_accom_feature add_location_sub">
                 <div>
                   <h1>State</h1>
-                  <input type="text" placeholder="State" />
+                  <input
+                    type="text"
+                    id="addAccomStateInput"
+                    placeholder="State"
+                    required
+                  />
                 </div>
                 <div>
                   <h1>City</h1>
-                  <input type="text" placeholder="City" />
+                  <input
+                    type="text"
+                    id="addAccomCityInput"
+                    placeholder="City"
+                    required
+                  />
                 </div>
               </div>
 
               <div class="btn_wrapper">
                 <button class="btn btn-secondary">Cancel</button>
-                <button class="btn btn-primary nextBtn">
+                <button type="submit" class="btn btn-primary">
                   Save & Continue
                 </button>
               </div>
-            </div>
-            <div class="add_accom_form" id="pricing">
+            </form>
+            <form class="add_accom_form" id="pricing">
               <div class="add_accom_feature">
                 <span class="add_sub">
                   <h1>Availability</h1>
                   <p>Choose availability</p>
                 </span>
 
-                <div class="add_accom_avail">
+                <div class="add_accom_avail" id="addAccomAvailForm">
                   <span>
-                    <input name="available" type="radio" />
+                    <input
+                      name="available"
+                      value="available"
+                      type="radio"
+                      required
+                    />
                     <label>Available</label>
                   </span>
                   <span>
-                    <input name="available" type="radio" />
+                    <input
+                      name="available"
+                      value="not available"
+                      type="radio"
+                    />
                     <label>Not available</label>
                   </span>
                 </div>
               </div>
               <div class="add_accom_feature">
                 <h1>Price</h1>
-                <input type="text" placeholder="0.00NGN" />
+                <input
+                  type="text"
+                  placeholder="0 NGN"
+                  id="addAccomPrice"
+                  requred
+                />
               </div>
               <hr />
 
@@ -1256,28 +1309,30 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                 <div class="add_accom_duration_wrapper">
                   <span class="add_accom_duration">
                     <label>Start date</label>
-                    <input type="date" />
+                    <input type="datetime-local" id="addAccomStartDate" required />
                   </span>
                   <span class="add_accom_duration">
                     <label>End date</label>
-                    <input type="date" />
+                    <input type="datetime-local" id="addAccomEndDate" required />
                   </span>
                 </div>
               </div>
               <div class="btn_wrapper">
                 <button class="btn btn-secondary prevBtn">Back</button>
-                <button class="btn btn-primary nextBtn">
+                <button type="submit" class="btn btn-primary">
                   Save & Continue
                 </button>
               </div>
-            </div>
-            <div class="add_accom_form" id="description">
+            </form>
+            <form class="add_accom_form" id="description">
               <div class="add_accom_feature">
                 <h1>About this accommodation</h1>
                 <textarea
                   cols="30"
                   rows="10"
                   placeholder="A brief description of the accommodation"
+                  id="addAccomAbout"
+                  required
                 ></textarea>
               </div>
               <hr />
@@ -1288,6 +1343,8 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                   cols="30"
                   rows="7"
                   placeholder="Why are you listing this accommodation?"
+                  id="addAccomReason"
+                  required
                 ></textarea>
               </div>
               <hr />
@@ -1296,11 +1353,12 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                 <h1>Accommodation rules</h1>
                 <div class="add_rules" id="accomRulesWrapper">
                   <div class="add_rules_feat">
-                    <input type="text" placeholder="Rule name" />
+                    <input type="text" placeholder="Rule name" class="addAccomRule" required />
                     <textarea
                       cols="30"
                       rows="5"
                       placeholder="description"
+                      required
                     ></textarea>
                   </div>
                 </div>
@@ -1314,16 +1372,14 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
               </div>
               <div class="btn_wrapper">
                 <button class="btn btn-secondary prevBtn">Back</button>
-                <button class="btn btn-primary nextBtn">
-                  Save & Continue
-                </button>
+                <button type="submit" class="btn btn-primary">Save & Continue</button>
               </div>
-            </div>
-            <div class="add_accom_form" id="images">
+            </form>
+            <form class="add_accom_form" id="images">
               <div class="add_accom_feature">
                 <span class="add_sub">
                   <h1>Upload an image</h1>
-                  <p>You can upload at least 3 images</p>
+                  <p id="addImgFeedback">You can upload at least 3 images</p>
                 </span>
 
                 <div class="add_accom_image_wrapper">
@@ -1342,9 +1398,11 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
               </div>
               <div class="btn_wrapper">
                 <button class="btn btn-secondary prevBtn">Cancel</button>
-                <button class="btn btn-primary">Save & Publish</button>
+                <button type="submit" class="btn btn-primary" id="publishAccomBtn">
+                  Save & Publish
+                </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
