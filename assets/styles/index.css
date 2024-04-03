@@ -1907,10 +1907,15 @@ footer {
   width: 100%;
 }
 
+  .user_profile_container .accom_right .accom_photos .main_photo {
+    width: 100%;
+  }
+
 .user_profile_container .accom_right .accom_photos .sub_photo {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 50%;
 }
 
 .user_profile_container .accom_right .accom_photos .res_photo {

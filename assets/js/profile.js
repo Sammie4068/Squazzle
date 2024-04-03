@@ -586,6 +586,10 @@ function updateSteps() {
   });
 
   addAccomPages[stepNum].classList.add("step_active");
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
 
 function updatePageName() {
@@ -780,7 +784,6 @@ const addAccomStartDate = document.getElementById("addAccomStartDate");
 const addAccomEndDate = document.getElementById("addAccomEndDate");
 const addAccomAbout = document.getElementById("addAccomAbout");
 const addAccomReason = document.getElementById("addAccomReason");
-const addAccmRules = document.querySelectorAll(".addAccomRule");
 
 const addImgFeedback = document.getElementById("addImgFeedback");
 const publishAccomBtn = document.getElementById("publishAccomBtn");
@@ -797,11 +800,13 @@ function formProgress(e) {
   progressNum++;
   updateSteps();
   updateProgressbar();
+  // console.log(getRules());
 }
 
-function getInputValueFromNodeList(ele) {
+function getRules() {
+  const addAccmRules = document.querySelectorAll(".addAccomRule");
   let valueArr = [];
-  ele.forEach((input) => {
+  addAccmRules.forEach((input) => {
     valueArr.push(input.value);
   });
   return valueArr;
@@ -828,29 +833,26 @@ imageForm.addEventListener("submit", (e) => {
   formData.append("description", addAccomAbout.value);
   formData.append("whyListing", addAccomReason.value);
   formData.append("accommodationType", getSelectedRadio(addAccomTypeForm));
-  formData.append(
-    "accommodationRules",
-    getInputValueFromNodeList(addAccmRules)
-  );
+  formData.append("accomodationRules", JSON.stringify(getRules()));
   formData.append("price", addAccomPrice.value);
   formData.append("hostingPeriodFrom", addAccomStartDate.value);
   formData.append("address", addAccomLocationInput.value);
   formData.append("hostingPeriodTo", addAccomEndDate.value);
   formData.append("state", addAccomStateInput.value);
-  formData.append("city", addAccomEndDate.value);
-  formData.append("hostingPeriodTo", addAccomCityInput.value);
+  formData.append("city", addAccomCityInput.value);
   imgFileArr.forEach((file) => {
     formData.append("images", file);
   });
 
-  //  const formDataArray = [];
-  //   formData.forEach((value, key) => {
-  //     formDataArray.push({ [key]: value });
-  //   });
+   const formDataArray = [];
+    formData.forEach((value, key) => {
+      formDataArray.push({ [key]: value });
+    });
 
-  //   console.log(formDataArray);
+    console.table(formDataArray);
   publishAccom(formData);
 });
+
 
 async function publishAccom(data) {
   try {
@@ -860,23 +862,23 @@ async function publishAccom(data) {
         method: "POST",
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
         },
         body: data,
       }
     );
     removeSpinner();
     const result = await res.json();
-    console.log(result);
-    // if (result.status === "success") {
-    //   renderFeedback(result.message, "success");
-    //   setTimeout(() => {
-    //     location.assign("/profile");
-    //   }, 2000);
-    // }
+   if (result.status === "error") {
+      renderFeedback(result.error, "error");
+    } 
+    if (result.error) {
+      renderFeedback(result.message, "success");
+      setTimeout(() => {
+        location.reload()
+      }, 2000);
+    }
   } catch (err) {
     console.error(err);
     renderFeedback("internal server error", "error");
   }
 }
-
