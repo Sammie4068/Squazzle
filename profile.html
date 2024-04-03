@@ -512,15 +512,15 @@
     >
       <div class="navigation">
         <ul class="breadcrumb">
-          <li>
-            <a href="#">Manage Account</a>
+          <!-- <li>
+            <a href="#manage-account">Manage Account</a>
           </li>
           <li>
             <i class="fa-solid fa-chevron-right"></i>
           </li>
           <li>
             <a href="#">My Listing</a>
-          </li>
+          </li> -->
         </ul>
       </div>
 
@@ -529,19 +529,19 @@
           <div class="accom_details">
             <h1>Location</h1>
             <hr />
-            <p id="listing_location"></p>
+            <p class="listing_location"></p>
           </div>
           <div class="accom_details">
             <h1>Reason for listing this accommodation</h1>
             <hr />
-            <p id="listing_reason"></p>
+            <p class="listing_reason"></p>
           </div>
           <div class="accom_details">
             <h1>Hosting duration</h1>
             <hr />
             <span>
               <img src="./assets/images/date_range.png" alt="icon" />
-              <p class="acccom_date_range" id="listing_date"></p>
+              <p class="acccom_date_range listing_date"></p>
             </span>
           </div>
           <div class="accom_details">
@@ -549,7 +549,7 @@
             <hr />
             <span>
               <img src="./assets/images/gree_house.png" alt="icon" />
-              <p class="accom_type" id="listing_type">Apartment</p>
+              <p class="accom_type listing_type"></p>
             </span>
           </div>
         </div>
@@ -562,7 +562,7 @@
             </span>
             <span>
               <img src="./assets/images/money.png" alt="icon" />
-              <p id="listing_price"></p>
+              <p class="listing_price"></p>
             </span>
             <span>
               <img src="./assets/images/green_location_pin.png" alt="icon" />
@@ -578,9 +578,9 @@
             <span class="main_photo">
               <img src="" />
             </span>
-            <span class="sub_photo view_sub_photo">
-              <img src="" />
-              <img src="" />
+            <span class="sub_photo">
+              <img src="" class="sub_photo_one"/>
+              <img src="" class="sub_photo_two"/>
             </span>
 
             <span class="res_photo">
@@ -592,19 +592,19 @@
             <div class="accom_details">
               <h1>Location</h1>
               <hr />
-              <p id="listing_location"></p>
+              <p class="listing_location"></p>
             </div>
             <div class="accom_details">
               <h1>Reason for listing this accommodation</h1>
               <hr />
-              <p id="listing_reason"></p>
+              <p class="listing_reason"></p>
             </div>
             <div class="accom_details">
               <h1>Hosting duration</h1>
               <hr />
               <span>
                 <img src="./assets/images/date_range.png" alt="icon" />
-                <p class="acccom_date_range" id="listing_date"></p>
+                <p class="acccom_date_range listing_date"></p>
               </span>
             </div>
             <div class="accom_details">
@@ -612,20 +612,20 @@
               <hr />
               <span>
                 <img src="./assets/images/gree_house.png" alt="icon" />
-                <p class="accom_type" id="listing_type"></p>
+                <p class="accom_type listing_type"></p>
               </span>
             </div>
           </div>
 
           <div class="accom_info">
             <div class="accom_info_heading host_photo">
-              <h1 id="listing_title"></h1>
+              <h1 class="listing_title"></h1>
               <img src="" alt="" />
             </div>
 
             <div class="accom_writeup">
               <h2>About this apartment</h2>
-              <p id="listing_desc"></p>
+              <p class="listing_desc"></p>
               <!-- <a href="#">Read more</a> -->
             </div>
 
@@ -633,7 +633,7 @@
 
             <div class="accom_rules">
               <h1>Accommodation rules</h1>
-              <div class="rules" id="acccomRuleWrapper">
+              <div class="rules acccomRuleWrapper">
                 <!-- <span>
                   <h2>Damage to property</h2>
                   <p>
@@ -695,7 +695,7 @@
         </ul>
       </div>
 
-      <div class="accomodation_container my-listings-container">
+      <div class="accomodation_container my-listings-container" id="my-listings-wrapper">
          <div class="add_accom_image add_accom_link">
             <div class="add_new_image">
               <span class="svg_span">
@@ -716,13 +716,13 @@
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
-            <a href="#">Manage Account</a>
+            <a href="#manage-account">Manage Account</a>
           </li>
           <li>
             <i class="fa-solid fa-chevron-right"></i>
           </li>
           <li>
-            <a href="#">My Listing</a>
+            <a href="#my-listing">My Listing</a>
           </li>
         </ul>
       </div>
@@ -730,11 +730,11 @@
       <div class="main_content">
         <div class="edit_listing toShow">
           <div class="edit_features">
-            <span>
+            <span class="my_listings_link">
               <i class="fa-solid fa-arrow-left"></i>
               <p>Back</p>
             </span>
-            <span>
+            <span class="edit_listing_link">
               <i class="fa-solid fa-pen"></i>
               <p>Edit</p>
             </span>
@@ -743,17 +743,12 @@
             <div class="accom_details">
               <h1>Location</h1>
               <hr />
-              <p>
-                Federal Housing Estate, Number 49 East-End, Jos, Plateau State,
-                Nigeria.
-              </p>
+              <p class="listing_location"></p>
             </div>
             <div class="accom_details">
               <h1>Reason for listing this accommodation</h1>
               <hr />
-              <p>
-                To offer guests an interesting and enriching experience that
-                makes a holiday memorable for all the right reasons.
+              <p class="listing_reason">
               </p>
             </div>
             <div class="accom_details">
@@ -761,7 +756,7 @@
               <hr />
               <span>
                 <img src="./assets/images/date_range.png" alt="icon" />
-                <p class="acccom_date_range">Fri 18 Nov - Fri 16 Dec</p>
+                <p class="acccom_date_range listing_date"></p>
               </span>
             </div>
             <div class="accom_details">
@@ -769,7 +764,7 @@
               <hr />
               <span>
                 <img src="./assets/images/gree_house.png" alt="icon" />
-                <p class="accom_type">Apartment</p>
+                <p class="accom_type listing_type"></p>
               </span>
             </div>
           </div>
@@ -783,7 +778,7 @@
             </span>
             <span>
               <img src="./assets/images/money.png" alt="icon" />
-              <p>NGN 65,000 per night</p>
+              <p class="listing_price"></p>
             </span>
             <span>
               <img src="./assets/images/green_location_pin.png" alt="icon" />
@@ -797,11 +792,11 @@
 
           <div class="accom_photos">
             <span class="main_photo">
-              <img src="./assets/images/accom_1.png" alt="apt" />
+              <img src=""/>
             </span>
             <span class="sub_photo">
-              <img src="./assets/images/accom_2.png" alt="apt" />
-              <img src="./assets/images/accom_3.png" alt="apt" />
+              <img src="" class="sub_photo_one"/>
+              <img src="" class="sub_photo_two"/>
             </span>
 
             <span class="res_photo">
@@ -813,17 +808,13 @@
             <div class="accom_details">
               <h1>Location</h1>
               <hr />
-              <p>
-                Federal Housing Estate, Number 49 East-End, Jos, Plateau State,
-                Nigeria.
+              <p class="listing_location">
               </p>
             </div>
             <div class="accom_details">
               <h1>Reason for listing this accommodation</h1>
               <hr />
-              <p>
-                To offer guests an interesting and enriching experience that
-                makes a holiday memorable for all the right reasons.
+              <p class="listing_reason">
               </p>
             </div>
             <div class="accom_details">
@@ -831,7 +822,7 @@
               <hr />
               <span>
                 <img src="./assets/images/date_range.png" alt="icon" />
-                <p class="acccom_date_range">Fri 18 Nov - Fri 16 Dec</p>
+                <p class="acccom_date_range listing_date"></p>
               </span>
             </div>
             <div class="accom_details">
@@ -839,67 +830,28 @@
               <hr />
               <span>
                 <img src="./assets/images/gree_house.png" alt="icon" />
-                <p class="accom_type">Apartment</p>
+                <p class="accom_type listing_type"></p>
               </span>
             </div>
           </div>
 
           <div class="accom_info">
             <div class="accom_info_heading">
-              <h1>Primrose View</h1>
+              <h1 class="listing_title"></h1>
             </div>
 
             <div class="accom_writeup">
               <h2>About this apartment</h2>
-              <p>
-                From the outside this house looks nice and traditional. It has
-                windows that let in plenty of light. The house is equipped with
-                a small kitchen and two bathrooms, it also has a cozy living
-                room, two bedrooms, a roomy dining area, a playroom and a cozy
-                garage.The building is fairly rounded in shape.The roof is low
-                and v-shaped and is covered with grey ceramic tiles. The house
-                itself is surrounded by a tranquil garden, with beautiful
-                primrose flowers and various rock formations...
+              <p class="listing_desc">
               </p>
-              <a href="#">Read more</a>
+              <!-- <a href="#">Read more</a> -->
             </div>
 
             <hr />
 
             <div class="accom_rules">
               <h1>Accommodation rules</h1>
-              <div class="rules">
-                <span>
-                  <h2>Damage to property</h2>
-                  <p>
-                    Guests will be held responsible for any loss or damage to
-                    the property caused by negligence either by themselves,
-                    their guests or any person for whom they are responsible
-                    for.
-                  </p>
-                </span>
-                <span>
-                  <h2>Check-in</h2>
-                  <p>Check-in time is from 12:00 - 22:00</p>
-                </span>
-                <span>
-                  <h2>Departure</h2>
-                  <p>Check-out time is from 12:00 - 13:00</p>
-                </span>
-                <span>
-                  <h2>Pets</h2>
-                  <p>
-                    Pets are not allowed here. Special arrangements could be
-                    made upon request.
-                  </p>
-                </span>
-                <span>
-                  <h2>Settlement of bills</h2>
-                  <p>
-                    Bills can be paid through bank transfers or cash. Checks are
-                    not allowed.
-                  </p>
-                </span>
+              <div class="rules acccomRuleWrapper">
               </div>
             </div>
           </div>

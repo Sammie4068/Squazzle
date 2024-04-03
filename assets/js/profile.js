@@ -35,9 +35,12 @@ function updateDisplay() {
       break;
     case "my-listing":
       displayContent(myListing);
+      const listingId = localStorage.getItem("listingId");
+      getSingleAccomodation(listingId);
       break;
     case "listing":
       displayContent(viewListing);
+      accomId && getSingleAccomodation(accomId);
       break;
     case "edit-listing":
       displayContent(editListing);
@@ -79,14 +82,6 @@ const profileImgWrapper = document.querySelector(".profile_img");
 const dropdownWrapper = document.querySelector(".dropdown__wrapper");
 profileImgWrapper.addEventListener("click", () => {
   dropdownWrapper.classList.toggle("hidden");
-});
-
-document.addEventListener("click", (e) => {
-  if (!e.target.matches(".profile_img img")) {
-    if (!dropdownWrapper.classList.contains("hidden")) {
-      dropdownWrapper.classList.add("hidden");
-    }
-  }
 });
 
 const navbar = document.getElementById("navbar");
@@ -146,8 +141,12 @@ function displayProp(ele, data) {
     ele instanceof HTMLTextAreaElement
   ) {
     if (ele instanceof NodeList) {
-      ele.forEach((e) => (e.value = data));
+      ele.forEach((e) => {
+        e.value = "";
+        e.value = data;
+      });
     } else {
+      ele.value = "";
       ele.value = data;
     }
   } else {
@@ -156,6 +155,18 @@ function displayProp(ele, data) {
     } else {
       ele.innerText = data;
     }
+  }
+}
+
+function displayImg(ele, newValue) {
+  if (ele instanceof NodeList) {
+    ele.forEach((e) => {
+      e.attributes.src.value = "";
+      e.attributes.src.value = newValue;
+    });
+  } else {
+    ele.attributes.src.value = "";
+    ele.attributes.src.value = newValue;
   }
 }
 
@@ -192,13 +203,13 @@ const personalDetailsLinks = document.querySelectorAll(
 const editProfileLink = document.querySelectorAll(".edit_profile");
 const myListingsLink = document.querySelectorAll(".my_listings_link");
 const addAcccomLink = document.querySelectorAll(".add_accom_link");
-
+const editListingLink = document.querySelectorAll(".edit_listing_link");
 
 updateHash(personalDetailsLinks, "personal-details");
 updateHash(editProfileLink, "edit-profile");
 updateHash(myListingsLink, "my-listings");
 updateHash(addAcccomLink, "add-listing");
-
+updateHash(editListingLink, "edit-listing");
 
 // Edit Profile Page
 const editProfileForm = document.getElementById("edit_profile_form");
@@ -330,9 +341,9 @@ function renderProfileFeedback(msg, status) {
 }
 
 // Feedback Modal
-const feedbackModal = document.getElementById("feedback");
-const feedbackModalStatus = document.getElementById("feedback_status");
-const feedbackModalMsg = document.getElementById("feedback_text");
+const feedbackModal = document.getElementById("feedback_modal");
+const feedbackModalStatus = document.getElementById("feedback_modal_status");
+const feedbackModalMsg = document.getElementById("feedback_modal_text");
 
 function renderFeedback(msg, status) {
   feedbackModalMsg.innerText = msg;
@@ -628,16 +639,17 @@ function updateProgressbar() {
 
 // View Accomodation
 const accomId = localStorage.getItem("accomId");
-const listingLocation = document.querySelectorAll("#listing_location");
-const listingReason = document.querySelectorAll("#listing_reason");
-const listingDate = document.querySelectorAll("#listing_date");
-const listingType = document.querySelectorAll("#listing_type");
-const listingPrice = document.getElementById("listing_price");
-const mainPhoto = document.querySelector(".main_photo img");
-const subPhotos = document.querySelectorAll(".view_sub_photo img");
-const resPhoto = document.querySelector(".res_photo img");
-const listingTitle = document.querySelector("#listing_title");
-const listingDesc = document.querySelector("#listing_desc");
+const listingLocation = document.querySelectorAll(".listing_location");
+const listingReason = document.querySelectorAll(".listing_reason");
+const listingDate = document.querySelectorAll(".listing_date");
+const listingType = document.querySelectorAll(".listing_type");
+const listingPrice = document.querySelectorAll(".listing_price");
+const mainPhoto = document.querySelectorAll(".main_photo img");
+const subPhotoOne = document.querySelectorAll(".sub_photo_one");
+const subPhotoTwo = document.querySelectorAll(".sub_photo_two");
+const resPhoto = document.querySelectorAll(".res_photo img");
+const listingTitle = document.querySelectorAll(".listing_title");
+const listingDesc = document.querySelectorAll(".listing_desc");
 const hostPhotos = document.querySelectorAll(".host_photo img");
 const hostName = document.getElementById("hostName");
 const hostJoined = document.getElementById("hostJoined");
@@ -660,6 +672,7 @@ async function getSingleAccomodation(accomID) {
       `https://stayshare.onrender.com/api/v1/accommodations/${accomID}`
     );
     const data = await res.json();
+    console.log(data);
     const accommodationInfo = data.data.accomodation;
     const hostData = accommodationInfo.createdBy;
 
@@ -690,17 +703,16 @@ async function getSingleAccomodation(accomID) {
     displayProp(listingTitle, accommodationInfo.accommodationName);
     displayProp(listingPrice, `NGN ${accommodationInfo.price} per night`);
     displayProp(listingDesc, accommodationInfo.description);
-    mainPhoto.attributes.src.value = accommodationInfo.gallery[0].imageUrl;
+    displayImg(mainPhoto, accommodationInfo.gallery[0].imageUrl);
+
     accommodationInfo.gallery[1] &&
-      (subPhotos[0].attributes.src.value =
-        accommodationInfo.gallery[1].imageUrl);
+      displayImg(subPhotoOne, accommodationInfo.gallery[1].imageUrl);
+
     accommodationInfo.gallery[2] &&
-      (subPhotos[1].attributes.src.value =
-        accommodationInfo.gallery[2].imageUrl);
+      displayImg(subPhotoTwo, accommodationInfo.gallery[2].imageUrl);
+    displayImg(resPhoto, accommodationInfo.gallery[0].imageUrl);
 
-    resPhoto.attributes.src.value = accommodationInfo.gallery[0].imageUrl;
-
-    const acccomRuleWrapper = document.getElementById("acccomRuleWrapper");
+    const acccomRuleWrapper = document.querySelectorAll(".acccomRuleWrapper");
     const rulesArr = accommodationInfo.accommodationRules;
 
     rulesArr.forEach((rule) => {
@@ -708,13 +720,15 @@ async function getSingleAccomodation(accomID) {
                   <h2>${rule}</h2>
                   <p></p>
                 </span>`;
-      acccomRuleWrapper.insertAdjacentHTML("beforeend", markup);
+      acccomRuleWrapper.forEach((wrap) => {
+        wrap.innerHTML = "";
+        wrap.insertAdjacentHTML("beforeend", markup);
+      });
     });
   } catch (err) {
     console.log(err);
   }
 }
-accomId && getSingleAccomodation(accomId);
 
 // Refresh Token
 async function getToken() {
@@ -783,6 +797,14 @@ function addNewImageEle(ele) {
 }
 
 document.addEventListener("click", (e) => {
+  // remove profile modal
+  if (!e.target.matches(".profile_img img")) {
+    if (!dropdownWrapper.classList.contains("hidden")) {
+      dropdownWrapper.classList.add("hidden");
+    }
+  }
+
+  // Accomodation option modal
   if (e.target.classList.contains("open_option")) {
     const optionModal = e.target.nextElementSibling;
     optionModal.classList.toggle("hidden");
@@ -831,6 +853,10 @@ const addImgFeedback = document.getElementById("addImgFeedback");
 const publishAccomBtn = document.getElementById("publishAccomBtn");
 
 document.addEventListener("DOMContentLoaded", () => {
+  // get user Accom
+  getUserListing();
+
+  // Accom Price Validation
   addAccomPrice.addEventListener("input", (e) => {
     const filteredValue = e.target.value.replace(/[^\d]/g, "");
     e.target.value = filteredValue;
@@ -842,7 +868,6 @@ function formProgress(e) {
   progressNum++;
   updateSteps();
   updateProgressbar();
-  // console.log(getRules());
 }
 
 function getRules() {
@@ -921,5 +946,73 @@ async function publishAccom(data) {
   } catch (err) {
     console.error(err);
     renderFeedback("internal server error", "error");
+  }
+}
+
+// Get User Listing
+const myListingsWrapper = document.getElementById("my-listings-wrapper");
+
+async function getUserListing() {
+  try {
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/users/accommodations`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await res.json();
+    // console.log(data);
+
+    if (data.error == "Expired token please login") {
+      getToken();
+      renderFeedback("Access expired, Try refreshing the page", "error");
+    }
+    if (data.status == "success") {
+      const userAccom = data.data.accommodations;
+      userAccom.forEach((accom) => {
+        const listingId = JSON.stringify(accom._id);
+        const displayImg = accom.gallery[0].imageUrl;
+        let markup = `<div class="accomodation_card cell">
+          <img src="${displayImg}" alt="${accom.accommodationName}" />
+          <p class="title">${accom.accommodationName}</p>
+          <p class="location">${accom.city}, Nigeria</p>
+          <div class="available">
+            <span
+              ><i class="fa-solid fa-circle ${
+                accom.status == "available" && "accom_status_avail"
+              }"></i>
+              <p>${accom.status}</p></span
+            >
+            <span
+              ><i class="fa-solid fa-circle"></i>
+              <p>Mansion</p></span
+            >
+          </div>
+          <p class="duration">Duration: ${reformatAccomDate(
+            accom.hostingPeriodFrom
+          )} - ${reformatAccomDate(accom.hostingPeriodTo)}</p>
+          <button value='${listingId}' class="price">
+            <span>NGN</span> <span>${accom.price} /</span> <span>night</span>
+          </button>
+        </div>`;
+
+        myListingsWrapper.insertAdjacentHTML("beforeend", markup);
+
+        const accomCard = document.querySelectorAll(".accomodation_card");
+        accomCard.forEach((card) => {
+          card.addEventListener("click", () => {
+            const priceBtn = card.querySelector(".price");
+            const listingId = JSON.parse(priceBtn.value);
+            localStorage.setItem("listingId", listingId);
+            window.location = "profile.html#my-listing";
+          });
+        });
+      });
+    }
+  } catch (err) {
+    console.error(err);
   }
 }
