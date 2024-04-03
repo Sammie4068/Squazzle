@@ -65,6 +65,17 @@ async function getAccomodations() {
 
 const accomodationContainer = document.querySelector(".accomodation_container");
 
+function reformatAccomDate(dateStr) {
+  let date = new Date(dateStr);
+  let formattedDate = date.toLocaleString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  });
+  return formattedDate;
+}
+
 function occupyAccommodations(data) {
   data.forEach((accom) => {
     const accomId = JSON.stringify(accom._id);
@@ -75,7 +86,9 @@ function occupyAccommodations(data) {
           <p class="location">${accom.city}, Nigeria</p>
           <div class="available">
             <span
-              ><i class="fa-solid fa-circle ${accom.status == 'available' && 'accom_status_avail'}"></i>
+              ><i class="fa-solid fa-circle ${
+                accom.status == "available" && "accom_status_avail"
+              }"></i>
               <p>${accom.status}</p></span
             >
             <span
@@ -83,7 +96,9 @@ function occupyAccommodations(data) {
               <p>Mansion</p></span
             >
           </div>
-          <p class="duration">Duration: ${accom.hostingPeriodFrom} - ${accom.hostingPeriodTo}</p>
+          <p class="duration">Duration: ${reformatAccomDate(
+            accom.hostingPeriodFrom
+          )} - ${reformatAccomDate(accom.hostingPeriodTo)}</p>
           <button value='${accomId}' class="price">
             <span>NGN</span> <span>${accom.price} /</span> <span>night</span>
           </button>
@@ -96,8 +111,8 @@ function occupyAccommodations(data) {
       card.addEventListener("click", () => {
         const priceBtn = card.querySelector(".price");
         const accomId = JSON.parse(priceBtn.value);
-        localStorage.setItem("accomId", accomId)
-        window.location = "profile.html#listing"
+        localStorage.setItem("accomId", accomId);
+        window.location = "profile.html#listing";
       });
     });
   });

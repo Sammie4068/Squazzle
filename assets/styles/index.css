@@ -1920,6 +1920,7 @@ footer {
 
 .user_profile_container .accom_right .accom_photos .res_photo {
   display: none;
+  width: 100%;
 }
 
 .user_profile_container .accom_right .accom_info {
@@ -2647,6 +2648,10 @@ footer {
   gap: 44px;
   align-items: center;
   padding: 100px 20px;
+}
+
+.my-listings-container {
+  padding: 0px 20px;
 }
 
 .accomodation_card {

@@ -7,6 +7,7 @@ const personalInfo = document.getElementById("personalInfo");
 const editProfile = document.getElementById("editProfile");
 const viewListing = document.getElementById("viewListing");
 const myListings = document.getElementById("myListings");
+const myListing = document.getElementById("myListing");
 const editListing = document.getElementById("editListing");
 const addListing = document.getElementById("addListing");
 
@@ -28,6 +29,12 @@ function updateDisplay() {
       break;
     case "edit-profile":
       displayContent(editProfile);
+      break;
+    case "my-listings":
+      displayContent(myListings);
+      break;
+    case "my-listing":
+      displayContent(myListing);
       break;
     case "listing":
       displayContent(viewListing);
@@ -183,9 +190,15 @@ const personalDetailsLinks = document.querySelectorAll(
   ".personal_details_link"
 );
 const editProfileLink = document.querySelectorAll(".edit_profile");
+const myListingsLink = document.querySelectorAll(".my_listings_link");
+const addAcccomLink = document.querySelectorAll(".add_accom_link");
+
 
 updateHash(personalDetailsLinks, "personal-details");
 updateHash(editProfileLink, "edit-profile");
+updateHash(myListingsLink, "my-listings");
+updateHash(addAcccomLink, "add-listing");
+
 
 // Edit Profile Page
 const editProfileForm = document.getElementById("edit_profile_form");
@@ -630,6 +643,17 @@ const hostName = document.getElementById("hostName");
 const hostJoined = document.getElementById("hostJoined");
 const hostPhone = document.getElementById("hostPhone");
 
+function reformatAccomDate(dateStr) {
+  let date = new Date(dateStr);
+  let formattedDate = date.toLocaleString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  });
+  return formattedDate;
+}
+
 async function getSingleAccomodation(accomID) {
   try {
     const res = await fetch(
@@ -658,16 +682,34 @@ async function getSingleAccomodation(accomID) {
     displayProp(listingReason, accommodationInfo.whyListing);
     displayProp(
       listingDate,
-      `${accommodationInfo.hostingPeriodFrom} - ${accommodationInfo.hostingPeriodTo}`
+      `${reformatAccomDate(
+        accommodationInfo.hostingPeriodFrom
+      )} - ${reformatAccomDate(accommodationInfo.hostingPeriodTo)}`
     );
     displayProp(listingType, accommodationInfo.accommodationType);
     displayProp(listingTitle, accommodationInfo.accommodationName);
     displayProp(listingPrice, `NGN ${accommodationInfo.price} per night`);
     displayProp(listingDesc, accommodationInfo.description);
     mainPhoto.attributes.src.value = accommodationInfo.gallery[0].imageUrl;
-    subPhotos[0].attributes.src.value = accommodationInfo.gallery[1].imageUrl;
-    subPhotos[1].attributes.src.value = accommodationInfo.gallery[2].imageUrl;
-    resPhoto.attributes.src.value = accommodationInfo.gallery[1].imageUrl;
+    accommodationInfo.gallery[1] &&
+      (subPhotos[0].attributes.src.value =
+        accommodationInfo.gallery[1].imageUrl);
+    accommodationInfo.gallery[2] &&
+      (subPhotos[1].attributes.src.value =
+        accommodationInfo.gallery[2].imageUrl);
+
+    resPhoto.attributes.src.value = accommodationInfo.gallery[0].imageUrl;
+
+    const acccomRuleWrapper = document.getElementById("acccomRuleWrapper");
+    const rulesArr = accommodationInfo.accommodationRules;
+
+    rulesArr.forEach((rule) => {
+      let markup = `<span>
+                  <h2>${rule}</h2>
+                  <p></p>
+                </span>`;
+      acccomRuleWrapper.insertAdjacentHTML("beforeend", markup);
+    });
   } catch (err) {
     console.log(err);
   }
@@ -844,15 +886,14 @@ imageForm.addEventListener("submit", (e) => {
     formData.append("images", file);
   });
 
-   const formDataArray = [];
-    formData.forEach((value, key) => {
-      formDataArray.push({ [key]: value });
-    });
+  const formDataArray = [];
+  formData.forEach((value, key) => {
+    formDataArray.push({ [key]: value });
+  });
 
-    console.table(formDataArray);
+  console.table(formDataArray);
   publishAccom(formData);
 });
-
 
 async function publishAccom(data) {
   try {
@@ -868,13 +909,13 @@ async function publishAccom(data) {
     );
     removeSpinner();
     const result = await res.json();
-   if (result.status === "error") {
+    if (result.status === "error") {
       renderFeedback(result.error, "error");
-    } 
+    }
     if (result.error) {
       renderFeedback(result.message, "success");
       setTimeout(() => {
-        location.reload()
+        location.reload();
       }, 2000);
     }
   } catch (err) {

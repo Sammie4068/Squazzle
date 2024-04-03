@@ -94,6 +94,7 @@
         <span class="line bottom"></span>
       </button>
     </header>
+
     <div
       class="user_profile_container hidden"
       id="manageAccount"
@@ -157,7 +158,7 @@
             <i class="fa-solid fa-chevron-right"></i>
           </div>
           <div class="links">
-            <span>
+            <span class="my_listings_link">
               <img src="./assets/images/greeList.png" alt="icon" />
               <p>My Listing</p>
             </span>
@@ -192,7 +193,7 @@
               <img src="./assets/images/personal_details.png" alt="icon" />
               <p>Personal Details</p>
             </span>
-            <span>
+            <span class="my_listings_link">
               <img src="./assets/images/location_city.png" alt="icon" />
               <p>My listing</p>
             </span>
@@ -218,6 +219,7 @@
         </div>
       </div>
     </div>
+
     <div class="user_profile_container hidden" id="personalInfo">
       <div class="navigation">
         <ul class="breadcrumb">
@@ -328,6 +330,7 @@
         </div>
       </div>
     </div>
+
     <div class="user_profile_container hidden" id="editProfile">
       <div class="navigation">
         <ul class="breadcrumb">
@@ -630,38 +633,13 @@
 
             <div class="accom_rules">
               <h1>Accommodation rules</h1>
-              <div class="rules">
-                <span>
+              <div class="rules" id="acccomRuleWrapper">
+                <!-- <span>
                   <h2>Damage to property</h2>
                   <p>
                     Guests will be held responsible for any loss or damage to
-                    the property caused by negligence either by themselves,
-                    their guests or any person for whom they are responsible
-                    for.
                   </p>
-                </span>
-                <span>
-                  <h2>Check-in</h2>
-                  <p>Check-in time is from 12:00 - 22:00</p>
-                </span>
-                <span>
-                  <h2>Departure</h2>
-                  <p>Check-out time is from 12:00 - 13:00</p>
-                </span>
-                <span>
-                  <h2>Pets</h2>
-                  <p>
-                    Pets are not allowed here. Special arrangements could be
-                    made upon request.
-                  </p>
-                </span>
-                <span>
-                  <h2>Settlement of bills</h2>
-                  <p>
-                    Bills can be paid through bank transfers or cash. Checks are
-                    not allowed.
-                  </p>
-                </span>
+                </span> -->
               </div>
             </div>
 
@@ -698,9 +676,42 @@
         </div>
       </div>
     </div>
+
     <div
       class="user_profile_container accom_profile_cont hidden"
       id="myListings"
+    >
+      <div class="navigation">
+        <ul class="breadcrumb">
+          <li>
+            <a href="#manage-account">Manage Account</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-chevron-right"></i>
+          </li>
+          <li>
+            <a href="#my-listings">My Listing</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="accomodation_container my-listings-container">
+         <div class="add_accom_image add_accom_link">
+            <div class="add_new_image">
+              <span class="svg_span">
+                <svg>
+                  <use xlink:href="/assets/icon.svg#add-circle"></use>
+                </svg>
+              </span>
+            </div>
+            <span class="add_photo_span">List new property </span>
+          </div>
+      </div>
+    </div>
+
+    <div
+      class="user_profile_container accom_profile_cont hidden"
+      id="myListing"
     >
       <div class="navigation">
         <ul class="breadcrumb">
@@ -895,6 +906,7 @@
         </div>
       </div>
     </div>
+
     <div
       class="user_profile_container accom_profile_cont hidden"
       id="editListing"
@@ -939,7 +951,7 @@
         </div>
 
         <div class="edit_right">
-          <div class="edit_right_wrapper hidden">
+          <div class="edit_right_wrapper">
             <div class="edit_right_feature">
               <h1>Accommodation name</h1>
               <input type="text" placeholder="Primrose View" />
@@ -1034,7 +1046,7 @@
               <button class="btn btn-primary">Save & Continue</button>
             </div>
           </div>
-          <div class="edit_right_wrapper">
+          <div class="edit_right_wrapper hidden">
             <div class="edit_right_feature">
               <h1>About this accommodation</h1>
               <textarea
@@ -1077,20 +1089,6 @@ Check-out time is from 12:00 - 13:00
             </textarea
                   >
                 </div>
-                <div class="edit_rules_feat">
-                  <span class="edit_rules_head">Pets </span>
-                  <textarea cols="30" rows="2">
-Pets are not allowed here. Special arrangements could be made upon request.
-            </textarea
-                  >
-                </div>
-                <div class="edit_rules_feat">
-                  <span class="edit_rules_head">Settlement of bills </span>
-                  <textarea cols="30" rows="2">
-Bills can be paid through bank transfers or cash. Checks are not allowed.
-            </textarea
-                  >
-                </div>
                 <div class="add_rule">
                   <p>Add new rule</p>
                   <img
@@ -1109,6 +1107,7 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
         </div>
       </div>
     </div>
+
     <div
       class="user_profile_container accom_profile_cont hidden"
       id="addListing"
@@ -1309,11 +1308,19 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                 <div class="add_accom_duration_wrapper">
                   <span class="add_accom_duration">
                     <label>Start date</label>
-                    <input type="datetime-local" id="addAccomStartDate" required />
+                    <input
+                      type="datetime-local"
+                      id="addAccomStartDate"
+                      required
+                    />
                   </span>
                   <span class="add_accom_duration">
                     <label>End date</label>
-                    <input type="datetime-local" id="addAccomEndDate" required />
+                    <input
+                      type="datetime-local"
+                      id="addAccomEndDate"
+                      required
+                    />
                   </span>
                 </div>
               </div>
@@ -1353,7 +1360,12 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
                 <h1>Accommodation rules</h1>
                 <div class="add_rules" id="accomRulesWrapper">
                   <div class="add_rules_feat">
-                    <input type="text" placeholder="Rule name" class="addAccomRule" required/>
+                    <input
+                      type="text"
+                      placeholder="Rule name"
+                      class="addAccomRule"
+                      required
+                    />
                     <textarea
                       cols="30"
                       rows="5"
@@ -1372,7 +1384,9 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
               </div>
               <div class="btn_wrapper">
                 <button class="btn btn-secondary prevBtn">Back</button>
-                <button type="submit" class="btn btn-primary">Save & Continue</button>
+                <button type="submit" class="btn btn-primary">
+                  Save & Continue
+                </button>
               </div>
             </form>
             <form class="add_accom_form" id="images">
@@ -1398,7 +1412,11 @@ Bills can be paid through bank transfers or cash. Checks are not allowed.
               </div>
               <div class="btn_wrapper">
                 <button class="btn btn-secondary prevBtn">Cancel</button>
-                <button type="submit" class="btn btn-primary" id="publishAccomBtn">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="publishAccomBtn"
+                >
                   Save & Publish
                 </button>
               </div>
