@@ -1500,6 +1500,11 @@ footer {
   gap: 6px;
 }
 
+.user_profile_container .edit_right .edit_right_wrapper .edit_right_feature.sub {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .user_profile_container
   .edit_right
   .edit_right_wrapper
@@ -2921,7 +2926,16 @@ footer {
 .add_new_image .svg_span svg {
   width: 53.33px;
   height: 53.33px;
-  stroke: #03796E;
+  stroke: #03796e;
+}
+
+.accomCard button {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: center;
+  color: #232323;
 }
 
 .add_photo_span {

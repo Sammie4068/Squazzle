@@ -904,7 +904,12 @@
           <div class="edit_right_wrapper" id="editOverviewSection">
             <div class="edit_right_feature">
               <h1>Accommodation name</h1>
-              <input type="text" placeholder="Primrose View" class="edit_name_input"/>
+              <input
+                type="text"
+                placeholder="Primrose View"
+                class="edit_name_input"
+                required
+              />
             </div>
             <hr />
             <div class="edit_right_feature">
@@ -914,7 +919,28 @@
                 rows="10"
                 placeholder="Location address"
                 class="edit_location_input"
+                required
               ></textarea>
+            </div>
+            <div class="edit_right_feature sub">
+              <div>
+                <h1>State</h1>
+                <input
+                  type="text"
+                  class="editStateInput"
+                  placeholder="State"
+                  required
+                />
+              </div>
+              <div>
+                <h1>City</h1>
+                <input
+                  type="text"
+                  class="editCityInput"
+                  placeholder="City"
+                  required
+                />
+              </div>
             </div>
             <hr />
             <div class="edit_right_feature">
@@ -923,33 +949,54 @@
                 <p>Choose accommodation type</p>
               </span>
 
-              <div class="edit_accom_type">
+              <div class="edit_accom_type edit_type_form">
                 <span>
-                  <input name="accomodation" type="radio" />
+                  <input
+                    name="accomodation_type"
+                    type="radio"
+                    value="Duplex"
+                    required
+                  />
                   <label>Duplex</label>
                 </span>
                 <span>
-                  <input name="accomodation" type="radio" />
+                  <input
+                    name="accomodation_type"
+                    type="radio"
+                    value="Apartment"
+                  />
                   <label>Apartment</label>
                 </span>
                 <span>
-                  <input name="accomodation" type="radio" />
+                  <input
+                    name="accomodation_type"
+                    type="radio"
+                    value="Single room"
+                  />
                   <label>Single room</label>
                 </span>
                 <span>
-                  <input name="accomodation" type="radio" />
+                  <input
+                    name="accomodation_type"
+                    type="radio"
+                    value="Bungalow"
+                  />
                   <label>Bungalow</label>
                 </span>
                 <span>
-                  <input name="accomodation" type="radio" />
+                  <input name="accomodation_type" type="radio" value="Flat" />
                   <label>Flat</label>
                 </span>
                 <span>
-                  <input name="accomodation" type="radio" />
+                  <input name="accomodation_type" type="radio" value="Studio" />
                   <label>Studio</label>
                 </span>
                 <span>
-                  <input name="accomodation" type="radio" />
+                  <input
+                    name="accomodation_type"
+                    type="radio"
+                    value="Mansion"
+                  />
                   <label>Mansion</label>
                 </span>
               </div>
@@ -960,13 +1007,18 @@
                 <p>Choose availability</p>
               </span>
 
-              <div class="edit_accom_avail">
+              <div class="edit_accom_avail edit_avail_form">
                 <span>
-                  <input name="available" type="radio" />
+                  <input
+                    name="available"
+                    value="available"
+                    type="radio"
+                    required
+                  />
                   <label>Available</label>
                 </span>
                 <span>
-                  <input name="available" type="radio" />
+                  <input name="available" value="not available" type="radio" />
                   <label>Not available</label>
                 </span>
               </div>
@@ -976,7 +1028,7 @@
 
             <div class="edit_right_feature">
               <h1>Accomodation Price</h1>
-              <input type="text" placeholder="0.00" />
+              <input type="text" placeholder="0.00" required class="edit_price"/>
             </div>
             <hr />
             <div class="edit_right_feature" style="gap: 16px">
@@ -984,11 +1036,11 @@
               <div class="edit_duration_wrapper">
                 <span class="edit_duration">
                   <label>Start date</label>
-                  <input type="date" />
+                  <input type="datetime-local" class="editStartDate" />
                 </span>
                 <span class="edit_duration">
                   <label>End date</label>
-                  <input type="date" />
+                  <input type="datetime-local" class="editEndDate" />
                 </span>
               </div>
             </div>
@@ -1004,6 +1056,8 @@
                 cols="30"
                 rows="10"
                 placeholder="A brief description of the accommodation"
+                class="editAboutAccom"
+                required
               ></textarea>
             </div>
             <hr />
@@ -1013,40 +1067,32 @@
                 cols="30"
                 rows="7"
                 placeholder="Why are you listing this accommodation?"
+                class="editReason"
+                required
               ></textarea>
             </div>
             <hr />
             <div class="edit_right_feature">
               <h1>Accommodation rules</h1>
-              <div class="edit_rules">
+              <div class="edit_rules" id="editRulesWrapper">
                 <div class="edit_rules_feat">
-                  <span class="edit_rules_head">Damage to property </span>
-                  <textarea cols="30" rows="5">
-Guests will be held responsible for any loss or damage to the property caused by negligence either by themselves, their guests or any person for whom they are responsible for.
-            </textarea
-                  >
-                </div>
-                <div class="edit_rules_feat">
-                  <span class="edit_rules_head">Check-in</span>
-                  <textarea cols="30" rows="1">
-Check-in time is from 12:00 - 22:00
-            </textarea
-                  >
-                </div>
-                <div class="edit_rules_feat">
-                  <span class="edit_rules_head">Departure </span>
-                  <textarea cols="30" rows="1">
-Check-out time is from 12:00 - 13:00
-            </textarea
-                  >
-                </div>
-                <div class="add_rule">
-                  <p>Add new rule</p>
-                  <img
-                    src="./assets/images/add_circle_outline.png"
-                    alt="icon"
+                  <input
+                    type="text"
+                    placeholder="Rule name"
+                    class="editAccomRule"
+                    required
                   />
+                  <textarea
+                    cols="30"
+                    rows="5"
+                    placeholder="description"
+                    required
+                  ></textarea>
                 </div>
+              </div>
+              <div class="add_rule" id="addMoreRulesBtn">
+                <p>Add new rule</p>
+                <img src="./assets/images/add_circle_outline.png" alt="icon" />
               </div>
             </div>
 
@@ -1064,8 +1110,6 @@ Check-out time is from 12:00 - 13:00
                   </svg>
                   <p>Add Photos</p>
                 </span>
-
-
               </div>
 
               <div class="add_accom_image_wrapper">

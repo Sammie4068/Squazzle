@@ -44,6 +44,7 @@ function updateDisplay() {
       break;
     case "edit-listing":
       displayContent(editListing);
+      getSingleAccomodation(localStorage.getItem("listingId"));
       break;
     case "add-listing":
       displayContent(addListing);
@@ -675,6 +676,7 @@ async function getSingleAccomodation(accomID) {
     );
     const data = await res.json();
     getSingleAccomData(data);
+    occupyEditAccom(data);
   } catch (err) {
     console.error(err);
   }
@@ -866,10 +868,12 @@ document.addEventListener("DOMContentLoaded", () => {
   getUserListing();
 
   // Accom Price Validation
-  addAccomPrice.addEventListener("input", (e) => {
-    const filteredValue = e.target.value.replace(/[^\d]/g, "");
-    e.target.value = filteredValue;
-  });
+  [addAccomPrice, editPrice].forEach((ele) =>
+    ele.addEventListener("input", (e) => {
+      const filteredValue = e.target.value.replace(/[^\d]/g, "");
+      e.target.value = filteredValue;
+    })
+  );
 });
 function formProgress(e) {
   e.preventDefault();
@@ -984,37 +988,23 @@ async function getUserListing() {
       userAccom.forEach((accom) => {
         const listingId = JSON.stringify(accom._id);
         const displayImg = accom.gallery[0].imageUrl;
-        let markup = `<div class="accomodation_card cell">
-          <img src="${displayImg}" alt="${accom.accommodationName}" />
-          <p class="title">${accom.accommodationName}</p>
-          <p class="location">${accom.city}, Nigeria</p>
-          <div class="available">
-            <span
-              ><i class="fa-solid fa-circle ${
-                accom.status == "available" && "accom_status_avail"
-              }"></i>
-              <p>${accom.status}</p></span
-            >
-            <span
-              ><i class="fa-solid fa-circle"></i>
-              <p>Mansion</p></span
-            >
+
+        let markup = `<div class="add_accom_image accomCard">
+          <div class="add_new_image">
+            <span class="svg_span">
+             <img src="${displayImg}" alt="${accom.accommodationName}" />
+            </span>
           </div>
-          <p class="duration">Duration: ${reformatAccomDate(
-            accom.hostingPeriodFrom
-          )} - ${reformatAccomDate(accom.hostingPeriodTo)}</p>
-          <button value='${listingId}' class="price">
-            <span>NGN</span> <span>${accom.price} /</span> <span>night</span>
-          </button>
+          <button value='${listingId}' class="add_photo_span accomBtn">${accom.accommodationName}</button>
         </div>`;
 
         myListingsWrapper.insertAdjacentHTML("beforeend", markup);
 
-        const accomCard = document.querySelectorAll(".accomodation_card");
+        const accomCard = document.querySelectorAll(".accomCard");
         accomCard.forEach((card) => {
           card.addEventListener("click", () => {
-            const priceBtn = card.querySelector(".price");
-            const listingId = JSON.parse(priceBtn.value);
+            const accomBtn = card.querySelector(".accomBtn");
+            const listingId = JSON.parse(accomBtn.value);
             localStorage.setItem("listingId", listingId);
             window.location = "profile.html#my-listing";
           });
@@ -1068,3 +1058,48 @@ editImg.addEventListener("click", () => {
 
 const editNameInput = document.querySelector(".edit_name_input");
 const editLocationInput = document.querySelector(".edit_location_input");
+const editStateInput = document.querySelector(".editStateInput");
+const editCityInput = document.querySelector(".editCityInput");
+const editTypeForm = document.querySelector(".edit_type_form");
+const editAvailForm = document.querySelector(".edit_avail_form");
+const editPrice = document.querySelector(".edit_price");
+const editStartDate = document.querySelector(".editStartDate");
+const editEndDate = document.querySelector(".editEndDate");
+const editAboutAccom = document.querySelector(".editAboutAccom");
+const editReason = document.querySelector(".editReason");
+
+const addMoreRulesBtn = document.getElementById("addMoreRulesBtn");
+const editRulesWrapper = document.getElementById("editRulesWrapper");
+
+function addMoreRules() {
+  const markup = `<div class="edit_rules_feat">
+                   <input
+                      type="text"
+                      placeholder="Rule name"
+                      class="editAccomRule"
+                      required
+                    />
+                    <textarea
+                      cols="30"
+                      rows="5"
+                      placeholder="description"
+                      required
+                    ></textarea>
+                </div>`;
+  editRulesWrapper.insertAdjacentHTML("beforeend", markup);
+}
+addMoreRulesBtn.addEventListener("click", addMoreRules);
+
+function occupyEditAccom(data) {
+  const accomInfo = data.data.accomodation;
+
+  displayProp(editNameInput, accomInfo.accommodationName);
+  displayProp(editLocationInput, accomInfo.address);
+  displayProp(editStateInput, accomInfo.state);
+  displayProp(editCityInput, accomInfo.city);
+  displayProp(editPrice, accomInfo.price);
+  displayProp(editStartDate, accomInfo.hostingPeriodFrom);
+  displayProp(editEndDate, accomInfo.hostingPeriodTo);
+  displayProp(editAboutAccom, accomInfo.description);
+  displayProp(editReason, accomInfo.whyListing);
+}
