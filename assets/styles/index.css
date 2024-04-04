@@ -1500,6 +1500,44 @@ footer {
   gap: 6px;
 }
 
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_head {
+  display: flex;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_head
+  .addNewImg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 24px;
+  background: #016d71;
+  color: #cce6e7;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+}
+
+.user_profile_container
+  .edit_right
+  .edit_right_wrapper
+  .edit_right_feature
+  .edit_accom_head
+  .addNewImg
+  svg {
+  width: 24px;
+  height: 24px;
+  stroke: #cce6e7;
+}
+
 .user_profile_container .edit_right .edit_right_wrapper .edit_right_feature h1,
 .user_profile_container
   .add_accom
@@ -1907,9 +1945,9 @@ footer {
   width: 100%;
 }
 
-  .user_profile_container .accom_right .accom_photos .main_photo {
-    width: 100%;
-  }
+.user_profile_container .accom_right .accom_photos .main_photo {
+  width: 100%;
+}
 
 .user_profile_container .accom_right .accom_photos .sub_photo {
   display: flex;
@@ -2883,6 +2921,7 @@ footer {
 .add_new_image .svg_span svg {
   width: 53.33px;
   height: 53.33px;
+  stroke: #03796E;
 }
 
 .add_photo_span {

@@ -202,12 +202,14 @@ const personalDetailsLinks = document.querySelectorAll(
 );
 const editProfileLink = document.querySelectorAll(".edit_profile");
 const myListingsLink = document.querySelectorAll(".my_listings_link");
+const myListingLink = document.querySelectorAll(".my_listing_link");
 const addAcccomLink = document.querySelectorAll(".add_accom_link");
 const editListingLink = document.querySelectorAll(".edit_listing_link");
 
 updateHash(personalDetailsLinks, "personal-details");
 updateHash(editProfileLink, "edit-profile");
 updateHash(myListingsLink, "my-listings");
+updateHash(myListingLink, "my-listing");
 updateHash(addAcccomLink, "add-listing");
 updateHash(editListingLink, "edit-listing");
 
@@ -672,62 +674,69 @@ async function getSingleAccomodation(accomID) {
       `https://stayshare.onrender.com/api/v1/accommodations/${accomID}`
     );
     const data = await res.json();
-    console.log(data);
-    const accommodationInfo = data.data.accomodation;
-    const hostData = accommodationInfo.createdBy;
+    getSingleAccomData(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
-    const dateObj = new Date(hostData.createdAt);
-    const year = dateObj.getFullYear();
-    const month = dateObj.toLocaleString("default", { month: "long" });
+function getSingleAccomData(data) {
+  const accommodationInfo = data.data.accomodation;
 
-    displayProp(hostJoined, `joined squazzle ${month} ${year}`);
+  const hostData = accommodationInfo.createdBy;
+  const dateObj = new Date(hostData.createdAt);
+  const year = dateObj.getFullYear();
+  const month = dateObj.toLocaleString("default", { month: "long" });
 
-    hostPhotos.forEach(
-      (ele) => (ele.attributes.src.value = hostData.profileImage)
-    );
-    displayProp(hostName, `${hostData.firstName} ${hostData.lastName}`);
-    displayProp(hostPhone, `+234${hostData.phoneNumber}`);
+  displayProp(hostJoined, `joined squazzle ${month} ${year}`);
 
-    displayProp(
-      listingLocation,
-      `${accommodationInfo.address}, ${accommodationInfo.city}, ${accommodationInfo.state}, Nigeria`
-    );
-    displayProp(listingReason, accommodationInfo.whyListing);
-    displayProp(
-      listingDate,
-      `${reformatAccomDate(
-        accommodationInfo.hostingPeriodFrom
-      )} - ${reformatAccomDate(accommodationInfo.hostingPeriodTo)}`
-    );
-    displayProp(listingType, accommodationInfo.accommodationType);
-    displayProp(listingTitle, accommodationInfo.accommodationName);
-    displayProp(listingPrice, `NGN ${accommodationInfo.price} per night`);
-    displayProp(listingDesc, accommodationInfo.description);
-    displayImg(mainPhoto, accommodationInfo.gallery[0].imageUrl);
+  hostPhotos.forEach(
+    (ele) => (ele.attributes.src.value = hostData.profileImage)
+  );
+  displayProp(hostName, `${hostData.firstName} ${hostData.lastName}`);
+  displayProp(hostPhone, `+234${hostData.phoneNumber}`);
 
-    accommodationInfo.gallery[1] &&
-      displayImg(subPhotoOne, accommodationInfo.gallery[1].imageUrl);
+  displayProp(
+    listingLocation,
+    `${accommodationInfo.address}, ${accommodationInfo.city}, ${accommodationInfo.state}, Nigeria`
+  );
+  displayProp(listingReason, accommodationInfo.whyListing);
+  displayProp(
+    listingDate,
+    `${reformatAccomDate(
+      accommodationInfo.hostingPeriodFrom
+    )} - ${reformatAccomDate(accommodationInfo.hostingPeriodTo)}`
+  );
+  displayProp(listingType, accommodationInfo.accommodationType);
+  displayProp(listingTitle, accommodationInfo.accommodationName);
+  displayProp(listingPrice, `NGN ${accommodationInfo.price} per night`);
+  displayProp(listingDesc, accommodationInfo.description);
+  displayImg(mainPhoto, accommodationInfo.gallery[0].imageUrl);
 
-    accommodationInfo.gallery[2] &&
-      displayImg(subPhotoTwo, accommodationInfo.gallery[2].imageUrl);
-    displayImg(resPhoto, accommodationInfo.gallery[0].imageUrl);
+  accommodationInfo.gallery[1]
+    ? displayImg(subPhotoOne, accommodationInfo.gallery[1].imageUrl)
+    : displayImg(subPhotoOne, "");
 
-    const acccomRuleWrapper = document.querySelectorAll(".acccomRuleWrapper");
-    const rulesArr = accommodationInfo.accommodationRules;
+  accommodationInfo.gallery[2]
+    ? displayImg(subPhotoTwo, accommodationInfo.gallery[2].imageUrl)
+    : displayImg(subPhotoTwo, "");
 
-    rulesArr.forEach((rule) => {
-      let markup = `<span>
+  displayImg(resPhoto, accommodationInfo.gallery[0].imageUrl);
+
+  const accomRuleWrapper = document.querySelectorAll(".acccomRuleWrapper");
+  const rulesArr = accommodationInfo.accommodationRules;
+
+  accomRuleWrapper.forEach((wrap) => (wrap.innerHTML = ``));
+
+  rulesArr.forEach((rule) => {
+    let markup = `<span>
                   <h2>${rule}</h2>
                   <p></p>
                 </span>`;
-      acccomRuleWrapper.forEach((wrap) => {
-        wrap.innerHTML = "";
-        wrap.insertAdjacentHTML("beforeend", markup);
-      });
+    accomRuleWrapper.forEach((wrap) => {
+      wrap.insertAdjacentHTML("beforeend", markup);
     });
-  } catch (err) {
-    console.log(err);
-  }
+  });
 }
 
 // Refresh Token
@@ -1016,3 +1025,46 @@ async function getUserListing() {
     console.error(err);
   }
 }
+
+// Edit Accomodation
+const editSideBarFeat = document.querySelectorAll(".edit_sidebar span");
+const editOverview = document.getElementById("edit_overview");
+const editDesc = document.getElementById("edit_description");
+const editImg = document.getElementById("edit_img");
+
+function editSidebarOnActive(ele) {
+  editSideBarFeat.forEach((feat) => {
+    if (feat.classList.contains("onActive")) {
+      feat.classList.remove("onActive");
+    }
+  });
+  ele.classList.add("onActive");
+}
+
+const editAccomSec = document.querySelectorAll(".edit_right_wrapper");
+const editOverviewSection = document.getElementById("editOverviewSection");
+const editDescSection = document.getElementById("editDescSection");
+const editImgSection = document.getElementById("editImgSection");
+
+function editAccomDisplay(ele) {
+  editAccomSec.forEach((sec) => sec.classList.add("hidden"));
+  ele.classList.remove("hidden");
+}
+
+editOverview.addEventListener("click", () => {
+  editSidebarOnActive(editOverview);
+  editAccomDisplay(editOverviewSection);
+});
+
+editDesc.addEventListener("click", () => {
+  editSidebarOnActive(editDesc);
+  editAccomDisplay(editDescSection);
+});
+
+editImg.addEventListener("click", () => {
+  editSidebarOnActive(editImg);
+  editAccomDisplay(editImgSection);
+});
+
+const editNameInput = document.querySelector(".edit_name_input");
+const editLocationInput = document.querySelector(".edit_location_input");

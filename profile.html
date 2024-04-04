@@ -579,8 +579,8 @@
               <img src="" />
             </span>
             <span class="sub_photo">
-              <img src="" class="sub_photo_one"/>
-              <img src="" class="sub_photo_two"/>
+              <img src="" class="sub_photo_one" />
+              <img src="" class="sub_photo_two" />
             </span>
 
             <span class="res_photo">
@@ -695,17 +695,20 @@
         </ul>
       </div>
 
-      <div class="accomodation_container my-listings-container" id="my-listings-wrapper">
-         <div class="add_accom_image add_accom_link">
-            <div class="add_new_image">
-              <span class="svg_span">
-                <svg>
-                  <use xlink:href="/assets/icon.svg#add-circle"></use>
-                </svg>
-              </span>
-            </div>
-            <span class="add_photo_span">List new property </span>
+      <div
+        class="accomodation_container my-listings-container"
+        id="my-listings-wrapper"
+      >
+        <div class="add_accom_image add_accom_link">
+          <div class="add_new_image">
+            <span class="svg_span">
+              <svg>
+                <use xlink:href="/assets/icon.svg#add-circle"></use>
+              </svg>
+            </span>
           </div>
+          <span class="add_photo_span">List new property </span>
+        </div>
       </div>
     </div>
 
@@ -722,7 +725,7 @@
             <i class="fa-solid fa-chevron-right"></i>
           </li>
           <li>
-            <a href="#my-listing">My Listing</a>
+            <a href="#my-listings">My Listing</a>
           </li>
         </ul>
       </div>
@@ -748,8 +751,7 @@
             <div class="accom_details">
               <h1>Reason for listing this accommodation</h1>
               <hr />
-              <p class="listing_reason">
-              </p>
+              <p class="listing_reason"></p>
             </div>
             <div class="accom_details">
               <h1>Hosting duration</h1>
@@ -792,11 +794,11 @@
 
           <div class="accom_photos">
             <span class="main_photo">
-              <img src=""/>
+              <img src="" />
             </span>
             <span class="sub_photo">
-              <img src="" class="sub_photo_one"/>
-              <img src="" class="sub_photo_two"/>
+              <img src="" class="sub_photo_one" />
+              <img src="" class="sub_photo_two" />
             </span>
 
             <span class="res_photo">
@@ -808,14 +810,12 @@
             <div class="accom_details">
               <h1>Location</h1>
               <hr />
-              <p class="listing_location">
-              </p>
+              <p class="listing_location"></p>
             </div>
             <div class="accom_details">
               <h1>Reason for listing this accommodation</h1>
               <hr />
-              <p class="listing_reason">
-              </p>
+              <p class="listing_reason"></p>
             </div>
             <div class="accom_details">
               <h1>Hosting duration</h1>
@@ -842,8 +842,7 @@
 
             <div class="accom_writeup">
               <h2>About this apartment</h2>
-              <p class="listing_desc">
-              </p>
+              <p class="listing_desc"></p>
               <!-- <a href="#">Read more</a> -->
             </div>
 
@@ -851,8 +850,7 @@
 
             <div class="accom_rules">
               <h1>Accommodation rules</h1>
-              <div class="rules acccomRuleWrapper">
-              </div>
+              <div class="rules acccomRuleWrapper"></div>
             </div>
           </div>
         </div>
@@ -866,13 +864,13 @@
       <div class="navigation">
         <ul class="breadcrumb">
           <li>
-            <a href="#">Manage Account</a>
+            <a href="#manage-account">Manage Account</a>
           </li>
           <li>
             <i class="fa-solid fa-chevron-right"></i>
           </li>
           <li>
-            <a href="#">My Listing</a>
+            <a href="#my-listings">My Listing</a>
           </li>
         </ul>
       </div>
@@ -880,22 +878,22 @@
       <div class="main_content">
         <div class="edit_list toShow">
           <div class="edit_features">
-            <span>
+            <span class="my_listing_link">
               <i class="fa-solid fa-arrow-left"></i>
               <p>Back to my listing</p>
             </span>
           </div>
           <div class="edit_sidebar">
-            <span class="onActive">
+            <span class="onActive" id="edit_overview">
               <img src="./assets/images/apps.png" alt="icon" />
               <p>Overview</p>
             </span>
-            <span>
+            <span id="edit_description">
               <img src="./assets/images/description.png" alt="icon" />
               <p>Description</p>
             </span>
 
-            <span>
+            <span id="edit_img">
               <img src="./assets/images/insert_photo.png" alt="icon" />
               <p>Gallery</p>
             </span>
@@ -903,10 +901,10 @@
         </div>
 
         <div class="edit_right">
-          <div class="edit_right_wrapper">
+          <div class="edit_right_wrapper" id="editOverviewSection">
             <div class="edit_right_feature">
               <h1>Accommodation name</h1>
-              <input type="text" placeholder="Primrose View" />
+              <input type="text" placeholder="Primrose View" class="edit_name_input"/>
             </div>
             <hr />
             <div class="edit_right_feature">
@@ -915,6 +913,7 @@
                 cols="30"
                 rows="10"
                 placeholder="Location address"
+                class="edit_location_input"
               ></textarea>
             </div>
             <hr />
@@ -998,7 +997,7 @@
               <button class="btn btn-primary">Save & Continue</button>
             </div>
           </div>
-          <div class="edit_right_wrapper hidden">
+          <div class="edit_right_wrapper hidden" id="editDescSection">
             <div class="edit_right_feature">
               <h1>About this accommodation</h1>
               <textarea
@@ -1054,6 +1053,38 @@ Check-out time is from 12:00 - 13:00
             <div class="btn_wrapper">
               <button class="btn btn-secondary">Cancel</button>
               <button class="btn btn-primary">Save & Continue</button>
+            </div>
+          </div>
+          <div class="edit_right_wrapper hidden" id="editImgSection">
+            <div class="edit_right_feature">
+              <div class="edit_accom_head">
+                <span class="addNewImg">
+                  <svg class="addNewImg_svg">
+                    <use xlink:href="/assets/icon.svg#add-circle"></use>
+                  </svg>
+                  <p>Add Photos</p>
+                </span>
+
+
+              </div>
+
+              <div class="add_accom_image_wrapper">
+                <div class="add_accom_image addNewImg">
+                  <div class="add_new_image">
+                    <span class="svg_span">
+                      <svg>
+                        <use xlink:href="/assets/icon.svg#add-circle"></use>
+                      </svg>
+                    </span>
+                  </div>
+                  <span class="add_photo_span"> Add photo </span>
+                  <input type="file" hidden id="newImgUpload" />
+                </div>
+              </div>
+            </div>
+            <div class="btn_wrapper">
+              <button class="btn btn-secondary">Back</button>
+              <button class="btn btn-primary">Save</button>
             </div>
           </div>
         </div>
