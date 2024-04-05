@@ -2432,7 +2432,7 @@ footer {
 
 .user_profile_container .display_right form .btn_wrapper button,
 .delete_wrapper .delete_form .delete_btn_wrapper button,
-.cpf_btn_wrapper button {
+.cpf_btn_wrapper button, .user_profile_container .edit_right .edit_right_wrapper .btn_wrapper button {
   width: 25%;
   gap: 10px;
 }

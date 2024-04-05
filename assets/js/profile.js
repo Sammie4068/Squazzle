@@ -357,6 +357,9 @@ function renderFeedback(msg, status) {
     top: 0,
     behavior: "smooth",
   });
+  setTimeout(() => {
+    feedbackModal.classList.add("hidden");
+  }, 3000);
 }
 
 // Modal feedback
@@ -895,10 +898,9 @@ function formProgress(e) {
   updateProgressbar();
 }
 
-function getRules() {
-  const addAccmRules = document.querySelectorAll(".addAccomRule");
+function getRules(ele) {
   let valueArr = [];
-  addAccmRules.forEach((input) => {
+  ele.forEach((input) => {
     valueArr.push(input.value);
   });
   return valueArr;
@@ -918,14 +920,17 @@ imageForm.addEventListener("submit", (e) => {
   if (!addedImages || addedImages.length < 4) {
     removeSpinner();
     renderModalFeedback(addImgFeedback, "Please add atleast 3 images", "error");
+    return;
   }
+
+  const addAccmRules = document.querySelectorAll(".addAccomRule");
 
   const formData = new FormData();
   formData.append("accommodationName", addAccomNameInput.value);
   formData.append("description", addAccomAbout.value);
   formData.append("whyListing", addAccomReason.value);
   formData.append("accommodationType", getSelectedRadio(addAccomTypeForm));
-  formData.append("accomodationRules", JSON.stringify(getRules()));
+  formData.append("accomodationRules", JSON.stringify(getRules(addAccmRules)));
   formData.append("price", addAccomPrice.value);
   formData.append("hostingPeriodFrom", addAccomStartDate.value);
   formData.append("address", addAccomLocationInput.value);
@@ -936,12 +941,12 @@ imageForm.addEventListener("submit", (e) => {
     formData.append("images", file);
   });
 
-  const formDataArray = [];
-  formData.forEach((value, key) => {
-    formDataArray.push({ [key]: value });
-  });
+  // const formDataArray = [];
+  // formData.forEach((value, key) => {
+  //   formDataArray.push({ [key]: value });
+  // });
 
-  console.table(formDataArray);
+  // console.table(formDataArray);
   publishAccom(formData);
 });
 
@@ -959,14 +964,19 @@ async function publishAccom(data) {
     );
     removeSpinner();
     const result = await res.json();
-    if (result.status === "error") {
-      renderFeedback(result.error, "error");
-    }
+    console.log(result);
     if (result.error) {
+      if (result.error == "Expired token please login") {
+        getToken();
+        renderFeedback("Access expired, Try refreshing the page", "error");
+      } else {
+        renderFeedback(result.error, "error");
+      }
+      return;
+    }
+    if ((result.status = "success")) {
       renderFeedback(result.message, "success");
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
+      window.location.hash = "my-listings";
     }
   } catch (err) {
     console.error(err);
@@ -1083,7 +1093,7 @@ const editReason = document.querySelector(".editReason");
 const addMoreRulesBtn = document.getElementById("addMoreRulesBtn");
 const editRulesWrapper = document.getElementById("editRulesWrapper");
 const addNewImg = document.querySelector(".addNewImg");
-const newImgUpload = document.getElementById("newImgUpload")
+const newImgUpload = document.getElementById("newImgUpload");
 const editImgWrapper = document.querySelector(".edit_accom_image_wrapper");
 
 addNewImg.addEventListener("click", () => {
@@ -1131,7 +1141,6 @@ function occupyAccomRules(rulesArr) {
 
 function occupyEditAccom(data) {
   const accomInfo = data.data.accomodation;
-  console.log(accomInfo);
 
   displayProp(editNameInput, accomInfo.accommodationName);
   displayProp(editLocationInput, accomInfo.address);
@@ -1150,7 +1159,7 @@ function occupyEditAccom(data) {
 }
 
 function occupyAccomImg(array) {
-  editImgWrapper.innerHTML = ``
+  editImgWrapper.innerHTML = ``;
   array.forEach((img) => {
     const imgUrl = img.imageUrl;
     let imgMarkup = `<div class="add_accom_image">
@@ -1174,3 +1183,90 @@ function occupyAccomImg(array) {
 }
 
 // Edit Accomodation function
+async function updateAccomodation(data) {
+  try {
+    const listingID = localStorage.getItem("listingId");
+    const res = await fetch(
+      `https://stayshare.onrender.com/api/v1/accommodations/${listingID}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: data,
+      }
+    );
+    removeSpinner();
+    const result = await res.json();
+    console.log(result);
+    if (result.error) {
+      if (result.error == "Expired token please login") {
+        getToken();
+        renderFeedback("Access expired, Try refreshing the page", "error");
+      } else {
+        renderFeedback(result.message, "error");
+      }
+      return;
+    }
+    if ((result.status = "success")) {
+      renderFeedback(result.message, "success");
+      window.location.hash = "my-listing";
+    }
+  } catch (err) {
+    console.error(err);
+    renderFeedback("internal server error", "error");
+  }
+}
+
+const editSaveBtn = document.querySelectorAll(".editSaveBtn");
+
+editSaveBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    updateAccomHandler(e, btn);
+  });
+});
+
+function updateAccomHandler(e, btn) {
+  e.preventDefault();
+  renderSpinner(btn);
+
+  const addedImages = document.querySelectorAll(".add_accom_image");
+
+  if (!addedImages || addedImages.length < 3) {
+    removeSpinner();
+    renderFeedback("Please add atleast 3 images", "error");
+    return;
+  }
+
+  const editAccomRules = document.querySelectorAll(".editAccomRule");
+
+  const formData = new FormData();
+  formData.append("accommodationName", editNameInput.value);
+  formData.append("description", editAboutAccom.value);
+  formData.append("whyListing", editReason.value);
+  formData.append("accommodationType", getSelectedRadio(editTypeForm));
+  formData.append(
+    "accomodationRules",
+    JSON.stringify(getRules(editAccomRules))
+  );
+  formData.append("price", editPrice.value);
+  formData.append("hostingPeriodFrom", editStartDate.value);
+  formData.append("address", editLocationInput.value);
+  formData.append("hostingPeriodTo", editEndDate.value);
+  formData.append("state", editStateInput.value);
+  formData.append("city", editCityInput.value);
+  if (imgFileArr.length > 0) {
+    imgFileArr.forEach((file) => {
+      formData.append("images", file);
+    });
+  } else {
+    formData.append("images", null);
+  }
+  // imgFileArr.length > 0
+  //   ? imgFileArr.forEach((file) => {
+  //       formData.append("images", file);
+  //     })
+  //   : formData.append("images", null);
+
+  updateAccomodation(formData);
+}

@@ -56,6 +56,7 @@ async function getAccomodations() {
       `https://stayshare.onrender.com/api/v1/accommodations`
     );
     const data = await res.json();
+    console.log(data);
     const accommodations = data.data.accomodation;
     occupyAccommodations(accommodations);
   } catch (err) {
