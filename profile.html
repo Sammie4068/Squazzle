@@ -955,49 +955,54 @@
                     name="accomodation_type"
                     type="radio"
                     value="Duplex"
+                    id="edit_duplex"
                     required
                   />
-                  <label>Duplex</label>
+                  <label for="edit_duplex">Duplex</label>
                 </span>
                 <span>
                   <input
                     name="accomodation_type"
                     type="radio"
                     value="Apartment"
+                    id="edit_apartment"
                   />
-                  <label>Apartment</label>
+                  <label for="edit_apartment">Apartment</label>
                 </span>
                 <span>
                   <input
                     name="accomodation_type"
                     type="radio"
                     value="Single room"
+                    id="edit_single" 
                   />
-                  <label>Single room</label>
+                  <label for="edit_single">Single room</label>
                 </span>
                 <span>
                   <input
                     name="accomodation_type"
                     type="radio"
                     value="Bungalow"
+                    id="edit_bungalow"
                   />
-                  <label>Bungalow</label>
+                  <label for="edit_bungalow">Bungalow</label>
                 </span>
                 <span>
-                  <input name="accomodation_type" type="radio" value="Flat" />
-                  <label>Flat</label>
+                  <input name="accomodation_type" type="radio" value="Flat" id="edit_flat"/>
+                  <label for="edit_flat">Flat</label>
                 </span>
                 <span>
-                  <input name="accomodation_type" type="radio" value="Studio" />
-                  <label>Studio</label>
+                  <input name="accomodation_type" type="radio" value="Studio" id="edit_studio"/>
+                  <label for="edit_studio">Studio</label>
                 </span>
                 <span>
                   <input
                     name="accomodation_type"
                     type="radio"
                     value="Mansion"
+                    id="edit_mansion"
                   />
-                  <label>Mansion</label>
+                  <label for="edit_mansion">Mansion</label>
                 </span>
               </div>
             </div>
@@ -1013,13 +1018,19 @@
                     name="available"
                     value="available"
                     type="radio"
+                    id="editAvail"
                     required
                   />
-                  <label>Available</label>
+                  <label for="editAvail">Available</label>
                 </span>
                 <span>
-                  <input name="available" value="not available" type="radio" />
-                  <label>Not available</label>
+                  <input
+                    name="available"
+                    value="not available"
+                    type="radio"
+                    id="editUnavail"
+                  />
+                  <label for="editUnavail">Not available</label>
                 </span>
               </div>
             </div>
@@ -1028,7 +1039,12 @@
 
             <div class="edit_right_feature">
               <h1>Accomodation Price</h1>
-              <input type="text" placeholder="0.00" required class="edit_price"/>
+              <input
+                type="text"
+                placeholder="0.00"
+                required
+                class="edit_price"
+              />
             </div>
             <hr />
             <div class="edit_right_feature" style="gap: 16px">
@@ -1074,22 +1090,7 @@
             <hr />
             <div class="edit_right_feature">
               <h1>Accommodation rules</h1>
-              <div class="edit_rules" id="editRulesWrapper">
-                <div class="edit_rules_feat">
-                  <input
-                    type="text"
-                    placeholder="Rule name"
-                    class="editAccomRule"
-                    required
-                  />
-                  <textarea
-                    cols="30"
-                    rows="5"
-                    placeholder="description"
-                    required
-                  ></textarea>
-                </div>
-              </div>
+              <div class="edit_rules" id="editRulesWrapper"></div>
               <div class="add_rule" id="addMoreRulesBtn">
                 <p>Add new rule</p>
                 <img src="./assets/images/add_circle_outline.png" alt="icon" />
@@ -1109,11 +1110,12 @@
                     <use xlink:href="/assets/icon.svg#add-circle"></use>
                   </svg>
                   <p>Add Photos</p>
+                   <input type="file" hidden id="newImgUpload" />
                 </span>
               </div>
 
-              <div class="add_accom_image_wrapper">
-                <div class="add_accom_image addNewImg">
+              <div class="edit_accom_image_wrapper">
+                <!-- <div class="add_accom_image addNewImg">
                   <div class="add_new_image">
                     <span class="svg_span">
                       <svg>
@@ -1123,7 +1125,7 @@
                   </div>
                   <span class="add_photo_span"> Add photo </span>
                   <input type="file" hidden id="newImgUpload" />
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="btn_wrapper">
@@ -1201,53 +1203,59 @@
                       name="accomodation_type"
                       type="radio"
                       value="Duplex"
+                      id="add_duplex"
                       required
                     />
-                    <label>Duplex</label>
+                    <label for="add_duplex">Duplex</label>
                   </span>
                   <span>
                     <input
                       name="accomodation_type"
                       type="radio"
                       value="Apartment"
+                      id="add_apartment"
                     />
-                    <label>Apartment</label>
+                    <label for="add_apartment">Apartment</label>
                   </span>
                   <span>
                     <input
                       name="accomodation_type"
                       type="radio"
                       value="Single room"
+                      id="add_single"
                     />
-                    <label>Single room</label>
+                    <label for="add_single">Single room</label>
                   </span>
                   <span>
                     <input
                       name="accomodation_type"
                       type="radio"
                       value="Bungalow"
+                      id="add_bungalow"
                     />
-                    <label>Bungalow</label>
+                    <label for="add_bungalow">Bungalow</label>
                   </span>
                   <span>
-                    <input name="accomodation_type" type="radio" value="Flat" />
-                    <label>Flat</label>
+                    <input name="accomodation_type" type="radio" value="Flat" id="add_flat"/>
+                    <label for="add_flat">Flat</label>
                   </span>
                   <span>
                     <input
                       name="accomodation_type"
                       type="radio"
                       value="Studio"
+                      id="add_studio"
                     />
-                    <label>Studio</label>
+                    <label for="add_studio">Studio</label>
                   </span>
                   <span>
                     <input
                       name="accomodation_type"
                       type="radio"
                       value="Mansion"
+                      id="add_mansion"
                     />
-                    <label>Mansion</label>
+                    <label for="add_mansion">Mansion</label>
                   </span>
                 </div>
               </div>
@@ -1305,17 +1313,19 @@
                       name="available"
                       value="available"
                       type="radio"
+                      id="add_avail"
                       required
                     />
-                    <label>Available</label>
+                    <label for="add_avail">Available</label>
                   </span>
                   <span>
                     <input
                       name="available"
                       value="not available"
                       type="radio"
+                      id="add_unavail"
                     />
-                    <label>Not available</label>
+                    <label for="add_unavail">Not available</label>
                   </span>
                 </div>
               </div>

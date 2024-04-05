@@ -405,6 +405,18 @@ function getSelectedRadio(ele) {
   }
 }
 
+function selectRadio(ele, condition) {
+  const radioEle = ele.querySelectorAll('input[type="radio"]');
+  radioEle.forEach((radio) => {
+    const radioValue = radio.value;
+    if (radioValue == condition) {
+      radio.checked = true;
+    } else {
+      radio.checked = false;
+    }
+  });
+}
+
 // Change Password
 const changePasswordForm = document.querySelector(".change_pass_form");
 const oldPasswordInput = document.getElementById("oldPasswordInput");
@@ -776,7 +788,7 @@ addNewImageCard.addEventListener("click", () => {
 
 let imgFileArr = [];
 
-function addNewImageEle(ele) {
+function addNewImageEle(ele, wrapper) {
   ele.addEventListener("change", () => {
     const file = ele.files[0];
     imgFileArr.push(file);
@@ -801,7 +813,7 @@ function addNewImageEle(ele) {
             </div>
           </div>
         </div>`;
-      addAccomImageeWrapper.insertAdjacentHTML("afterbegin", markup);
+      wrapper.insertAdjacentHTML("afterbegin", markup);
     };
     reader.readAsDataURL(file);
   });
@@ -896,7 +908,7 @@ overviewForm.addEventListener("submit", formProgress);
 pricingForm.addEventListener("submit", formProgress);
 descriptionForm.addEventListener("submit", formProgress);
 
-addNewImageEle(newImageUpload);
+addNewImageEle(newImageUpload, addAccomImageeWrapper);
 
 imageForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -1070,6 +1082,13 @@ const editReason = document.querySelector(".editReason");
 
 const addMoreRulesBtn = document.getElementById("addMoreRulesBtn");
 const editRulesWrapper = document.getElementById("editRulesWrapper");
+const addNewImg = document.querySelector(".addNewImg");
+const newImgUpload = document.getElementById("newImgUpload")
+const editImgWrapper = document.querySelector(".edit_accom_image_wrapper");
+
+addNewImg.addEventListener("click", () => {
+  newImgUpload.click();
+});
 
 function addMoreRules() {
   const markup = `<div class="edit_rules_feat">
@@ -1083,23 +1102,75 @@ function addMoreRules() {
                       cols="30"
                       rows="5"
                       placeholder="description"
-                      required
                     ></textarea>
                 </div>`;
   editRulesWrapper.insertAdjacentHTML("beforeend", markup);
 }
 addMoreRulesBtn.addEventListener("click", addMoreRules);
 
+function occupyAccomRules(rulesArr) {
+  editRulesWrapper.innerHTML = ``;
+  rulesArr.forEach((rule) => {
+    const markup = `<div class="edit_rules_feat">
+                   <input
+                      type="text"
+                      placeholder="Rule name"
+                      value= "${rule}"
+                      class="editAccomRule"
+                      required
+                    />
+                    <textarea
+                      cols="30"
+                      rows="5"
+                      placeholder="description"
+                    ></textarea>
+                </div>`;
+    editRulesWrapper.insertAdjacentHTML("beforeend", markup);
+  });
+}
+
 function occupyEditAccom(data) {
   const accomInfo = data.data.accomodation;
+  console.log(accomInfo);
 
   displayProp(editNameInput, accomInfo.accommodationName);
   displayProp(editLocationInput, accomInfo.address);
   displayProp(editStateInput, accomInfo.state);
   displayProp(editCityInput, accomInfo.city);
+  selectRadio(editTypeForm, accomInfo.accommodationType);
+  selectRadio(editAvailForm, accomInfo.status);
   displayProp(editPrice, accomInfo.price);
   displayProp(editStartDate, accomInfo.hostingPeriodFrom);
   displayProp(editEndDate, accomInfo.hostingPeriodTo);
   displayProp(editAboutAccom, accomInfo.description);
   displayProp(editReason, accomInfo.whyListing);
+  occupyAccomRules(accomInfo.accommodationRules);
+  occupyAccomImg(accomInfo.gallery);
+  addNewImageEle(newImgUpload, editImgWrapper);
 }
+
+function occupyAccomImg(array) {
+  editImgWrapper.innerHTML = ``
+  array.forEach((img) => {
+    const imgUrl = img.imageUrl;
+    let imgMarkup = `<div class="add_accom_image">
+          <span class="add_accom_image_container">
+            <img src="${imgUrl}" alt="" />
+          </span>
+          <div class="add_image_option">
+            <div class="open_option">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+            <div class="add_image_option_modal hidden">
+              <i class="fa-solid fa-x closeModal"></i>
+              <span>Set as cover photo</span>
+              <span>Hide from gallery</span>
+              <span>Delete</span>
+            </div>
+          </div>
+        </div>`;
+    editImgWrapper.insertAdjacentHTML("afterbegin", imgMarkup);
+  });
+}
+
+// Edit Accomodation function
